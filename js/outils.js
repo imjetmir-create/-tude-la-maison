@@ -380,7 +380,52 @@ var U = (function () {
     return svg("0 0 200 200", 22, 22, '<text x="100" y="165" font-size="180" font-weight="bold" text-anchor="middle" fill="' + FILL + '" font-family="Arial, Helvetica, sans-serif">' + ch + "</text>");
   }
 
+  /* ---------- Remettre dans l'ordre ---------- */
+  // La phrase est découpée en mots (« _ » colle plusieurs mots en une étiquette) ; la ponctuation finale reste fixe.
+  // « phrase||autre ordre possible » : les autres ordres corrects sont aussi acceptés
+  function order(text, sentence, extra) {
+    var all = sentence.split("||"), m = /(\s*[.!?])$/.exec(all[0]), punct = m ? m[1] : "";
+    function words(s) { return s.replace(/\s*[.!?]$/, "").split(" ").map(function (w) { return w.replace(/_/g, " "); }); }
+    return orderItems(text, words(all[0]), punct, mix({ alts: all.slice(1).map(words) }, extra));
+  }
+  function orderItems(text, words, punct, extra) {
+    var items, tries = 0;
+    do { items = shuffle(words.slice()); tries++; } while (items.join("|") === words.join("|") && tries < 30);
+    return mix({ type: "order", text: text, items: items, answer: words, punct: punct || "" }, extra);
+  }
+
+  /* ---------- Lecture : un texte et ses questions ---------- */
+  // texts : [{ t: titre, x: texte, q: ["niveau|question|bonne|piège,piège|explication"], ev: [événements dans l'ordre] }]
+  function passage(tx) { return '<div class="texte"><div class="ttl">' + tx.t + "</div>" + tx.x + "</div>"; }
+  function readQ(tx, row, withText) {
+    var f = row.split("|");
+    return choice((withText ? passage(tx) : "") + '<div class="qq">' + f[1] + "</div>", f[2], f[3].split(","), {
+      steps: [f[4] || "La réponse se trouve dans le texte : relis-le attentivement.", "Réponse : <b>" + f[2] + "</b>"]
+    });
+  }
+  function evQ(tx, withText) {
+    return orderItems((withText ? passage(tx) : "") + '<div class="qq">Remets les événements dans l\'ordre de l\'histoire.</div>', tx.ev, "", {
+      sep: " → ", steps: ["Relis le texte du début à la fin et repère chaque événement.", "L'ordre : " + tx.ev.join(" → ")]
+    });
+  }
+  function reading(texts) {
+    return {
+      gen: function (d) {
+        var tx = pick(texts);
+        if (d === 3 && tx.ev && R(0, 2) === 0) return evQ(tx, true);
+        var rows = tx.q.filter(function (r) { var l = +r.charAt(0); return l === d || l === d - 1; });
+        return readQ(tx, pick(rows.length ? rows : tx.q), true);
+      },
+      sheet: function () {
+        var tx = pick(texts), qs = tx.q.map(function (r) { return readQ(tx, r, false); });
+        if (tx.ev) qs.push(evQ(tx, false));
+        return { passage: passage(tx), qs: qs };
+      }
+    };
+  }
+
   return {
+    order: order, orderItems: orderItems, reading: reading,
     R: R, pick: pick, shuffle: shuffle, round: round, fmt: fmt, money: money, decs: decs, big: big, frac: frac,
     num: num, choice: choice, yesno: yesno, near: near, place: place, placeTable: placeTable,
     colAdd: colAdd, colSub: colSub, colMul: colMul, longDiv: longDiv,

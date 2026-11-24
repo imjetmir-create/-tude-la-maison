@@ -120,13 +120,17 @@
   // w : question « à écrire sur la feuille » si le thème en propose
   function newQ(t, d, seen, w) {
     var q, tries = 0, g = w && t.write ? t.write : t.gen;
-    do { q = g(d); tries++; } while (seen && seen[q.text + (q.choices || "")] && tries < 15);
-    if (seen) seen[q.text + (q.choices || "")] = 1;
+    do { q = g(d); tries++; } while (seen && seen[q.text + (q.choices || q.items || "")] && tries < 15);
+    if (seen) seen[q.text + (q.choices || q.items || "")] = 1;
     return q;
   }
-  function answerText(q) { return q.type === "write" ? q.answer : q.type === "choice" ? q.choices[q.answer] : U.fmt(q.answer) + (q.unit ? " " + q.unit : ""); }
+  function answerText(q) { return q.type === "order" ? q.answer.join(q.sep || " ") + q.punct : q.type === "write" ? q.answer : q.type === "choice" ? q.choices[q.answer] : U.fmt(q.answer) + (q.unit ? " " + q.unit : ""); }
   function check(q, given) {
     if (q.type === "choice") return given === q.answer;
+    if (q.type === "order") {
+      var g = given.map(function (i) { return q.items[i]; }).join("|");
+      return [q.answer].concat(q.alts || []).some(function (a) { return a.join("|") === g; });
+    }
     var v = parseFloat(String(given).replace(",", "."));
     return !isNaN(v) && Math.abs(v - q.answer) < 1e-6;
   }
@@ -197,9 +201,24 @@
   function defiRec(pid) { var p = data.p[pid] || (data.p[pid] = { t: {} }); return p.defi || (p.defi = {}); }
   function subjectName(id) { var n = id === "mix" ? "🎲 Tout mélangé" : id; SUBJECTS.forEach(function (s) { if (s.id === id) n = s.icon + " " + s.name; }); return n; }
 
-  // Zone de réponse : boutons de couleur ou pavé numérique
+  // La phrase en construction (exercices « remettre dans l'ordre »)
+  function builtHTML(q) {
+    var b = S.built || [], sep = q.sep ? '<span class="osep">' + q.sep.replace(/ /g, "") + "</span>" : "", h = '<div class="built' + (S.fb ? " " + S.fb : "") + '">';
+    h += b.map(function (i) { return '<span class="tile on">' + q.items[i] + "</span>"; }).join(sep);
+    for (var k = b.length; k < q.items.length; k++) h += (k ? sep : "") + '<span class="tile slot">…</span>';
+    return h + (q.punct ? '<span class="punct">' + q.punct.replace(/ /g, "") + "</span>" : "") + "</div>";
+  }
+  function curQ() { return S.v === "defi" ? S.q : S.qs[S.i]; }
+  // Zone de réponse : boutons de couleur, pavé numérique ou mots à placer
   function answerUI(q) {
     var h;
+    if (q.type === "order") {
+      var b = S.built || [], full = b.length === q.items.length, first = true;
+      h = '<div class="tilebox">';
+      q.items.forEach(function (w, i) { if (b.indexOf(i) < 0) { h += btn(w, "tile|" + i, { cls: "btn tilebtn", def: first, k: "t" + i }); first = false; } });
+      return h + '</div><div class="bar center">' + btn("⌫ Effacer", "tback", { k: "tback" }) + btn("✔ Valider", "qok", { cls: "btn ok", k: "kok", def: full }) + "</div>" +
+        '<div class="hint">Choisis les mots dans le bon ordre, un par un.</div>';
+    }
     if (q.type === "choice") {
       h = '<div class="choices">';
       q.choices.forEach(function (c, i) { h += btn('<span class="kb ' + COLORS[i] + '"></span>' + c, "qchoice|" + i, { cls: "btn choice", def: i === 0, k: "c" + i }); });
@@ -214,7 +233,7 @@
   var DEFI_MS = 60000, tick = null;
   function startDefi(sub) {
     var p = profile(S.pid), pool = [];
-    SUBJECTS.forEach(function (s) { if (!s.soon && (sub === "mix" || s.id === sub)) pool = pool.concat(themesFor(p.grade, s.id).map(function (t) { return t.id; })); });
+    SUBJECTS.forEach(function (s) { if (!s.soon && (sub === "mix" || s.id === sub)) pool = pool.concat(themesFor(p.grade, s.id).filter(function (t) { return !t.long; }).map(function (t) { return t.id; })); });
     var next = { v: "defi", pid: S.pid, sub: sub, pool: pool, seen: {}, score: 0, streak: 0, n: 0, input: "", end: Date.now() + DEFI_MS };
     next.q = defiQ(next);
     if (S.v === "dresult") { S = next; focusKey = null; render(); } else go(next);
@@ -232,6 +251,7 @@
     var q = S.q;
     if (Date.now() >= S.end) return;
     if (q.type === "num" && !S.input) { toast("Tape d'abord ta réponse 🙂"); return; }
+    if (q.type === "order" && (S.built || []).length < q.items.length) { toast("Place d'abord tous les mots 🙂"); return; }
     var ok = check(q, given);
     S.n++;
     if (ok) {
@@ -239,7 +259,7 @@
       bumpStreak(S.pid, S.streak);
       if (S.streak % 5 === 0) { S.score += 2; toast("🔥 " + S.streak + " de suite : +2 points bonus !"); }
     } else { S.streak = 0; toast("✘ C'était : <b>" + answerText(q) + "</b>"); }
-    S.flash = ok ? "ok" : "ko"; S.q = defiQ(S); S.input = ""; focusKey = null; render();
+    S.flash = ok ? "ok" : "ko"; S.q = defiQ(S); S.input = ""; S.built = []; focusKey = null; render();
   }
   function defiEnd() {
     clearInterval(tick);
@@ -320,6 +340,7 @@
         '<div class="dtimer"><div class="pbar"><i id="dbar" class="' + (left < 10000 ? "hot" : "") + '" style="width:' + (100 * left / DEFI_MS) + '%"></i></div><b id="dtime">' + Math.ceil(left / 1000) + " s</b></div></div>";
       h += '<div class="quiz"><div class="qcard' + (S.flash ? " flash-" + S.flash : "") + '">' + q.text;
       if (q.type === "num") h += '<div class="input">' + (S.input || '<span class="ph">?</span>') + '<span class="caret"></span></div>' + (q.unit ? '<span class="unit">' + q.unit + "</span>" : "");
+      if (q.type === "order") h += builtHTML(q);
       S.flash = null;
       return h + '</div><div class="qside">' + answerUI(q) + "</div></div>";
     },
@@ -375,7 +396,7 @@
     ex: function () {
       var q = S.q, done = S.k >= q.steps.length, h = '<div class="kicker">🤝 On essaie ensemble · exemple ' + S.n + " / 3</div>";
       if (done) { prog(S.pid, S.tid).ex = true; save(); }
-      h += '<div class="excol"><div class="qcard">' + q.text + choicesList(q) + (done ? '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div>" : "") + "</div>";
+      h += '<div class="excol' + (q.text.indexOf('class="texte"') >= 0 ? " read" : "") + '"><div class="qcard">' + q.text + choicesList(q) + (done ? '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div>" : "") + "</div>";
       h += '<div class="expl">' + (S.k ? stepsHTML(q, S.k) : '<div class="sub">Essaie d\'abord de trouver toi-même, puis appuie sur <b>OK</b> pour voir la correction pas à pas.</div>') + "</div></div>";
       h += '<div class="bar">' + (S.k > 0 ? btn("◀ Étape précédente", "exprev") : "") + (!done ? btn("▶ Étape suivante", "exnext", { def: true }) : S.n < 3 ? btn("🔄 Autre exemple", "exmore", { def: true }) : "") +
         btn("✏️ Sur ma feuille", "step|sheet", { def: done && S.n >= 3 }) + "</div>";
@@ -383,6 +404,11 @@
     },
     sheet: function () {
       var h;
+      if (S.phase === "do" && S.passage) {
+        h = '<div class="kicker">✏️ Lis le texte, puis réponds sur ta feuille : écris le numéro et ta réponse.</div><div class="rcol"><div class="rtext">' + S.passage + '</div><div class="rqs">';
+        S.qs.forEach(function (q, i) { h += '<div class="rq"><b>' + (i + 1) + ".</b> " + q.text + choicesList(q) + "</div>"; });
+        return h + '</div></div><div class="bar">' + btn("🔄 Un autre texte", "snew") + btn("J'ai fini : voir la correction ▶", "scor", { def: true }) + "</div>";
+      }
       if (S.phase === "do") {
         h = '<div class="kicker">✏️ Prends une feuille et un crayon ! Écris le numéro, puis ta réponse.</div><div class="sgrid">';
         S.qs.forEach(function (q, i) { h += '<div class="scard"><div class="sn">' + (i + 1) + "</div>" + q.text + choicesList(q) + "</div>"; });
@@ -410,6 +436,7 @@
       var qt = S.plan ? theme(S.plan[S.i].tid) : null;
       h += '<div class="quiz"><div class="qcard">' + (qt ? '<div class="qtag">' + qt.icon + " " + qt.title + "</div>" : "") + q.text;
       if (q.type === "num") h += '<div class="input' + (S.fb ? (S.fb === "ok" ? " ok" : " ko") : "") + '">' + (S.input || '<span class="ph">?</span>') + (S.fb ? "" : '<span class="caret"></span>') + "</div>" + (q.unit ? '<span class="unit">' + q.unit + "</span>" : "");
+      if (q.type === "order") h += builtHTML(q);
       h += '</div><div class="qside">';
       if (S.fb === "ok") h += '<div class="fb good">' + S.msg + "</div>" + (S.streak >= 3 ? '<div class="combo">🔥 ' + S.streak + " bonnes réponses de suite !</div>" : "") + btn("Suivant ▶", "qnext", { def: true });
       else if (S.fb === "ko") h += '<div class="fb bad">' + S.msg + '</div><div class="ans">La bonne réponse : <b>' + answerText(q) + '</b></div><div class="expl small">' + stepsHTML(q) + "</div>" + btn("J'ai compris, suivant ▶", "qnext", { def: true });
@@ -438,6 +465,7 @@
   };
 
   function choicesList(q) {
+    if (q.type === "order" && S.v !== "quiz" && S.v !== "defi") return '<div class="tiles">' + q.items.map(function (w) { return '<span class="tile">' + w + "</span>"; }).join("") + "</div>";
     if (q.type !== "choice" || S.v === "quiz") return "";
     var L = ["A", "B", "C", "D"], h = '<div class="clist">';
     q.choices.forEach(function (c, i) { h += "<span><b>" + L[i] + ")</b> " + c + "</span>"; });
@@ -453,6 +481,7 @@
     var next;
     if (s === "learn") next = st({ v: "learn", i: 0 });
     else if (s === "ex") next = st({ v: "ex", n: 1, k: 0, q: newQ(t, 1) });
+    else if (s === "sheet" && t.sheet) { var sh = t.sheet(); next = st({ v: "sheet", phase: "do", passage: sh.passage, qs: sh.qs, i: 0, marks: [] }); }
     else if (s === "sheet") { var seen = {}; next = st({ v: "sheet", phase: "do", qs: [1, 2, 2, 2, 3, 3].map(function (d, i) { return newQ(t, d, seen, i >= 4); }), i: 0, marks: [] }); }
     else if (s === "quiz") next = st({ v: "quiz", len: QUIZ_LEN, qs: [newQ(t, 1, S.seen = {})], seen: S.seen, i: 0, input: "", fb: null, res: [], score: 0, streak: 0 });
     if (replace) { S = next; focusKey = null; render(); } else go(next);
@@ -493,6 +522,7 @@
     var q = S.qs[S.i];
     if (S.fb) return;
     if (q.type === "num" && !S.input) { toast("Tape d'abord ta réponse 🙂"); return; }
+    if (q.type === "order" && (S.built || []).length < q.items.length) { toast("Place d'abord tous les mots 🙂"); return; }
     var ok = check(q, given);
     S.fb = ok ? "ok" : "ko"; S.res[S.i] = ok; if (ok) S.score++;
     S.streak = ok ? (S.streak || 0) + 1 : 0; S.msg = U.pick(ok ? PRAISE : OOPS);
@@ -513,7 +543,7 @@
       if (st >= 2) confetti();
       return;
     }
-    S.i++; S.fb = null; S.input = "";
+    S.i++; S.fb = null; S.input = ""; S.built = [];
     S.qs.push(S.plan ? newQ(theme(S.plan[S.i].tid), S.plan[S.i].d, S.seen) : newQ(theme(S.tid), S.i < 3 ? 1 : S.i < 7 ? 2 : 3, S.seen));
     focusKey = null; render();
   }
@@ -553,7 +583,9 @@
     else if (name === "defi") startDefi(arg);
     else if (name === "badges") go({ v: "badges", pid: S.pid });
     else if (name === "key") typeKey(arg);
-    else if (name === "qok") (S.v === "defi" ? defiAnswer : quizAnswer)(S.input);
+    else if (name === "qok") (S.v === "defi" ? defiAnswer : quizAnswer)(curQ().type === "order" ? S.built || [] : S.input);
+    else if (name === "tile") { (S.built = S.built || []).push(+arg); focusKey = null; render(); }
+    else if (name === "tback") { if (S.built && S.built.length) S.built.pop(); render(); }
     else if (name === "qnext") quizNext();
     else if (name === "back") back();
     else if (name === "link") location.href = arg;
@@ -579,6 +611,7 @@
     }
     if (typing && (k === 188 || k === 110 || k === 190)) { e.preventDefault(); typeKey(","); return; }
     if (typing && k === 8) { e.preventDefault(); typeKey("⌫"); return; }
+    if (cq && cq.type === "order" && k === 8) { e.preventDefault(); act("tback"); return; }
     if (k === 10009 || k === 27 || k === 8) { e.preventDefault(); back(); return; }
     // touches de couleur : rouge 403, vert 404, jaune 405, bleu 406
     if (k >= 403 && k <= 406) {
