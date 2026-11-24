@@ -58,11 +58,15 @@
 
   function render() {
     clearTimeout(timer);
+    if ((S.v === "result" || S.v === "xresult" || S.v === "dresult") && !S.nb) { S.nb = newBadges(S.pid); if (S.nb.length) setTimeout(confetti, 60); }
     var html = VIEWS[S.v]();
     var p = S.pid ? profile(S.pid) : null, crumbs = '<span class="logo">🏫 École TV</span>';
     if (p) crumbs += ' <span class="sep">›</span> <span style="color:' + p.color + '">' + p.icon + " " + p.name + "</span>";
     if (S.tid) crumbs += ' <span class="sep">›</span> ' + theme(S.tid).title;
     else if (S.exam) crumbs += ' <span class="sep">›</span> ' + S.exam.title;
+    else if (/^(defimenu|defi|dresult)$/.test(S.v)) crumbs += ' <span class="sep">›</span> ⚡ Défi éclair';
+    else if (S.v === "badges") crumbs += ' <span class="sep">›</span> 🎖️ Mes badges';
+    else if (S.sub) crumbs += ' <span class="sep">›</span> ' + subjectName(S.sub);
     // Boutons toujours visibles en haut : revenir à l'écran précédent ou à l'accueil
     var nav = S.v === "home" ? "" : '<div class="nav">' + btn("⬅ Retour", "back", { cls: "btn nav", k: "nav-back" }) + btn("🏠 Accueil", "home", { cls: "btn nav", k: "nav-home" }) + "</div>";
     app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? "⭐ " + totalStars(p.id) : "") + "</div>" + nav +
@@ -136,6 +140,117 @@
     return h + "</ol>";
   }
 
+
+  /* ---------- Badges (calculés à partir de la progression) ---------- */
+  function starsOf(pid, tid) { var p = data.p[pid]; return p && p.t && p.t[tid] ? p.t[tid].stars || 0 : 0; }
+  function chapterDone(pid, grade, sub, chap) {
+    return themesFor(grade, sub).filter(function (t) { return t.chapter === chap; }).every(function (t) { return starsOf(pid, t.id) > 0; });
+  }
+  function stats(pid) {
+    var p = data.p[pid] || {}, t = p.t || {}, x = p.x || {}, d = p.defi || {}, g = profile(pid).grade;
+    var c = { stars: 0, perfect: 0, passed: 0, sheets: 0, learns: 0, medals: 0, gold: false, final: false, defi: 0, streak: p.bs || 0, chests: 0, explorer: 0 };
+    for (var k in t) { var s = t[k].stars || 0; c.stars += s; if (s === 3) c.perfect++; if (s) c.passed++; if (t[k].sheet) c.sheets++; if (t[k].learn) c.learns++; }
+    for (k in x) if (x[k].medal) { c.medals++; if (x[k].medal === "🥇") c.gold = true; if (/\|final\|/.test(k)) c.final = true; }
+    for (k in d) if (d[k] > c.defi) c.defi = d[k];
+    SUBJECTS.forEach(function (sb) {
+      var list = themesFor(g, sb.id), chaps = [];
+      if (!list.length) return;
+      list.forEach(function (th) { if (chaps.indexOf(th.chapter) < 0) chaps.push(th.chapter); });
+      chaps.forEach(function (ch) { if (chapterDone(pid, g, sb.id, ch)) c.chests++; });
+      if (list.every(function (th) { return starsOf(pid, th.id) > 0; })) c.explorer++;
+    });
+    return c;
+  }
+  var BADGES = [
+    ["first", "🌱", "Premier pas", "Réussir un premier quiz", function (c) { return c.passed >= 1; }],
+    ["star10", "⭐", "10 étoiles", "Gagner 10 étoiles", function (c) { return c.stars >= 10; }],
+    ["star50", "🌟", "50 étoiles", "Gagner 50 étoiles", function (c) { return c.stars >= 50; }],
+    ["star100", "💫", "100 étoiles", "Gagner 100 étoiles", function (c) { return c.stars >= 100; }],
+    ["perfect", "🎯", "Sans faute", "3 étoiles à un thème", function (c) { return c.perfect >= 1; }],
+    ["perfect10", "🏹", "Tireur d'élite", "3 étoiles à 10 thèmes", function (c) { return c.perfect >= 10; }],
+    ["reader", "📖", "Curieux", "Lire 10 leçons", function (c) { return c.learns >= 10; }],
+    ["writer", "✏️", "Studieux", "Faire 5 feuilles d'exercices", function (c) { return c.sheets >= 5; }],
+    ["chest1", "🎁", "Chasseur de trésor", "Ouvrir un coffre de la carte", function (c) { return c.chests >= 1; }],
+    ["chest5", "💎", "Trésor royal", "Ouvrir 5 coffres", function (c) { return c.chests >= 5; }],
+    ["explorer", "🗺️", "Grand explorateur", "Finir toute une carte d'aventure", function (c) { return c.explorer >= 1; }],
+    ["medal", "🥉", "Médaillé", "Une médaille à une épreuve", function (c) { return c.medals >= 1; }],
+    ["gold", "🥇", "En or", "Médaille d'or à une épreuve", function (c) { return c.gold; }],
+    ["final", "🏆", "Grand champion", "Médaille à une épreuve finale", function (c) { return c.final; }],
+    ["streak10", "🔥", "En feu", "10 bonnes réponses de suite", function (c) { return c.streak >= 10; }],
+    ["flash10", "⚡", "Éclair", "10 points au défi éclair", function (c) { return c.defi >= 10; }],
+    ["flash25", "🌩️", "Foudre", "25 points au défi éclair", function (c) { return c.defi >= 25; }],
+    ["flash40", "🚀", "Supersonique", "40 points au défi éclair", function (c) { return c.defi >= 40; }]
+  ];
+  function earned(pid) { var c = stats(pid); return BADGES.filter(function (b) { return b[4](c); }); }
+  // Badges gagnés depuis la dernière fois (pour les annoncer)
+  function newBadges(pid) {
+    var p = data.p[pid] || (data.p[pid] = { t: {} }), seen = p.bseen || (p.bseen = []), out = [];
+    earned(pid).forEach(function (b) { if (seen.indexOf(b[0]) < 0) { seen.push(b[0]); out.push(b); } });
+    if (out.length) save();
+    return out;
+  }
+  function badgeBanner() {
+    if (!S.nb || !S.nb.length) return "";
+    return '<div class="newbadge">🎖️ Nouveau badge : ' + S.nb.map(function (b) { return b[1] + " " + b[2]; }).join(" · ") + "</div>";
+  }
+  function bumpStreak(pid, n) { var p = data.p[pid] || (data.p[pid] = { t: {} }); if (n > (p.bs || 0)) { p.bs = n; save(); } }
+  function defiRec(pid) { var p = data.p[pid] || (data.p[pid] = { t: {} }); return p.defi || (p.defi = {}); }
+  function subjectName(id) { var n = id === "mix" ? "🎲 Tout mélangé" : id; SUBJECTS.forEach(function (s) { if (s.id === id) n = s.icon + " " + s.name; }); return n; }
+
+  // Zone de réponse : boutons de couleur ou pavé numérique
+  function answerUI(q) {
+    var h;
+    if (q.type === "choice") {
+      h = '<div class="choices">';
+      q.choices.forEach(function (c, i) { h += btn('<span class="kb ' + COLORS[i] + '"></span>' + c, "qchoice|" + i, { cls: "btn choice", def: i === 0, k: "c" + i }); });
+      return h + '</div><div class="hint">Choisis avec les flèches et <b>OK</b>, ou avec les touches de couleur.</div>';
+    }
+    h = '<div class="pad">';
+    ["7", "8", "9", "4", "5", "6", "1", "2", "3", ",", "0", "⌫"].forEach(function (k) { h += btn(k, "key|" + k, { cls: "btn key", def: k === "5", k: "k" + k }); });
+    return h + "</div>" + btn("✔ Valider", "qok", { cls: "btn ok", k: "kok" }) + '<div class="hint">Tu peux aussi taper avec les chiffres de la télécommande.</div>';
+  }
+
+  /* ---------- Défi éclair : 60 secondes ---------- */
+  var DEFI_MS = 60000, tick = null;
+  function startDefi(sub) {
+    var p = profile(S.pid), pool = [];
+    SUBJECTS.forEach(function (s) { if (!s.soon && (sub === "mix" || s.id === sub)) pool = pool.concat(themesFor(p.grade, s.id).map(function (t) { return t.id; })); });
+    var next = { v: "defi", pid: S.pid, sub: sub, pool: pool, seen: {}, score: 0, streak: 0, n: 0, input: "", end: Date.now() + DEFI_MS };
+    next.q = defiQ(next);
+    if (S.v === "dresult") { S = next; focusKey = null; render(); } else go(next);
+    clearInterval(tick);
+    tick = setInterval(function () {
+      if (S.v !== "defi") { clearInterval(tick); return; }
+      var left = Math.max(0, S.end - Date.now()), b = document.getElementById("dbar"), t = document.getElementById("dtime");
+      if (b) { b.style.width = (100 * left / DEFI_MS) + "%"; b.className = left < 10000 ? "hot" : ""; }
+      if (t) t.innerHTML = Math.ceil(left / 1000) + " s";
+      if (left <= 0) defiEnd();
+    }, 200);
+  }
+  function defiQ(st) { return newQ(theme(U.pick(st.pool)), st.n < 6 ? 1 : 2, st.seen); }
+  function defiAnswer(given) {
+    var q = S.q;
+    if (Date.now() >= S.end) return;
+    if (q.type === "num" && !S.input) { toast("Tape d'abord ta réponse 🙂"); return; }
+    var ok = check(q, given);
+    S.n++;
+    if (ok) {
+      S.score++; S.streak++;
+      bumpStreak(S.pid, S.streak);
+      if (S.streak % 5 === 0) { S.score += 2; toast("🔥 " + S.streak + " de suite : +2 points bonus !"); }
+    } else { S.streak = 0; toast("✘ C'était : <b>" + answerText(q) + "</b>"); }
+    S.flash = ok ? "ok" : "ko"; S.q = defiQ(S); S.input = ""; focusKey = null; render();
+  }
+  function defiEnd() {
+    clearInterval(tick);
+    var rec = defiRec(S.pid), old = rec[S.sub] || 0, record = S.score > old;
+    if (record) rec[S.sub] = S.score;
+    save();
+    S = { v: "dresult", pid: S.pid, sub: S.sub, score: S.score, n: S.n, old: old, record: record };
+    focusKey = null; render();
+    if (record && S.score > 0) confetti();
+  }
+
   /* ---------- Écrans ---------- */
   var VIEWS = {
     home: function () {
@@ -156,7 +271,67 @@
         h += btn('<div class="av big">' + s.icon + '</div><div class="pn">' + s.name + '</div><div class="pc">' + (s.soon ? "Bientôt !" : n + " thèmes" + (fx && fx.medal ? " · " + fx.medal : "")) + "</div>",
           "subject|" + s.id, { cls: "card" + (s.soon ? " soon" : ""), def: i === 0 });
       });
+      return h + '</div><div class="subrow">' + btn("⚡ Défi éclair", "defimenu", { cls: "btn big2" }) + btn("🎖️ Mes badges · " + earned(p.id).length + " / " + BADGES.length, "badges", { cls: "btn big2" }) + "</div></div>";
+    },
+    map: function () {
+      var p = profile(S.pid), list = themesFor(p.grade, S.sub), nodes = [], cur = -1, lastT = 0, prevDone = true, got = 0;
+      list.forEach(function (t, i) {
+        nodes.push({ t: t });
+        if (i === list.length - 1 || list[i + 1].chapter !== t.chapter) nodes.push({ chest: t.chapter });
+      });
+      nodes.forEach(function (n, i) {
+        if (n.t) {
+          n.st = starsOf(S.pid, n.t.id); got += n.st; lastT = i;
+          n.locked = !prevDone && n.st === 0;
+          if (!n.locked && n.st === 0 && cur < 0) cur = i;
+          prevDone = n.st > 0;
+        } else n.open = chapterDone(S.pid, p.grade, S.sub, n.chest);
+      });
+      if (cur < 0) cur = lastT;
+      // Chemin en serpentin : 5 cases par ligne, une ligne sur deux à l'envers
+      var COLS = 5, RH = 25, rows = Math.ceil(nodes.length / COLS), H = rows * RH + 2, pts = [], deco = ["🌳", "🌼", "🌲", "🍄", "⛰️", "🌷", "🌵", "🏕️"];
+      nodes.forEach(function (n, i) { var r = Math.floor(i / COLS), c = i % COLS; if (r % 2) c = COLS - 1 - c; n.x = 10 + c * 20; n.y = r * RH + 8; pts.push(n.x + "," + n.y); });
+      var fx = exams(S.pid)[S.sub + "|final|"];
+      var h = '<div class="shead"><div class="sprog">⭐ ' + got + " / " + list.length * 3 + ' étoiles<div class="pbar"><i style="width:' + Math.round(100 * got / (list.length * 3)) + '%"></i></div></div>' +
+        btn("📋 Tous les thèmes", "list", { cls: "btn mini", k: "list" }) + btn("🏆 Épreuve finale" + (fx && fx.medal ? " " + fx.medal : ""), "exam|final", { cls: "btn mini final", k: "final" }) + "</div>";
+      h += '<div class="map map-' + S.sub + '" style="height:' + H + 'vh"><svg class="trail" viewBox="0 0 100 ' + H + '" preserveAspectRatio="none" style="height:' + H + 'vh">' +
+        '<polyline points="' + pts.join(" ") + '" fill="none" stroke="rgba(255,255,255,.10)" stroke-width="40" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>' +
+        '<polyline points="' + pts.join(" ") + '" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="7" stroke-dasharray="2 16" stroke-linecap="round" vector-effect="non-scaling-stroke"/></svg>';
+      for (var r = 0; r < rows; r++) h += '<span class="deco" style="left:1%;top:' + (r * RH + 4) + 'vh">' + deco[r % deco.length] + '</span><span class="deco" style="left:95.5%;top:' + (r * RH + 12) + 'vh">' + deco[(r + 3) % deco.length] + "</span>";
+      nodes.forEach(function (n, i) {
+        var cls = "f mnode" + (n.chest ? " chest" + (n.open ? " open" : "") : n.locked ? " locked" : n.st === 3 ? " perfect" : n.st ? " done" : "") + (i === cur ? " def" : ""), inner;
+        if (n.chest) inner = '<div class="mc">' + (n.open ? "💎" : "🎁") + '</div><div class="ml">' + (n.open ? "Coffre ouvert !" : "Coffre au trésor") + "</div>";
+        else inner = '<div class="mc">' + (n.locked ? "🔒" : n.t.icon) + '</div><div class="ml">' + n.t.title + "</div>" + (n.locked ? "" : stars(n.st));
+        if (i === cur) inner += '<div class="me" style="background:' + p.color + '">' + p.icon + "</div>";
+        h += '<div class="' + cls + '" data-a="' + esc(n.chest ? "chest|" + n.chest + "|" + (n.open ? 1 : 0) : "mnode|" + n.t.id + "|" + (n.locked ? 1 : 0)) + '" data-k="n' + i + '" style="left:' + n.x + "%;top:" + (n.y - 7) + 'vh">' + inner + "</div>";
+      });
+      return h + "</div>";
+    },
+    defimenu: function () {
+      var rec = defiRec(S.pid), opts = [], h = '<div class="hero"><h1>⚡ Défi éclair</h1><div class="sub">60 secondes pour donner un maximum de bonnes réponses !<br>🔥 5 bonnes réponses de suite = <b>+2 points bonus</b>.</div><div class="cards">';
+      SUBJECTS.forEach(function (s) { if (!s.soon) opts.push([s.id, s.icon, s.name]); });
+      opts.push(["mix", "🎲", "Tout mélangé"]);
+      opts.forEach(function (o, i) { h += btn('<div class="av big">' + o[1] + '</div><div class="pn">' + o[2] + '</div><div class="pc">🏅 Record : ' + (rec[o[0]] || 0) + " points</div>", "defi|" + o[0], { cls: "card small", def: i === 0 }); });
       return h + "</div></div>";
+    },
+    defi: function () {
+      var q = S.q, left = Math.max(0, S.end - Date.now());
+      var h = '<div class="dhead"><div class="dscore">⚡ ' + S.score + " points" + (S.streak >= 2 ? ' <span class="dstreak">🔥 ' + S.streak + "</span>" : "") + "</div>" +
+        '<div class="dtimer"><div class="pbar"><i id="dbar" class="' + (left < 10000 ? "hot" : "") + '" style="width:' + (100 * left / DEFI_MS) + '%"></i></div><b id="dtime">' + Math.ceil(left / 1000) + " s</b></div></div>";
+      h += '<div class="quiz"><div class="qcard' + (S.flash ? " flash-" + S.flash : "") + '">' + q.text;
+      if (q.type === "num") h += '<div class="input">' + (S.input || '<span class="ph">?</span>') + '<span class="caret"></span></div>' + (q.unit ? '<span class="unit">' + q.unit + "</span>" : "");
+      S.flash = null;
+      return h + '</div><div class="qside">' + answerUI(q) + "</div></div>";
+    },
+    dresult: function () {
+      var h = '<div class="hero"><h1>' + (S.record && S.score > 0 ? "🎉 Nouveau record !" : "⏱️ Temps écoulé !") + '</h1><div class="score">' + S.score + ' <span class="pts">points</span></div>';
+      h += '<div class="sub">' + subjectName(S.sub) + " · " + S.n + " questions en 60 secondes" + (S.old ? " · ancien record : " + S.old : "") + "</div>" + badgeBanner();
+      return h + '<div class="bar center">' + btn("🔄 Rejouer", "defi|" + S.sub, { def: true }) + btn("⚡ Choisir un autre défi", "back") + "</div></div>";
+    },
+    badges: function () {
+      var c = stats(S.pid), got = 0, h = '<div class="bgrid">';
+      BADGES.forEach(function (b) { var ok = b[4](c); if (ok) got++; h += '<div class="badge' + (ok ? "" : " off") + '"><div class="bi">' + b[1] + '</div><div class="bn">' + b[2] + '</div><div class="bh">' + b[3] + "</div></div>"; });
+      return '<div class="kicker">🎖️ Mes badges : ' + got + " / " + BADGES.length + " · 🎁 coffres ouverts : " + c.chests + "</div>" + h + "</div>";
     },
     themes: function () {
       var p = profile(S.pid), list = themesFor(p.grade, S.sub), chap = null, first = true, X = exams(S.pid), got = 0;
@@ -238,15 +413,7 @@
       h += '</div><div class="qside">';
       if (S.fb === "ok") h += '<div class="fb good">' + S.msg + "</div>" + (S.streak >= 3 ? '<div class="combo">🔥 ' + S.streak + " bonnes réponses de suite !</div>" : "") + btn("Suivant ▶", "qnext", { def: true });
       else if (S.fb === "ko") h += '<div class="fb bad">' + S.msg + '</div><div class="ans">La bonne réponse : <b>' + answerText(q) + '</b></div><div class="expl small">' + stepsHTML(q) + "</div>" + btn("J'ai compris, suivant ▶", "qnext", { def: true });
-      else if (q.type === "choice") {
-        h += '<div class="choices">';
-        q.choices.forEach(function (c, i) { h += btn('<span class="kb ' + COLORS[i] + '"></span>' + c, "qchoice|" + i, { cls: "btn choice", def: i === 0, k: "c" + i }); });
-        h += '</div><div class="hint">Choisis avec les flèches et <b>OK</b>, ou avec les touches de couleur.</div>';
-      } else {
-        h += '<div class="pad">';
-        ["7", "8", "9", "4", "5", "6", "1", "2", "3", ",", "0", "⌫"].forEach(function (k) { h += btn(k, "key|" + k, { cls: "btn key", def: k === "5", k: "k" + k }); });
-        h += "</div>" + btn("✔ Valider", "qok", { cls: "btn ok", k: "kok" }) + '<div class="hint">Tu peux aussi taper avec les chiffres de la télécommande.</div>';
-      }
+      else h += answerUI(q);
       return h + "</div></div>";
     },
     result: function () {
@@ -254,7 +421,7 @@
       msg = st === 3 ? "🏆 Champion·ne !" : st === 2 ? "🌟 Très bien !" : st === 1 ? "👍 Pas mal !" : "💪 On recommence ?";
       return '<div class="hero"><h1>' + msg + '</h1><div class="score">' + n + " / " + QUIZ_LEN + '</div><div class="bigstars">' + stars(st) + "</div>" +
         (st > S.before ? '<div class="sub">Nouveau record ! 🎉</div>' : pr.stars === 3 ? '<div class="sub">Tu maîtrises ce thème !</div>' : '<div class="sub">Il faut 9 bonnes réponses pour 3 étoiles.</div>') +
-        '<div class="bar center">' + btn("🔄 Refaire le quiz", "step|quiz", { def: true }) + btn("⬅ Retour au thème", "back") + btn("📚 Autres thèmes", "themes") + "</div></div>";
+        badgeBanner() + '<div class="bar center">' + btn("🔄 Refaire le quiz", "step|quiz", { def: true }) + btn("⬅ Retour au thème", "back") + btn("📚 Autres thèmes", "themes") + "</div></div>";
     },
     xresult: function () {
       var m = S.medal, pct = Math.round(100 * S.score / S.len), h = '<div class="hero"><h1>' + (m ? m[0] + " " + m[1] + " !" : "💪 Continue à t'entraîner !") + "</h1>";
@@ -266,7 +433,7 @@
         weak.forEach(function (id) { var t = theme(id); h += btn(t.icon + " " + t.title, "theme|" + id, { cls: "btn mini" }); });
         h += "</div>";
       } else h += '<div class="sub">Aucune erreur : incroyable ! 🏆</div>';
-      return h + '<div class="bar center">' + btn("🔄 Refaire l'épreuve", "exam|" + S.exam.kind + (S.exam.arg ? "|" + S.exam.arg : ""), { def: true }) + btn("📚 Retour aux thèmes", "themes") + "</div></div>";
+      return h + badgeBanner() + '<div class="bar center">' + btn("🔄 Refaire l'épreuve", "exam|" + S.exam.kind + (S.exam.arg ? "|" + S.exam.arg : ""), { def: true }) + btn("📚 Retour aux thèmes", "themes") + "</div></div>";
     }
   };
 
@@ -329,6 +496,7 @@
     var ok = check(q, given);
     S.fb = ok ? "ok" : "ko"; S.res[S.i] = ok; if (ok) S.score++;
     S.streak = ok ? (S.streak || 0) + 1 : 0; S.msg = U.pick(ok ? PRAISE : OOPS);
+    bumpStreak(S.pid, S.streak);
     if (q.type === "choice") S.picked = given;
     focusKey = null; render();
     if (ok) timer = setTimeout(quizNext, 1300);
@@ -362,7 +530,7 @@
     if (name === "profile") go({ v: "subjects", pid: arg });
     else if (name === "subject") {
       var sub = null; SUBJECTS.forEach(function (s) { if (s.id === arg) sub = s; });
-      if (sub.soon) toast(sub.icon + " " + sub.name + " arrive bientôt !"); else go({ v: "themes", pid: S.pid, sub: arg });
+      if (sub.soon) toast(sub.icon + " " + sub.name + " arrive bientôt !"); else go({ v: "map", pid: S.pid, sub: arg });
     }
     else if (name === "theme") go({ v: "theme", pid: S.pid, tid: arg });
     else if (name === "step") startStep(arg);
@@ -377,13 +545,19 @@
     else if (name === "snew") startStep("sheet");
     else if (name === "scor") { S.phase = "cor"; S.i = 0; focusKey = null; render(); }
     else if (name === "smark") { S.marks.push(arg === "1"); S.i++; focusKey = null; render(); }
-    else if (name === "qchoice") quizAnswer(+arg);
+    else if (name === "qchoice") (S.v === "defi" ? defiAnswer : quizAnswer)(+arg);
+    else if (name === "list") go({ v: "themes", pid: S.pid, sub: S.sub });
+    else if (name === "mnode") { if (p[2] === "1") toast("🔒 Réussis d'abord la case d'avant pour ouvrir celle-ci !"); else go({ v: "theme", pid: S.pid, tid: arg }); }
+    else if (name === "chest") toast(p[2] === "1" ? "💎 Coffre ouvert : bravo, tu as fini « " + arg + " » !" : "🎁 Réussis tous les thèmes de « " + arg + " » pour ouvrir ce coffre !");
+    else if (name === "defimenu") go({ v: "defimenu", pid: S.pid });
+    else if (name === "defi") startDefi(arg);
+    else if (name === "badges") go({ v: "badges", pid: S.pid });
     else if (name === "key") typeKey(arg);
-    else if (name === "qok") quizAnswer(S.input);
+    else if (name === "qok") (S.v === "defi" ? defiAnswer : quizAnswer)(S.input);
     else if (name === "qnext") quizNext();
     else if (name === "back") back();
     else if (name === "link") location.href = arg;
-    else if (name === "themes") { while (hist.length && hist[hist.length - 1].s.v !== "themes") hist.pop(); back(); }
+    else if (name === "themes") { while (hist.length && !/^(themes|map)$/.test(hist[hist.length - 1].s.v)) hist.pop(); back(); }
   }
 
   /* ---------- Télécommande, clavier, souris ---------- */
@@ -396,7 +570,7 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    var k = e.keyCode, typing = S.v === "quiz" && !S.fb && S.qs[S.i].type === "num";
+    var k = e.keyCode, cq = S.v === "defi" ? S.q : S.v === "quiz" && !S.fb ? S.qs[S.i] : null, typing = !!cq && cq.type === "num";
     // chiffres (télécommande, clavier, pavé numérique)
     if (typing && ((k >= 48 && k <= 57) || (k >= 96 && k <= 105))) {
       e.preventDefault(); typeKey(String(k >= 96 ? k - 96 : k - 48));
@@ -410,7 +584,7 @@
     if (k >= 403 && k <= 406) {
       e.preventDefault();
       var idx = k - 403;
-      if (S.v === "quiz" && !S.fb && S.qs[S.i].type === "choice" && idx < S.qs[S.i].choices.length) quizAnswer(idx);
+      if (cq && cq.type === "choice" && idx < cq.choices.length) (S.v === "defi" ? defiAnswer : quizAnswer)(idx);
       else if (S.v === "sheet" && S.phase === "cor" && S.i < S.qs.length && (idx === 0 || idx === 1)) act("smark|" + (idx === 1 ? "1" : "0"));
       return;
     }
