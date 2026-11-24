@@ -116,6 +116,13 @@ var FR = (function () {
     });
   }
 
+  // Sur la feuille : écrire toute la conjugaison d'un verbe
+  function conjWrite(verbs, tense) {
+    var inf = U.pick(verbs);
+    return { type: "write", text: "✍️ Sur ta feuille, conjugue le verbe <b>" + inf + "</b> au <b>" + tense + "</b>, à toutes les personnes.", answer: "voir le tableau",
+      visual: table(inf, tense), steps: ["Compare chaque ligne avec le tableau.", "Une ligne juste = un point. 6 points = c'est juste !"] };
+  }
+
   var TENSE_RULE = {
     "présent": "Le <b>présent</b> : l'action se passe maintenant.",
     "imparfait": "L'<b>imparfait</b> : terminaisons -ais, -ais, -ait, -ions, -iez, -aient.",
@@ -351,7 +358,7 @@ var FR = (function () {
 
   return {
     present: present, imparfait: imparfait, futur: futur, conditionnel: conditionnel, passeCompose: passeCompose, imperatif: imperatif, pp: pp, aux: aux,
-    conj: conj, table: table, tableImp: tableImp, withPron: withPron, conjQ: conjQ, tempsQ: tempsQ, imperatifQ: imperatifQ, COMP: COMP,
+    conj: conj, table: table, tableImp: tableImp, withPron: withPron, conjQ: conjQ, conjWrite: conjWrite, tempsQ: tempsQ, imperatifQ: imperatifQ, COMP: COMP,
     lines: lines, rows: rows, lv: lv, blank: blank, fill: fill, cap: cap, homoQ: homoQ, svQ: svQ, gnQ: gnQ, ADJ: ADJ, PERS: PERS,
     classQ: classQ, funcQ: funcQ, parse: parse, render: render, words: words, joinWords: joinWords,
     typeQ: typeQ, formQ: formQ, negQ: negQ, alphaQ: alphaQ, synQ: synQ, famQ: famQ, plain: plain

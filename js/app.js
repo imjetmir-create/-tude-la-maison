@@ -9,10 +9,15 @@
   var SUBJECTS = [
     { id: "maths", name: "Mathématiques", icon: "🔢" },
     { id: "francais", name: "Français", icon: "📚" },
-    { id: "allemand", name: "Allemand", icon: "💬", soon: true }
+    { id: "allemand", name: "Allemand", icon: "💬" }
   ];
   var QUIZ_LEN = 10, SHEET_LEN = 6;
   var COLORS = ["red", "green", "yellow", "blue"];
+  var PRAISE = ["✅ Bravo !", "🎉 Super !", "⭐ Génial !", "👏 Excellent !", "🚀 Trop fort !", "💯 Parfait !", "🌟 Bien vu !"];
+  var OOPS = ["❌ Pas tout à fait…", "🤔 Presque !", "💪 On apprend en se trompant !"];
+  // Médailles des épreuves : pourcentage minimum de bonnes réponses
+  var MEDALS = [["🥉", "Médaille de bronze", 0.6], ["🥈", "Médaille d'argent", 0.75], ["🥇", "Médaille d'or", 0.9]];
+  function medalFor(pct) { var m = null; MEDALS.forEach(function (x) { if (pct >= x[2] - 1e-9) m = x; }); return m; }
 
   /* ---------- Sauvegarde (dans la mémoire du navigateur de la TV) ---------- */
   var KEY = "ecole-tv-v1", data = { p: {} };
@@ -30,6 +35,7 @@
     return n;
   }
 
+  function exams(pid) { var p = data.p[pid] || (data.p[pid] = { t: {} }); return p.x || (p.x = {}); }
   function profile(id) { for (var i = 0; i < PROFILES.length; i++) if (PROFILES[i].id === id) return PROFILES[i]; }
   function theme(id) { for (var i = 0; i < THEMES.length; i++) if (THEMES[i].id === id) return THEMES[i]; }
   function themesFor(grade, sub) { return THEMES.filter(function (t) { return t.grade === grade && t.subject === sub; }); }
@@ -56,6 +62,7 @@
     var p = S.pid ? profile(S.pid) : null, crumbs = '<span class="logo">🏫 École TV</span>';
     if (p) crumbs += ' <span class="sep">›</span> <span style="color:' + p.color + '">' + p.icon + " " + p.name + "</span>";
     if (S.tid) crumbs += ' <span class="sep">›</span> ' + theme(S.tid).title;
+    else if (S.exam) crumbs += ' <span class="sep">›</span> ' + S.exam.title;
     // Boutons toujours visibles en haut : revenir à l'écran précédent ou à l'accueil
     var nav = S.v === "home" ? "" : '<div class="nav">' + btn("⬅ Retour", "back", { cls: "btn nav", k: "nav-back" }) + btn("🏠 Accueil", "home", { cls: "btn nav", k: "nav-home" }) + "</div>";
     app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? "⭐ " + totalStars(p.id) : "") + "</div>" + nav +
@@ -106,13 +113,14 @@
   }
 
   /* ---------- Questions ---------- */
-  function newQ(t, d, seen) {
-    var q, tries = 0;
-    do { q = t.gen(d); tries++; } while (seen && seen[q.text + (q.choices || "")] && tries < 15);
+  // w : question « à écrire sur la feuille » si le thème en propose
+  function newQ(t, d, seen, w) {
+    var q, tries = 0, g = w && t.write ? t.write : t.gen;
+    do { q = g(d); tries++; } while (seen && seen[q.text + (q.choices || "")] && tries < 15);
     if (seen) seen[q.text + (q.choices || "")] = 1;
     return q;
   }
-  function answerText(q) { return q.type === "choice" ? q.choices[q.answer] : U.fmt(q.answer) + (q.unit ? " " + q.unit : ""); }
+  function answerText(q) { return q.type === "write" ? q.answer : q.type === "choice" ? q.choices[q.answer] : U.fmt(q.answer) + (q.unit ? " " + q.unit : ""); }
   function check(q, given) {
     if (q.type === "choice") return given === q.answer;
     var v = parseFloat(String(given).replace(",", "."));
@@ -144,16 +152,25 @@
     subjects: function () {
       var p = profile(S.pid), h = '<div class="hero"><h1>' + p.icon + " Salut " + p.name + " !</h1><div class=\"sub\">Que veux-tu travailler ?</div><div class=\"cards\">";
       SUBJECTS.forEach(function (s, i) {
-        var n = themesFor(p.grade, s.id).length;
-        h += btn('<div class="av big">' + s.icon + '</div><div class="pn">' + s.name + '</div><div class="pc">' + (s.soon ? "Bientôt !" : n + " thèmes") + "</div>",
+        var n = themesFor(p.grade, s.id).length, fx = exams(p.id)[s.id + "|final|"];
+        h += btn('<div class="av big">' + s.icon + '</div><div class="pn">' + s.name + '</div><div class="pc">' + (s.soon ? "Bientôt !" : n + " thèmes" + (fx && fx.medal ? " · " + fx.medal : "")) + "</div>",
           "subject|" + s.id, { cls: "card" + (s.soon ? " soon" : ""), def: i === 0 });
       });
       return h + "</div></div>";
     },
     themes: function () {
-      var p = profile(S.pid), list = themesFor(p.grade, S.sub), h = "", chap = null, first = true;
+      var p = profile(S.pid), list = themesFor(p.grade, S.sub), chap = null, first = true, X = exams(S.pid), got = 0;
+      list.forEach(function (t) { got += prog(S.pid, t.id).stars; });
+      var fx = X[S.sub + "|final|"], pct = Math.round(100 * got / (list.length * 3));
+      var h = '<div class="shead"><div class="sprog">⭐ ' + got + " / " + list.length * 3 + ' étoiles<div class="pbar"><i style="width:' + pct + '%"></i></div></div>' +
+        btn("🏆 Épreuve finale <small>30 questions sur tout le programme</small>" + (fx && fx.medal ? " " + fx.medal : ""), "exam|final", { cls: "btn final", k: "final" }) + "</div>";
       list.forEach(function (t) {
-        if (t.chapter !== chap) { if (chap !== null) h += "</div>"; chap = t.chapter; h += '<h2 class="chap">' + chap + '</h2><div class="tgrid">'; }
+        if (t.chapter !== chap) {
+          if (chap !== null) h += "</div>";
+          chap = t.chapter;
+          var cx = X[S.sub + "|chap|" + chap];
+          h += '<div class="chaprow"><h2 class="chap">' + chap + "</h2>" + btn("🏁 Bilan du chapitre" + (cx && cx.medal ? " " + cx.medal : ""), "exam|chap|" + chap, { cls: "btn mini", k: "chap-" + chap }) + '</div><div class="tgrid">';
+        }
         var pr = prog(S.pid, t.id), marks = (pr.learn ? "📖" : "") + (pr.sheet ? "✏️" : "");
         h += btn('<span class="ti">' + t.icon + '</span><span class="tt">' + t.title + '</span><span class="tm">' + marks + " " + stars(pr.stars) + "</span>", "theme|" + t.id, { cls: "tbtn", def: first });
         first = false;
@@ -208,13 +225,19 @@
       return h + '<div class="bar">' + btn(S.i > 0 ? "◀ Exercice précédent" : "◀ Revoir la feuille", "sprev") + btn('<span class="kb green"></span> J\'avais juste', "smark|1", { def: true, cls: "btn good" }) + btn('<span class="kb red"></span> Je m\'étais trompé·e', "smark|0", { cls: "btn bad" }) + "</div>";
     },
     quiz: function () {
-      var q = S.qs[S.i], h = '<div class="qhead"><div class="kicker">🎯 Quiz · question ' + (S.i + 1) + " / " + QUIZ_LEN + '</div><div class="pdots">';
-      for (var i = 0; i < QUIZ_LEN; i++) h += '<span class="pd ' + (S.res[i] === true ? "ok" : S.res[i] === false ? "ko" : i === S.i ? "on" : "") + '"></span>';
-      h += '</div></div><div class="quiz"><div class="qcard">' + q.text;
+      var q = S.qs[S.i], h = '<div class="qhead"><div class="kicker">' + (S.exam ? S.exam.title : "🎯 Quiz") + " · question " + (S.i + 1) + " / " + S.len + "</div>";
+      if (S.len > 12) h += '<div class="qprog"><span>✔ ' + S.score + '</span><div class="pbar"><i style="width:' + Math.round(100 * S.i / S.len) + '%"></i></div></div></div>';
+      else {
+        h += '<div class="pdots">';
+        for (var i = 0; i < S.len; i++) h += '<span class="pd ' + (S.res[i] === true ? "ok" : S.res[i] === false ? "ko" : i === S.i ? "on" : "") + '"></span>';
+        h += "</div></div>";
+      }
+      var qt = S.plan ? theme(S.plan[S.i].tid) : null;
+      h += '<div class="quiz"><div class="qcard">' + (qt ? '<div class="qtag">' + qt.icon + " " + qt.title + "</div>" : "") + q.text;
       if (q.type === "num") h += '<div class="input' + (S.fb ? (S.fb === "ok" ? " ok" : " ko") : "") + '">' + (S.input || '<span class="ph">?</span>') + (S.fb ? "" : '<span class="caret"></span>') + "</div>" + (q.unit ? '<span class="unit">' + q.unit + "</span>" : "");
       h += '</div><div class="qside">';
-      if (S.fb === "ok") h += '<div class="fb good">✅ Bravo !</div>' + btn("Suivant ▶", "qnext", { def: true });
-      else if (S.fb === "ko") h += '<div class="fb bad">❌ Pas tout à fait…</div><div class="ans">La bonne réponse : <b>' + answerText(q) + '</b></div><div class="expl small">' + stepsHTML(q) + "</div>" + btn("J'ai compris, suivant ▶", "qnext", { def: true });
+      if (S.fb === "ok") h += '<div class="fb good">' + S.msg + "</div>" + (S.streak >= 3 ? '<div class="combo">🔥 ' + S.streak + " bonnes réponses de suite !</div>" : "") + btn("Suivant ▶", "qnext", { def: true });
+      else if (S.fb === "ko") h += '<div class="fb bad">' + S.msg + '</div><div class="ans">La bonne réponse : <b>' + answerText(q) + '</b></div><div class="expl small">' + stepsHTML(q) + "</div>" + btn("J'ai compris, suivant ▶", "qnext", { def: true });
       else if (q.type === "choice") {
         h += '<div class="choices">';
         q.choices.forEach(function (c, i) { h += btn('<span class="kb ' + COLORS[i] + '"></span>' + c, "qchoice|" + i, { cls: "btn choice", def: i === 0, k: "c" + i }); });
@@ -232,6 +255,18 @@
       return '<div class="hero"><h1>' + msg + '</h1><div class="score">' + n + " / " + QUIZ_LEN + '</div><div class="bigstars">' + stars(st) + "</div>" +
         (st > S.before ? '<div class="sub">Nouveau record ! 🎉</div>' : pr.stars === 3 ? '<div class="sub">Tu maîtrises ce thème !</div>' : '<div class="sub">Il faut 9 bonnes réponses pour 3 étoiles.</div>') +
         '<div class="bar center">' + btn("🔄 Refaire le quiz", "step|quiz", { def: true }) + btn("⬅ Retour au thème", "back") + btn("📚 Autres thèmes", "themes") + "</div></div>";
+    },
+    xresult: function () {
+      var m = S.medal, pct = Math.round(100 * S.score / S.len), h = '<div class="hero"><h1>' + (m ? m[0] + " " + m[1] + " !" : "💪 Continue à t'entraîner !") + "</h1>";
+      h += '<div class="score">' + S.score + " / " + S.len + '</div><div class="pbar big"><i style="width:' + pct + '%"></i></div>';
+      h += '<div class="sub">' + (S.record ? "Nouveau record ! 🎉 " : "") + "🥉 dès 60 % · 🥈 dès 75 % · 🥇 dès 90 %</div>";
+      var weak = Object.keys(S.weak).sort(function (a, b) { return S.weak[b] - S.weak[a]; }).slice(0, 3);
+      if (weak.length) {
+        h += '<div class="sub">📌 À revoir en priorité :</div><div class="bar center">';
+        weak.forEach(function (id) { var t = theme(id); h += btn(t.icon + " " + t.title, "theme|" + id, { cls: "btn mini" }); });
+        h += "</div>";
+      } else h += '<div class="sub">Aucune erreur : incroyable ! 🏆</div>';
+      return h + '<div class="bar center">' + btn("🔄 Refaire l'épreuve", "exam|" + S.exam.kind + (S.exam.arg ? "|" + S.exam.arg : ""), { def: true }) + btn("📚 Retour aux thèmes", "themes") + "</div></div>";
     }
   };
 
@@ -251,9 +286,40 @@
     var next;
     if (s === "learn") next = st({ v: "learn", i: 0 });
     else if (s === "ex") next = st({ v: "ex", n: 1, k: 0, q: newQ(t, 1) });
-    else if (s === "sheet") { var seen = {}; next = st({ v: "sheet", phase: "do", qs: [1, 2, 2, 2, 3, 3].map(function (d) { return newQ(t, d, seen); }), i: 0, marks: [] }); }
-    else if (s === "quiz") next = st({ v: "quiz", qs: [newQ(t, 1, S.seen = {})], seen: S.seen, i: 0, input: "", fb: null, res: [], score: 0 });
+    else if (s === "sheet") { var seen = {}; next = st({ v: "sheet", phase: "do", qs: [1, 2, 2, 2, 3, 3].map(function (d, i) { return newQ(t, d, seen, i >= 4); }), i: 0, marks: [] }); }
+    else if (s === "quiz") next = st({ v: "quiz", len: QUIZ_LEN, qs: [newQ(t, 1, S.seen = {})], seen: S.seen, i: 0, input: "", fb: null, res: [], score: 0, streak: 0 });
     if (replace) { S = next; focusKey = null; render(); } else go(next);
+  }
+
+  // Épreuve : questions tirées de tous les thèmes d'une matière (ou d'un chapitre), de plus en plus difficiles
+  function startExam(kind, arg) {
+    var p = profile(S.pid), sub = S.sub, list = themesFor(p.grade, sub), order = [];
+    if (kind === "chap") list = list.filter(function (t) { return t.chapter === arg; });
+    var len = kind === "final" ? 30 : 15;
+    while (order.length < len) order = order.concat(U.shuffle(list.slice()));
+    var plan = order.slice(0, len).map(function (t, i) { return { tid: t.id, d: i < len * 0.2 ? 1 : i < len * 0.6 ? 2 : 3 }; });
+    var seen = {}, next = { v: "quiz", pid: S.pid, sub: sub, exam: { key: sub + "|" + kind + "|" + (arg || ""), kind: kind, arg: arg, title: kind === "final" ? "🏆 Épreuve finale" : "🏁 Bilan : " + arg },
+      plan: plan, len: len, qs: [newQ(theme(plan[0].tid), plan[0].d, seen)], seen: seen, i: 0, input: "", fb: null, res: [], score: 0, streak: 0 };
+    if (S.v === "xresult") { S = next; focusKey = null; render(); } else go(next);
+  }
+  function examEnd() {
+    var m = medalFor(S.score / S.len), X = exams(S.pid), old = X[S.exam.key], weak = {};
+    S.res.forEach(function (r, i) { if (!r) { var id = S.plan[i].tid; weak[id] = (weak[id] || 0) + 1; } });
+    var record = !old || S.score > old.best;
+    if (record) X[S.exam.key] = { best: S.score, len: S.len, medal: m ? m[0] : "" };
+    save();
+    S = { v: "xresult", pid: S.pid, sub: S.sub, exam: S.exam, score: S.score, len: S.len, medal: m, weak: weak, record: record && !!old };
+    focusKey = null; render();
+    if (m) confetti();
+  }
+  // Pluie de confettis pour fêter un beau résultat
+  function confetti() {
+    var c = document.createElement("div"), cols = ["#ffc94a", "#4cd38a", "#5fd3ff", "#ff7a6b", "#c38bff", "#ff8fc7"], h = "";
+    c.className = "confetti";
+    for (var i = 0; i < 60; i++) h += '<i style="left:' + Math.random() * 100 + "%;background:" + cols[i % cols.length] + ";animation-delay:" + (Math.random() * 1.2).toFixed(2) + "s;animation-duration:" + (2.2 + Math.random() * 1.8).toFixed(2) + 's"></i>';
+    c.innerHTML = h;
+    document.body.appendChild(c);
+    setTimeout(function () { if (c.parentNode) c.parentNode.removeChild(c); }, 4500);
   }
 
   function quizAnswer(given) {
@@ -262,6 +328,7 @@
     if (q.type === "num" && !S.input) { toast("Tape d'abord ta réponse 🙂"); return; }
     var ok = check(q, given);
     S.fb = ok ? "ok" : "ko"; S.res[S.i] = ok; if (ok) S.score++;
+    S.streak = ok ? (S.streak || 0) + 1 : 0; S.msg = U.pick(ok ? PRAISE : OOPS);
     if (q.type === "choice") S.picked = given;
     focusKey = null; render();
     if (ok) timer = setTimeout(quizNext, 1300);
@@ -269,14 +336,17 @@
   function quizNext() {
     clearTimeout(timer);
     if (S.v !== "quiz" || !S.fb) return;
-    if (S.i + 1 >= QUIZ_LEN) {
+    if (S.i + 1 >= S.len) {
+      if (S.exam) { examEnd(); return; }
       var pr = prog(S.pid, S.tid), st = S.score >= 9 ? 3 : S.score >= 7 ? 2 : S.score >= 5 ? 1 : 0;
       var before = pr.stars;
       pr.quiz++; if (st > pr.stars) pr.stars = st; save();
-      S = { v: "result", pid: S.pid, tid: S.tid, score: S.score, before: before }; focusKey = null; render(); return;
+      S = { v: "result", pid: S.pid, tid: S.tid, score: S.score, before: before }; focusKey = null; render();
+      if (st >= 2) confetti();
+      return;
     }
     S.i++; S.fb = null; S.input = "";
-    S.qs.push(newQ(theme(S.tid), S.i < 3 ? 1 : S.i < 7 ? 2 : 3, S.seen));
+    S.qs.push(S.plan ? newQ(theme(S.plan[S.i].tid), S.plan[S.i].d, S.seen) : newQ(theme(S.tid), S.i < 3 ? 1 : S.i < 7 ? 2 : 3, S.seen));
     focusKey = null; render();
   }
   function typeKey(k) {
@@ -296,6 +366,7 @@
     }
     else if (name === "theme") go({ v: "theme", pid: S.pid, tid: arg });
     else if (name === "step") startStep(arg);
+    else if (name === "exam") startExam(arg, p[2]);
     else if (name === "lnext") { S.i++; focusKey = null; render(); }
     else if (name === "lprev") { S.i--; focusKey = null; render(); }
     else if (name === "exnext") { S.k++; render(); }

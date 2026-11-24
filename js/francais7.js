@@ -359,4 +359,9 @@
     ],
     gen: function (d) { return FR.famQ(FAM, d); }
   });
+
+  // Les thèmes de conjugaison proposent aussi un tableau complet à écrire sur la feuille
+  var W = { "f7-present": [V7, "présent"], "f7-imparfait-futur": [ALL, "futur"], "f7-passe-compose": [["prendre", "venir", "sortir", "voir", "acheter"], "passé composé"],
+    "f7-conditionnel": [ALL, "conditionnel présent"] };
+  T.forEach(function (t) { if (W[t.id]) t.write = function () { return FR.conjWrite(W[t.id][0], W[t.id][1]); }; });
 })();

@@ -281,4 +281,9 @@
     ],
     gen: function (d) { return FR.famQ(FAM, d); }
   });
+
+  // Les thèmes de conjugaison proposent aussi un tableau complet à écrire sur la feuille
+  var W = { "f5-present-er": [ER, "présent"], "f5-etre-avoir": [["être", "avoir", "aller"], "présent"], "f5-present-autres": [["finir", "dire", "faire", "entendre", "savoir", "vouloir"], "présent"],
+    "f5-imparfait": [ALL, "imparfait"], "f5-futur": [ALL, "futur"], "f5-passe-compose": [["chanter", "finir", "faire", "aller", "être", "avoir"], "passé composé"] };
+  T.forEach(function (t) { if (W[t.id]) t.write = function () { return FR.conjWrite(W[t.id][0], W[t.id][1]); }; });
 })();
