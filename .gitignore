@@ -1,0 +1,4 @@
+*.bat
+*.py
+tv-token*.txt
+__pycache__/

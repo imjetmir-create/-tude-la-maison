@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Échecs TV</title>
+<style>
+  :root {
+    --bg: #1b1f27;
+    --panel: #262c37;
+    --text: #f2efe8;
+    --muted: #a9b0bd;
+    --light: #ecdcb8;
+    --dark: #a77b52;
+    --accent: #f5c542;
+    --select: #4fb3ff;
+    --move: rgba(40, 160, 90, 0.75);
+    --last: rgba(245, 197, 66, 0.45);
+    --check: #e5484d;
+    --good: #4cc38a;
+    --bad: #ff7a6b;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font-family: "Segoe UI", "SamsungOne", Arial, sans-serif; overflow: hidden;
+  }
+  .screen { display: none; width: 100%; height: 100%; }
+  .screen.on { display: flex; }
+
+  /* Menus */
+  #menu, #list { flex-direction: column; align-items: center; justify-content: center; }
+  h1 { font-size: 8vh; margin: 0 0 1vh; letter-spacing: 0.04em; }
+  .sub { font-size: 3vh; color: var(--muted); margin: 0 0 3vh; text-align: center; }
+  .btn {
+    display: block; width: 64vh; margin: 1vh auto; padding: 1.6vh 3vh;
+    font-size: 3.4vh; font-weight: 600; text-align: center; cursor: pointer;
+    background: var(--panel); color: var(--text); border: 0.5vh solid transparent;
+    border-radius: 2vh;
+  }
+  .btn.focus { border-color: var(--accent); background: #333b49; transform: scale(1.04); }
+  .hint { font-size: 2.3vh; color: var(--muted); margin-top: 3vh; text-align: center; line-height: 1.6; }
+  #menu h1 { font-size: 6.4vh; }
+  #menu .sub { margin-bottom: 1.6vh; }
+  #menu .btn { padding: 1.1vh 3vh; margin: 0.75vh auto; font-size: 3vh; }
+  #menu .hint { margin-top: 1.6vh; }
+  #listItems { display: grid; grid-template-columns: 62vh 62vh; gap: 1.4vh 3vh; }
+  #listItems .btn { width: 100%; margin: 0; font-size: 3vh; padding: 1.5vh 2vh; text-align: left; }
+  #listItems .btn small { display: block; font-size: 2.1vh; font-weight: 400; color: var(--muted); margin-top: 0.3vh; }
+
+  /* Partie */
+  #game { align-items: center; justify-content: center; gap: 4vh; }
+  #board {
+    display: grid; grid-template-columns: repeat(8, 11vh); grid-template-rows: repeat(8, 11vh);
+    border: 1vh solid #3a2a1c; border-radius: 1vh; box-shadow: 0 2vh 6vh rgba(0,0,0,.5);
+  }
+  .sq { position: relative; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .sq.l { background: var(--light); }
+  .sq.d { background: var(--dark); }
+  .sq.last::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--last); }
+  .sq.check::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle, var(--check) 20%, transparent 75%); }
+  .sq.sel::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(79,179,255,.55); }
+  .sq.hintsq::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(245,197,66,.75); }
+  .sq.target::after { content: ""; position: absolute; width: 3.2vh; height: 3.2vh; border-radius: 50%; background: var(--move); }
+  .sq.target.capture::after { width: 9.4vh; height: 9.4vh; background: transparent; border: 0.8vh solid var(--move); }
+  .sq.cursor { outline: 0.9vh solid var(--select); outline-offset: -0.9vh; z-index: 2; }
+  .sq > .pcs { display: block; position: relative; z-index: 1; width: 9.4vh; height: 9.4vh; }
+  .coord { position: absolute; font-size: 1.8vh; font-weight: 700; opacity: .7; z-index: 1; }
+  .coord.f { right: 0.6vh; bottom: 0.3vh; }
+  .coord.r { left: 0.6vh; top: 0.3vh; }
+  .sq.l .coord { color: var(--dark); }
+  .sq.d .coord { color: var(--light); }
+
+  .pz { width: 100%; height: 100%; display: block; stroke-width: 4; stroke-linejoin: round; }
+  .pz.w { fill: #fbfaf6; stroke: #1a1a1a; }
+  .pz.b { fill: #262626; stroke: #050505; }
+  .pz.w .dt { fill: #1a1a1a; stroke: none; }
+  .pz.b .dt { fill: #e8e8e8; stroke: none; }
+  .pz .ln { fill: none; }
+  .pz.w .ln { stroke: #1a1a1a; }
+  .pz.b .ln { stroke: #e8e8e8; }
+  .mini .pz { display: inline-block; width: 4.4vh; height: 4.4vh; vertical-align: middle; stroke-width: 5; }
+
+  #side { width: 58vh; display: flex; flex-direction: column; gap: 1.6vh; }
+  #status { background: var(--panel); border-radius: 2vh; padding: 2.4vh 3vh; }
+  #mode { font-size: 2.3vh; color: var(--muted); }
+  #turn { font-size: 4vh; font-weight: 700; margin-top: 0.4vh; }
+  #info { font-size: 2.7vh; margin-top: 0.8vh; min-height: 3.4vh; line-height: 1.35; }
+  #info.good { color: var(--good); }
+  #info.bad { color: var(--bad); }
+  #note { background: var(--panel); border-radius: 2vh; padding: 2vh 2.6vh; font-size: 2.7vh; line-height: 1.45; }
+  #note .moves { font-size: 2.4vh; color: var(--muted); margin-top: 1.2vh; line-height: 1.6; }
+  #note .moves b { color: var(--accent); }
+  #note .label { font-size: 2.1vh; color: var(--muted); }
+  #btns .btn { width: 100%; margin: 0 0 1.2vh; font-size: 2.9vh; padding: 1.5vh; }
+  .keys { font-size: 2vh; color: var(--muted); line-height: 1.5; }
+  .keys b { color: var(--text); }
+</style>
+</head>
+<body>
+
+<div id="menu" class="screen on">
+  <h1>♞ Échecs</h1>
+  <div class="sub">Choisis une partie</div>
+  <div class="btn" data-act="2j">👥 Deux joueurs</div>
+  <div class="btn" data-act="ia1">🐣 Niveau 1 · Vraiment débutant</div>
+  <div class="btn" data-act="ia2">🙂 Niveau 2 · Débutant</div>
+  <div class="btn" data-act="ia3">🤔 Niveau 3 · Intermédiaire</div>
+  <div class="btn" data-act="ia4">💪 Niveau 4 · Avancé</div>
+  <div class="btn" data-act="ia5">🏆 Niveau 5 · Expert</div>
+  <div class="btn" data-act="ecole">🎓 École des échecs</div>
+  <div class="btn" data-act="retour">🏫 Retour à École TV</div>
+  <div class="hint">Flèches pour se déplacer · <b>OK</b> pour choisir</div>
+</div>
+
+<div id="list" class="screen">
+  <h1 id="listTitle"></h1>
+  <div class="sub" id="listSub"></div>
+  <div id="listItems"></div>
+  <div class="hint">Flèches pour se déplacer · <b>OK</b> pour choisir · <b>Retour</b> pour revenir</div>
+</div>
+
+<div id="game" class="screen">
+  <div id="board"></div>
+  <div id="side">
+    <div id="status">
+      <div id="mode"></div>
+      <div id="turn"></div>
+      <div id="info"></div>
+    </div>
+    <div id="note"></div>
+    <div id="btns"></div>
+    <div class="keys" id="keys"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ================= Règles ================= */
+  var VAL = { p: 100, n: 320, b: 330, r: 500, q: 900, k: 0 };
+  var NAMES = { p: "Pion", n: "Cavalier", b: "Fou", r: "Tour", q: "Dame", k: "Roi" };
+  var KN = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];
+  var KG = [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]];
+  var DIAG = [[-1,-1],[-1,1],[1,-1],[1,1]];
+  var ORTH = [[-1,0],[1,0],[0,-1],[0,1]];
+
+  function colorOf(p) { return p ? (p === p.toUpperCase() ? "w" : "b") : null; }
+  function typeOf(p) { return p.toLowerCase(); }
+  function other(c) { return c === "w" ? "b" : "w"; }
+  function inside(r, c) { return r >= 0 && r < 8 && c >= 0 && c < 8; }
+  function sqOf(alg) { return (8 - parseInt(alg.charAt(1), 10)) * 8 + "abcdefgh".indexOf(alg.charAt(0)); }
+  function algOf(sq) { return "abcdefgh".charAt(sq & 7) + (8 - (sq >> 3)); }
+
+  function initialState() {
+    var rows = ["rnbqkbnr", "pppppppp", "........", "........", "........", "........", "PPPPPPPP", "RNBQKBNR"];
+    var board = [];
+    for (var r = 0; r < 8; r++) for (var c = 0; c < 8; c++) {
+      var ch = rows[r].charAt(c); board.push(ch === "." ? null : ch);
+    }
+    return { board: board, turn: "w", castle: { K: true, Q: true, k: true, q: true }, ep: -1, half: 0, last: null };
+  }
+
+  // Position libre pour les leçons : "Ke1 Rh1 / ke8 pd5"  (majuscule = blanc)
+  function customState(spec, opts) {
+    var board = [], i;
+    for (i = 0; i < 64; i++) board.push(null);
+    var parts = spec.split(/\s+/);
+    for (i = 0; i < parts.length; i++) if (parts[i]) board[sqOf(parts[i].slice(1))] = parts[i].charAt(0);
+    opts = opts || {};
+    return {
+      board: board, turn: "w",
+      castle: opts.castle || { K: false, Q: false, k: false, q: false },
+      ep: opts.ep ? sqOf(opts.ep) : -1, half: 0, last: null
+    };
+  }
+
+  function attacked(board, sq, by) {
+    if (sq < 0) return false;
+    var r = sq >> 3, c = sq & 7, i, nr, nc, p;
+    var pr = by === "w" ? r + 1 : r - 1;
+    for (i = -1; i <= 1; i += 2) {
+      if (inside(pr, c + i)) { p = board[pr * 8 + c + i]; if (p && colorOf(p) === by && typeOf(p) === "p") return true; }
+    }
+    for (i = 0; i < 8; i++) {
+      nr = r + KN[i][0]; nc = c + KN[i][1];
+      if (inside(nr, nc)) { p = board[nr * 8 + nc]; if (p && colorOf(p) === by && typeOf(p) === "n") return true; }
+      nr = r + KG[i][0]; nc = c + KG[i][1];
+      if (inside(nr, nc)) { p = board[nr * 8 + nc]; if (p && colorOf(p) === by && typeOf(p) === "k") return true; }
+    }
+    function ray(dirs, kinds) {
+      for (var d = 0; d < 4; d++) {
+        var rr = r + dirs[d][0], cc = c + dirs[d][1];
+        while (inside(rr, cc)) {
+          var q = board[rr * 8 + cc];
+          if (q) { if (colorOf(q) === by && kinds.indexOf(typeOf(q)) >= 0) return true; break; }
+          rr += dirs[d][0]; cc += dirs[d][1];
+        }
+      }
+      return false;
+    }
+    return ray(DIAG, "bq") || ray(ORTH, "rq");
+  }
+
+  function kingSq(board, color) {
+    var k = color === "w" ? "K" : "k";
+    for (var i = 0; i < 64; i++) if (board[i] === k) return i;
+    return -1;
+  }
+  function inCheck(st, color) { return attacked(st.board, kingSq(st.board, color), other(color)); }
+
+  function pseudoMoves(st) {
+    var b = st.board, me = st.turn, moves = [], i, d;
+    function add(from, to, extra) {
+      var m = { from: from, to: to, piece: b[from], captured: b[to] };
+      if (extra) for (var k in extra) m[k] = extra[k];
+      moves.push(m);
+    }
+    for (var sq = 0; sq < 64; sq++) {
+      var p = b[sq];
+      if (!p || colorOf(p) !== me) continue;
+      var t = typeOf(p), r = sq >> 3, c = sq & 7, nr, nc, to;
+      if (t === "p") {
+        var dir = me === "w" ? -1 : 1, start = me === "w" ? 6 : 1, last = me === "w" ? 0 : 7;
+        nr = r + dir;
+        if (inside(nr, c) && !b[nr * 8 + c]) {
+          add(sq, nr * 8 + c, nr === last ? { promo: "q" } : null);
+          if (r === start && !b[(r + 2 * dir) * 8 + c]) add(sq, (r + 2 * dir) * 8 + c, { dbl: true });
+        }
+        for (i = -1; i <= 1; i += 2) {
+          nc = c + i;
+          if (!inside(nr, nc)) continue;
+          to = nr * 8 + nc;
+          if (b[to] && colorOf(b[to]) !== me) add(sq, to, nr === last ? { promo: "q" } : null);
+          else if (to === st.ep) add(sq, to, { epCap: true, captured: me === "w" ? "p" : "P" });
+        }
+      } else if (t === "n" || t === "k") {
+        var offs = t === "n" ? KN : KG;
+        for (i = 0; i < 8; i++) {
+          nr = r + offs[i][0]; nc = c + offs[i][1];
+          if (!inside(nr, nc)) continue;
+          to = nr * 8 + nc;
+          if (!b[to] || colorOf(b[to]) !== me) add(sq, to);
+        }
+        if (t === "k") {
+          var home = me === "w" ? 60 : 4, them = other(me);
+          var kc = me === "w" ? "K" : "k", qc = me === "w" ? "Q" : "q", rook = me === "w" ? "R" : "r";
+          if (sq === home && !attacked(b, home, them)) {
+            if (st.castle[kc] && !b[home + 1] && !b[home + 2] && b[home + 3] === rook &&
+                !attacked(b, home + 1, them) && !attacked(b, home + 2, them)) add(sq, home + 2, { castle: "K" });
+            if (st.castle[qc] && !b[home - 1] && !b[home - 2] && !b[home - 3] && b[home - 4] === rook &&
+                !attacked(b, home - 1, them) && !attacked(b, home - 2, them)) add(sq, home - 2, { castle: "Q" });
+          }
+        }
+      } else {
+        var dirs = t === "b" ? DIAG : t === "r" ? ORTH : DIAG.concat(ORTH);
+        for (d = 0; d < dirs.length; d++) {
+          nr = r + dirs[d][0]; nc = c + dirs[d][1];
+          while (inside(nr, nc)) {
+            to = nr * 8 + nc;
+            if (b[to]) { if (colorOf(b[to]) !== me) add(sq, to); break; }
+            add(sq, to);
+            nr += dirs[d][0]; nc += dirs[d][1];
+          }
+        }
+      }
+    }
+    return moves;
+  }
+
+  function makeMove(st, m) {
+    var b = st.board.slice(), me = st.turn;
+    var cs = { K: st.castle.K, Q: st.castle.Q, k: st.castle.k, q: st.castle.q };
+    b[m.to] = m.promo ? (me === "w" ? m.promo.toUpperCase() : m.promo) : b[m.from];
+    b[m.from] = null;
+    if (m.epCap) b[me === "w" ? m.to + 8 : m.to - 8] = null;
+    if (m.castle === "K") { b[m.to - 1] = b[m.to + 1]; b[m.to + 1] = null; }
+    if (m.castle === "Q") { b[m.to + 1] = b[m.to - 2]; b[m.to - 2] = null; }
+    if (m.piece === "K") { cs.K = false; cs.Q = false; }
+    if (m.piece === "k") { cs.k = false; cs.q = false; }
+    if (m.from === 63 || m.to === 63) cs.K = false;
+    if (m.from === 56 || m.to === 56) cs.Q = false;
+    if (m.from === 7 || m.to === 7) cs.k = false;
+    if (m.from === 0 || m.to === 0) cs.q = false;
+    return {
+      board: b, turn: other(me), castle: cs,
+      ep: m.dbl ? (m.from + m.to) / 2 : -1,
+      half: (typeOf(m.piece) === "p" || m.captured) ? 0 : st.half + 1,
+      last: m
+    };
+  }
+
+  function legalMoves(st) {
+    var out = [], ps = pseudoMoves(st);
+    for (var i = 0; i < ps.length; i++) {
+      var nx = makeMove(st, ps[i]);
+      if (!attacked(nx.board, kingSq(nx.board, st.turn), nx.turn)) out.push(ps[i]);
+    }
+    return out;
+  }
+
+  function insufficient(b) {
+    var minors = 0;
+    for (var i = 0; i < 64; i++) {
+      if (!b[i]) continue;
+      var t = typeOf(b[i]);
+      if (t === "p" || t === "r" || t === "q") return false;
+      if (t === "n" || t === "b") minors++;
+    }
+    return minors <= 1;
+  }
+
+  // Notation algébrique anglaise (Nf3, exd5, O-O, b8=Q) -> coup légal
+  function sanToMove(st, san) {
+    var s = san.replace(/[+#!?]/g, "");
+    var moves = legalMoves(st), i;
+    if (s === "O-O" || s === "O-O-O") {
+      for (i = 0; i < moves.length; i++) if (moves[i].castle === (s === "O-O" ? "K" : "Q")) return moves[i];
+      return null;
+    }
+    var eq = s.indexOf("=");
+    if (eq >= 0) s = s.slice(0, eq);
+    var piece = "p";
+    if ("KQRBN".indexOf(s.charAt(0)) >= 0) { piece = s.charAt(0).toLowerCase(); s = s.slice(1); }
+    var to = sqOf(s.slice(-2)), dis = s.slice(0, -2).replace("x", ""), found = null;
+    for (i = 0; i < moves.length; i++) {
+      var m = moves[i];
+      if (typeOf(m.piece) !== piece || m.to !== to) continue;
+      var a = algOf(m.from), ok = true;
+      for (var j = 0; j < dis.length; j++) if (a.indexOf(dis.charAt(j)) < 0) ok = false;
+      if (ok) { if (found) return null; found = m; }
+    }
+    return found;
+  }
+  // Affichage en notation française : R D T F C
+  function frSan(san) {
+    var map = { K: "R", Q: "D", R: "T", B: "F", N: "C" };
+    var s = map[san.charAt(0)] ? map[san.charAt(0)] + san.slice(1) : san;
+    return s.replace("=Q", "=D");
+  }
+
+  /* ================= Ordinateur ================= */
+  var PST = {
+    p: [0,0,0,0,0,0,0,0, 50,50,50,50,50,50,50,50, 10,10,20,30,30,20,10,10, 5,5,10,25,25,10,5,5,
+        0,0,0,20,20,0,0,0, 5,-5,-10,0,0,-10,-5,5, 5,10,10,-20,-20,10,10,5, 0,0,0,0,0,0,0,0],
+    n: [-50,-40,-30,-30,-30,-30,-40,-50, -40,-20,0,0,0,0,-20,-40, -30,0,10,15,15,10,0,-30, -30,5,15,20,20,15,5,-30,
+        -30,0,15,20,20,15,0,-30, -30,5,10,15,15,10,5,-30, -40,-20,0,5,5,0,-20,-40, -50,-40,-30,-30,-30,-30,-40,-50],
+    b: [-20,-10,-10,-10,-10,-10,-10,-20, -10,0,0,0,0,0,0,-10, -10,0,5,10,10,5,0,-10, -10,5,5,10,10,5,5,-10,
+        -10,0,10,10,10,10,0,-10, -10,10,10,10,10,10,10,-10, -10,5,0,0,0,0,5,-10, -20,-10,-10,-10,-10,-10,-10,-20],
+    r: [0,0,0,0,0,0,0,0, 5,10,10,10,10,10,10,5, -5,0,0,0,0,0,0,-5, -5,0,0,0,0,0,0,-5,
+        -5,0,0,0,0,0,0,-5, -5,0,0,0,0,0,0,-5, -5,0,0,0,0,0,0,-5, 0,0,0,5,5,0,0,0],
+    q: [-20,-10,-10,-5,-5,-10,-10,-20, -10,0,0,0,0,0,0,-10, -10,0,5,5,5,5,0,-10, -5,0,5,5,5,5,0,-5,
+        0,0,5,5,5,5,0,-5, -10,5,5,5,5,5,0,-10, -10,0,5,0,0,0,0,-10, -20,-10,-10,-5,-5,-10,-10,-20],
+    k: [-30,-40,-40,-50,-50,-40,-40,-30, -30,-40,-40,-50,-50,-40,-40,-30, -30,-40,-40,-50,-50,-40,-40,-30, -30,-40,-40,-50,-50,-40,-40,-30,
+        -20,-30,-30,-40,-40,-30,-30,-20, -10,-20,-20,-20,-20,-20,-20,-10, 20,20,0,0,0,0,20,20, 20,30,10,0,0,10,30,20],
+    kEnd: [-50,-40,-30,-20,-20,-30,-40,-50, -30,-20,-10,0,0,-10,-20,-30, -30,-10,20,30,30,20,-10,-30, -30,-10,30,40,40,30,-10,-30,
+        -30,-10,30,40,40,30,-10,-30, -30,-10,20,30,30,20,-10,-30, -30,-30,0,0,0,0,-30,-30, -50,-30,-30,-30,-30,-30,-30,-50]
+  };
+  function evaluate(st) {
+    var score = 0, b = st.board, i, p, t, heavy = 0;
+    for (i = 0; i < 64; i++) {
+      p = b[i];
+      if (p) { t = typeOf(p); if (t !== "p" && t !== "k") heavy += VAL[t]; }
+    }
+    var endgame = heavy <= 2600;
+    for (i = 0; i < 64; i++) {
+      p = b[i];
+      if (!p) continue;
+      t = typeOf(p);
+      var w = colorOf(p) === "w";
+      var idx = w ? i : (7 - (i >> 3)) * 8 + (i & 7);
+      var table = t === "k" && endgame ? PST.kEnd : PST[t];
+      var v = VAL[t] + table[idx];
+      score += w ? v : -v;
+    }
+    return st.turn === "w" ? score : -score;
+  }
+  function ordered(moves) {
+    return moves.sort(function (a, b) {
+      var va = a.captured ? VAL[typeOf(a.captured)] * 10 - VAL[typeOf(a.piece)] : (a.promo ? 800 : -1000);
+      var vb = b.captured ? VAL[typeOf(b.captured)] * 10 - VAL[typeOf(b.piece)] : (b.promo ? 800 : -1000);
+      return vb - va;
+    });
+  }
+
+  // Recherche limitée dans le temps : on s'arrête net quand le délai est dépassé
+  var search = { deadline: Infinity, aborted: false, nodes: 0, quiesce: false };
+  function timeUp() {
+    if ((++search.nodes & 511) === 0 && Date.now() > search.deadline) search.aborted = true;
+    return search.aborted;
+  }
+  function qsearch(st, alpha, beta, qd) {
+    if (timeUp()) return 0;
+    var stand = evaluate(st);
+    if (stand >= beta) return beta;
+    if (stand > alpha) alpha = stand;
+    if (qd >= 6) return alpha;
+    var caps = ordered(pseudoMoves(st).filter(function (m) { return m.captured || m.promo; }));
+    for (var i = 0; i < caps.length; i++) {
+      var nx = makeMove(st, caps[i]);
+      if (attacked(nx.board, kingSq(nx.board, st.turn), nx.turn)) continue;
+      var v = -qsearch(nx, -beta, -alpha, qd + 1);
+      if (search.aborted) return 0;
+      if (v >= beta) return beta;
+      if (v > alpha) alpha = v;
+    }
+    return alpha;
+  }
+  function negamax(st, depth, alpha, beta, ply) {
+    if (timeUp()) return 0;
+    // En échec, on prolonge d'un coup pour ne pas rater un mat
+    if (depth === 0 && ply < 12 && inCheck(st, st.turn)) depth = 1;
+    if (depth === 0) return search.quiesce ? qsearch(st, alpha, beta, 0) : evaluate(st);
+    var moves = ordered(pseudoMoves(st)), any = false;
+    for (var i = 0; i < moves.length; i++) {
+      var nx = makeMove(st, moves[i]);
+      if (attacked(nx.board, kingSq(nx.board, st.turn), nx.turn)) continue;
+      any = true;
+      var v = -negamax(nx, depth - 1, -beta, -alpha, ply + 1);
+      if (search.aborted) return 0;
+      if (v > alpha) alpha = v;
+      if (alpha >= beta) break;
+    }
+    if (!any) return inCheck(st, st.turn) ? -100000 + ply : 0;
+    return alpha;
+  }
+
+  // 1 : vraiment débutant (souvent au hasard) … 5 : expert (recherche approfondie, jusqu'à ~6 s)
+  var LEVELS = {
+    1: { depth: 1, noise: 500, random: 0.4, quiesce: false, time: 0 },
+    2: { depth: 1, noise: 90, random: 0.1, quiesce: false, time: 0 },
+    3: { depth: 2, noise: 25, random: 0, quiesce: false, time: 0 },
+    4: { depth: 4, noise: 0, random: 0, quiesce: true, time: 2500 },
+    5: { depth: 7, noise: 0, random: 0, quiesce: true, time: 6000 }
+  };
+  var LEVEL_NAMES = ["", "Vraiment débutant", "Débutant", "Intermédiaire", "Avancé", "Expert"];
+
+  function bestMove(st, level) {
+    var cfg = LEVELS[level], moves = ordered(legalMoves(st));
+    if (!moves.length) return null;
+    if (Math.random() < cfg.random) return moves[Math.floor(Math.random() * moves.length)];
+    search.quiesce = cfg.quiesce;
+    search.aborted = false;
+    search.deadline = cfg.time ? Date.now() + cfg.time : Infinity;
+    var best = moves[0];
+    for (var depth = 1; depth <= cfg.depth; depth++) {
+      var iterBest = null, bestV = -Infinity, alpha = -Infinity;
+      for (var i = 0; i < moves.length; i++) {
+        var v = -negamax(makeMove(st, moves[i]), depth - 1, -Infinity, -alpha, 1);
+        if (search.aborted) break;
+        v += Math.random() * cfg.noise;
+        if (v > bestV) { bestV = v; iterBest = moves[i]; }
+        if (v > alpha) alpha = v;
+      }
+      if (search.aborted) break;
+      best = iterBest;
+      moves.splice(moves.indexOf(best), 1); moves.unshift(best);
+      if (bestV > 90000) break;
+    }
+    return best;
+  }
+
+  /* ================= École : leçons ================= */
+  var LESSONS = [
+    { name: "Le pion", pos: "Pe2 Pb4 Kh1 / pa5 pc5 kh8",
+      text: "Le pion avance tout droit d'une case, ou de deux cases s'il n'a encore jamais bougé. Pour prendre, il avance en diagonale. Essaie avec le pion e2, puis avec le pion b4 qui peut prendre !" },
+    { name: "La tour", pos: "Rd4 Kh1 / pd7 pg4 kh8",
+      text: "La tour se déplace en ligne droite (haut, bas, gauche, droite), d'autant de cases qu'elle veut. Elle ne saute jamais par-dessus une pièce. Elle peut prendre les pions d7 et g4." },
+    { name: "Le fou", pos: "Bd4 Kh1 / pg7 pb6 kh8",
+      text: "Le fou se déplace en diagonale, d'autant de cases qu'il veut. Il reste toujours sur la même couleur de case pendant toute la partie." },
+    { name: "Le cavalier", pos: "Nd4 Pc4 Pd5 Pe4 Pd3 Kh1 / pe6 kh8",
+      text: "Le cavalier saute en forme de « L » : deux cases dans un sens, puis une case sur le côté. C'est la seule pièce qui peut sauter par-dessus les autres !" },
+    { name: "La dame", pos: "Qd4 Kh1 / pd7 pa7 pg4 ka8",
+      text: "La dame se déplace comme une tour ET comme un fou : en ligne droite et en diagonale. C'est la pièce la plus puissante !" },
+    { name: "Le roi", pos: "Ke4 / ra5 kh8",
+      text: "Le roi se déplace d'une seule case, dans toutes les directions. Il n'a jamais le droit d'aller sur une case attaquée : ici, la tour noire surveille toute la 5e rangée." },
+    { name: "Le roque", pos: "Ke1 Ra1 Rh1 Pa2 Pb2 Pc2 Pf2 Pg2 Ph2 / ke8",
+      castle: { K: true, Q: true, k: false, q: false }, goal: "castle",
+      text: "Le roque met le roi à l'abri : le roi va de deux cases vers une tour, et la tour passe de l'autre côté du roi. Sélectionne le roi et joue en g1 (petit roque) ou en c1 (grand roque)." },
+    { name: "La prise en passant", pos: "Pe5 Ke1 / pd5 ke8", ep: "d6", goal: "exd6",
+      text: "Le pion noir vient d'avancer de deux cases (d7-d5) et s'est arrêté à côté du tien. Juste ce coup-ci, tu peux le prendre comme s'il n'avait avancé que d'une case : joue ton pion e5 en d6 !" },
+    { name: "La promotion", pos: "Pb7 Ke1 / kg8", goal: "b8=Q",
+      text: "Quand un pion arrive au bout de l'échiquier, il se transforme en une autre pièce, presque toujours en dame ! Avance le pion b7 jusqu'en b8." },
+    { name: "Échec et mat", pos: "Kg1 Ra1 Pf2 Pg2 Ph2 / kg8 pf7 pg7 ph7", goal: "Ra8",
+      text: "Échec : le roi est attaqué. Échec et mat : il ne peut plus s'échapper, la partie est gagnée ! Le roi noir est coincé derrière ses pions. Trouve le mat en un coup." }
+  ];
+
+  /* ================= École : ouvertures ================= */
+  var OPENINGS = [
+    { name: "Partie italienne", side: "w", line: "e4 e5 Nf3 Nc6 Bc4 Bc5 c3 Nf6 d4",
+      intro: "Une des plus anciennes ouvertures. Les Blancs sortent vite leurs pièces et visent le point faible f7.",
+      notes: ["Le pion prend le centre et libère la dame et le fou.", "Les Noirs font pareil : chacun a sa part du centre.",
+        "Le cavalier sort et attaque le pion e5.", "Le cavalier noir défend le pion e5.",
+        "Le fou vise f7, la case la plus fragile près du roi noir.", "Les Noirs copient : leur fou vise f2.",
+        "Petit coup malin : il prépare d4 pour prendre tout le centre.", "Les Noirs sortent une pièce de plus et attaquent e4.",
+        "Les Blancs frappent au centre : c'est le but de l'Italienne !"] },
+    { name: "Partie espagnole", side: "w", line: "e4 e5 Nf3 Nc6 Bb5 a6 Ba4 Nf6 O-O Be7",
+      intro: "L'ouverture préférée des champions du monde : une pression lente mais très solide.",
+      notes: ["Le pion prend le centre.", "Les Noirs prennent leur part du centre.",
+        "Le cavalier attaque le pion e5.", "Le cavalier défend e5.",
+        "Le fou attaque le cavalier qui défend e5.", "Les Noirs demandent au fou de choisir : reculer ou s'échanger.",
+        "Le fou recule mais garde la pression.", "Le cavalier sort et attaque e4.",
+        "Petit roque : le roi est à l'abri et la tour se rapproche du centre.", "Les Noirs préparent leur propre roque."] },
+    { name: "Défense sicilienne", side: "b", line: "e4 c5 Nf3 d6 d4 cxd4 Nxd4 Nf6 Nc3 a6",
+      intro: "La défense la plus jouée contre 1.e4 : les Noirs créent un jeu déséquilibré pour jouer le gain. Variante Najdorf.",
+      notes: ["Les Blancs prennent le centre.", "Au lieu de copier, les Noirs contrôlent d4 avec un pion de côté.",
+        "Le cavalier sort et prépare d4.", "Protège la case e5 et ouvre la route au fou.",
+        "Les Blancs ouvrent le centre.", "Les Noirs échangent leur pion de côté contre un pion du centre.",
+        "Le cavalier reprend et se place au centre.", "Le cavalier attaque le pion e4.",
+        "Défend e4 en sortant une pièce.", "La Najdorf ! Ce petit coup empêche les pièces blanches de venir en b5."] },
+    { name: "Défense française", side: "b", line: "e4 e6 d4 d5 Nc3 Nf6 Bg5 Be7",
+      intro: "Une défense solide : les Noirs construisent un mur de pions et contre-attaquent plus tard.",
+      notes: ["Les Blancs prennent le centre.", "Prépare d5 pour attaquer e4 avec un pion protégé.",
+        "Les Blancs prennent encore plus de centre.", "Les Noirs attaquent le pion e4.",
+        "Le cavalier défend e4.", "Une deuxième attaque sur e4.",
+        "Le fou cloue le cavalier : s'il bougeait, la dame serait attaquée.", "Le fou noir s'interpose et défait le clouage."] },
+    { name: "Défense Caro-Kann", side: "b", line: "e4 c6 d4 d5 Nc3 dxe4 Nxe4 Bf5 Ng3 Bg6",
+      intro: "Une défense très solide, parfaite pour ceux qui aiment les positions sûres.",
+      notes: ["Les Blancs prennent le centre.", "Prépare d5, tout en laissant le fou des cases blanches libre de sortir.",
+        "Les Blancs prennent le centre.", "Les Noirs attaquent e4.",
+        "Le cavalier défend e4.", "Les Noirs prennent le pion.",
+        "Le cavalier reprend au centre.", "Le fou sort en attaquant le cavalier : c'est l'atout de la Caro-Kann.",
+        "Le cavalier attaque le fou à son tour.", "Le fou recule et reste actif."] },
+    { name: "Défense scandinave", side: "b", line: "e4 d5 exd5 Qxd5 Nc3 Qa5 d4 Nf6 Nf3 c6",
+      intro: "Les Noirs attaquent le pion e4 dès le premier coup. Simple et direct.",
+      notes: ["Les Blancs prennent le centre.", "Attaque immédiate du pion e4.",
+        "Les Blancs prennent.", "La dame reprend : elle sort très tôt, ce qui est rare.",
+        "Le cavalier sort en attaquant la dame : les Blancs gagnent du temps.", "La dame se met à l'abri sur le côté.",
+        "Les Blancs prennent le centre.", "Développement naturel du cavalier.",
+        "Développement naturel aussi.", "Donne une case de retraite à la dame et rend la position solide."] },
+    { name: "Gambit dame", side: "w", line: "d4 d5 c4 e6 Nc3 Nf6 Bg5 Be7 e3 O-O",
+      intro: "La grande ouverture avec 1.d4 : les Blancs offrent un pion pour gagner le centre. Ici, le gambit dame refusé.",
+      notes: ["Le pion prend le centre, protégé par la dame.", "Les Noirs bloquent.",
+        "Le gambit : les Blancs offrent le pion c4 pour détourner le pion d5.", "Les Noirs refusent et soutiennent d5.",
+        "Encore une pression sur d5.", "Le cavalier défend d5.",
+        "Le fou cloue le cavalier sur la dame.", "Le fou défait le clouage.",
+        "Ouvre la route au fou des cases blanches.", "Petit roque : le roi noir est à l'abri."] },
+    { name: "Système de Londres", side: "w", line: "d4 d5 Bf4 Nf6 e3 e6 Nf3 c5 c3 Nc6 Nbd2 Bd6",
+      intro: "Un système facile à retenir : les Blancs placent leurs pièces presque toujours de la même façon.",
+      notes: ["Le pion prend le centre.", "Les Noirs bloquent.",
+        "Le fou sort AVANT de jouer e3 : c'est la clé du Londres.", "Développement du cavalier.",
+        "Solide : soutient d4 et libère l'autre fou.", "Les Noirs libèrent leur fou.",
+        "Développement du cavalier.", "Les Noirs attaquent le centre blanc.",
+        "Les Blancs forment un triangle de pions très solide.", "Encore une pression sur d4.",
+        "Le cavalier soutient le centre, la position reste compacte.", "Les Noirs proposent d'échanger les fous."] },
+    { name: "Défense est-indienne", side: "b", line: "d4 Nf6 c4 g6 Nc3 Bg7 e4 d6 Nf3 O-O Be2 e5",
+      intro: "Les Noirs laissent le centre aux Blancs… pour mieux l'attaquer ensuite.",
+      notes: ["Le pion prend le centre.", "Le cavalier contrôle la case e4.",
+        "Les Blancs prennent plus d'espace.", "Prépare le « fianchetto » : le fou va se placer sur la grande diagonale.",
+        "Développement du cavalier.", "Le fou sur la grande diagonale : il est très puissant.",
+        "Les Blancs construisent un grand centre.", "Contrôle la case e5.",
+        "Développement du cavalier.", "Petit roque : le roi est en sécurité.",
+        "Les Blancs se préparent à roquer.", "Le bon moment : les Noirs attaquent le centre !"] },
+    { name: "Partie anglaise", side: "w", line: "c4 e5 Nc3 Nf6 Nf3 Nc6 g3 d5 cxd5 Nxd5 Bg2 Nb6",
+      intro: "Les Blancs commencent par le côté : une ouverture souple et moderne.",
+      notes: ["Contrôle la case d5 depuis le côté.", "Les Noirs prennent le centre.",
+        "Encore un contrôle sur d5.", "Développement du cavalier.",
+        "Le cavalier attaque le pion e5.", "Le cavalier défend e5.",
+        "Prépare le fianchetto du fou.", "Les Noirs frappent au centre.",
+        "Les Blancs prennent.", "Le cavalier reprend au centre.",
+        "Le fou sur la grande diagonale attaque le cavalier d5.", "Le cavalier recule à l'abri."] }
+  ];
+
+  // Conversion des lignes en coups légaux (vérifie au passage qu'elles sont correctes)
+  OPENINGS.forEach(function (o) {
+    o.sans = o.line.split(" ");
+    o.moves = []; o.states = [initialState()];
+    for (var i = 0; i < o.sans.length; i++) {
+      var st = o.states[i], m = sanToMove(st, o.sans[i]);
+      if (!m) throw new Error(o.name + " : coup invalide " + o.sans[i]);
+      o.moves.push(m); o.states.push(makeMove(st, m));
+    }
+  });
+
+  /* ================= Pièces dessinées ================= */
+  // La police de la TV affiche les symboles d'échecs en émoji noir : on dessine les pièces en SVG
+  var BASE = '<rect x="20" y="80" width="60" height="11" rx="3"/>';
+  var SHAPES = {
+    p: '<circle cx="50" cy="30" r="12"/><path d="M37 79 Q39 55 50 44 Q61 55 63 79 Z"/>' + BASE,
+    r: '<path d="M26 44 L26 20 L37 20 L37 29 L45 29 L45 20 L55 20 L55 29 L63 29 L63 20 L74 20 L74 44 Z"/>' +
+       '<path d="M30 79 L33 44 L67 44 L70 79 Z"/>' + BASE,
+    n: '<path d="M30 79 C29 63 39 55 46 47 C38 50 30 53 25 47 C22 41 33 30 39 24 L41 12 L50 21 C67 23 77 41 74 79 Z"/>' +
+       '<circle class="dt" cx="44" cy="32" r="3.5"/>' + BASE,
+    b: '<circle cx="50" cy="13" r="6"/><path d="M50 19 C64 31 66 48 58 60 L42 60 C34 48 36 31 50 19 Z"/>' +
+       '<path class="ln" d="M56 32 L47 45"/><path d="M40 60 L60 60 L65 79 L35 79 Z"/>' + BASE,
+    q: '<circle cx="17" cy="30" r="6"/><circle cx="38" cy="20" r="6"/><circle cx="62" cy="20" r="6"/><circle cx="83" cy="30" r="6"/>' +
+       '<path d="M25 70 L18 34 L34 52 L39 24 L50 48 L61 24 L66 52 L82 34 L75 70 Z"/><path d="M27 70 L73 70 L71 79 L29 79 Z"/>' + BASE,
+    k: '<path d="M46 4 L54 4 L54 12 L61 12 L61 20 L54 20 L54 34 L46 34 L46 20 L39 20 L39 12 L46 12 Z"/>' +
+       '<path d="M29 76 C20 56 30 37 50 37 C70 37 80 56 71 76 Z"/><path d="M28 70 L72 70 L72 79 L28 79 Z"/>' + BASE
+  };
+  function svgPiece(p) {
+    return '<svg viewBox="0 0 100 100" class="pz ' + colorOf(p) + '">' + SHAPES[typeOf(p)] + "</svg>";
+  }
+
+  /* ================= Échiquier ================= */
+  var boardEl = document.getElementById("board");
+  var cells = [];
+  for (var di = 0; di < 64; di++) {
+    var el = document.createElement("div");
+    el.className = "sq";
+    el.setAttribute("data-d", di);
+    var rk = document.createElement("span"); rk.className = "coord r";
+    var fl = document.createElement("span"); fl.className = "coord f";
+    var pc = document.createElement("span"); pc.className = "pcs";
+    el.appendChild(rk); el.appendChild(fl); el.appendChild(pc);
+    boardEl.appendChild(el);
+    cells.push({ el: el, rk: rk, fl: fl, pc: pc, p: undefined });
+  }
+
+  // État général
+  var game = {
+    mode: "play",          // play | lesson | study | train
+    st: initialState(), history: [], level: 0, flip: false,
+    sel: -1, targets: [], hint: -1, over: false, busy: false,
+    lesson: 0, opening: 0, ply: 0, errors: 0, msg: "", msgCls: ""
+  };
+  var cur = { area: "board", r: 6, c: 4, btn: 0 };
+
+  function dispToSq(d) { return game.flip ? 63 - d : d; }
+  function sqToDisp(s) { return game.flip ? 63 - s : s; }
+
+  function setOrientation(flip) {
+    game.flip = flip;
+    for (var d = 0; d < 64; d++) {
+      var r = d >> 3, c = d & 7, cell = cells[d];
+      cell.rk.textContent = c === 0 ? String(flip ? r + 1 : 8 - r) : "";
+      cell.fl.textContent = r === 7 ? (flip ? "hgfedcba" : "abcdefgh").charAt(c) : "";
+      cell.p = undefined;
+    }
+  }
+
+  /* ================= Rendu ================= */
+  function render() {
+    var st = game.st, chk = inCheck(st, st.turn) ? kingSq(st.board, st.turn) : -1;
+    for (var d = 0; d < 64; d++) {
+      var i = dispToSq(d), cell = cells[d], p = st.board[i];
+      var cls = "sq " + (((d >> 3) + (d & 7)) % 2 ? "d" : "l");
+      if (st.last && (st.last.from === i || st.last.to === i)) cls += " last";
+      if (i === chk) cls += " check";
+      if (i === game.hint) cls += " hintsq";
+      if (i === game.sel) cls += " sel";
+      for (var t = 0; t < game.targets.length; t++) if (game.targets[t].to === i) {
+        cls += " target" + (st.board[i] || game.targets[t].epCap ? " capture" : ""); break;
+      }
+      if (cur.area === "board" && cur.r * 8 + cur.c === d) cls += " cursor";
+      cell.el.className = cls;
+      if (cell.p !== p) { cell.pc.innerHTML = p ? svgPiece(p) : ""; cell.p = p; }
+    }
+    renderSide(chk);
+  }
+
+  function setButtons(list) {
+    var html = "";
+    for (var i = 0; i < list.length; i++) html += '<div class="btn' + (cur.area === "panel" && cur.btn === i ? " focus" : "") + '" data-act="' + list[i][1] + '">' + list[i][0] + "</div>";
+    document.getElementById("btns").innerHTML = html;
+  }
+
+  function moveListHTML(o, upto, current) {
+    var out = "";
+    for (var i = 0; i < upto; i++) {
+      if (i % 2 === 0) out += (i / 2 + 1) + ". ";
+      var s = frSan(o.sans[i]);
+      out += (i === current ? "<b>" + s + "</b>" : s) + " ";
+    }
+    return out || "&nbsp;";
+  }
+
+  function renderSide(chk) {
+    var st = game.st, modeEl = document.getElementById("mode"), turnEl = document.getElementById("turn");
+    var infoEl = document.getElementById("info"), noteEl = document.getElementById("note"), keysEl = document.getElementById("keys");
+    var turnTxt = st.turn === "w" ? "Aux Blancs ⚪" : "Aux Noirs ⚫", info = game.msg, infoCls = game.msgCls;
+    keysEl.innerHTML = "<b>Flèches</b> : se déplacer · <b>OK</b> : prendre / poser une pièce<br><b>➡ depuis le bord droit</b> : aller aux boutons · <b>⬅</b> : revenir à l'échiquier";
+
+    if (game.mode === "play") {
+      modeEl.textContent = game.level ? "Contre l'ordinateur · Niveau " + game.level + " · " + LEVEL_NAMES[game.level] : "Deux joueurs";
+      var moves = legalMoves(st);
+      if (!moves.length) {
+        game.over = true;
+        if (chk >= 0) { turnTxt = "Échec et mat !"; info = (st.turn === "w" ? "Les Noirs" : "Les Blancs") + " gagnent 🎉"; }
+        else { turnTxt = "Pat"; info = "Match nul"; }
+      } else if (st.half >= 100) { game.over = true; turnTxt = "Match nul"; info = "Règle des 50 coups"; }
+      else if (insufficient(st.board)) { game.over = true; turnTxt = "Match nul"; info = "Plus assez de pièces pour mater"; }
+      else if (game.busy) info = "L'ordinateur réfléchit…";
+      else if (chk >= 0) info = "⚠ Échec au roi !";
+      else if (game.sel >= 0) info = NAMES[typeOf(st.board[game.sel])] + " sélectionné";
+      noteEl.innerHTML = capturesHTML(st);
+      setButtons([["↩ Annuler le coup", "undo"], ["🔄 Nouvelle partie", "new"], ["🏠 Menu", "menu"]]);
+    } else if (game.mode === "lesson") {
+      var L = LESSONS[game.lesson];
+      modeEl.textContent = "École · Les bases · Leçon " + (game.lesson + 1) + "/" + LESSONS.length;
+      turnTxt = L.name;
+      if (!info && game.sel >= 0) info = "Les points verts montrent où la pièce peut aller.";
+      noteEl.innerHTML = L.text;
+      setButtons([["↺ Remettre la position", "lreset"], ["➡ Leçon suivante", "lnext"], ["📖 Liste des leçons", "bases"]]);
+    } else if (game.mode === "study") {
+      var o = OPENINGS[game.opening];
+      modeEl.textContent = "École · Ouverture · Regarder";
+      turnTxt = o.name;
+      info = game.ply === 0 ? "Appuie sur OK pour voir le premier coup" :
+        (game.ply === o.moves.length ? "Fin de l'ouverture ✔" : "Coup " + game.ply + " sur " + o.moves.length);
+      infoCls = "";
+      var txt = game.ply === 0 ? o.intro : "<b>" + frSan(o.sans[game.ply - 1]) + "</b> — " + o.notes[game.ply - 1];
+      noteEl.innerHTML = txt + '<div class="moves">' + moveListHTML(o, o.moves.length, game.ply - 1) + "</div>";
+      setButtons([["▶ Coup suivant", "snext"], ["◀ Coup précédent", "sprev"], ["🎯 M'entraîner", "train"], ["♟ Liste des ouvertures", "openings"]]);
+      keysEl.innerHTML = "<b>OK</b> sur « Coup suivant » pour avancer";
+    } else if (game.mode === "train") {
+      var o2 = OPENINGS[game.opening];
+      modeEl.textContent = "École · Ouverture · Entraînement (tu joues les " + (o2.side === "w" ? "Blancs" : "Noirs") + ")";
+      turnTxt = o2.name;
+      if (game.ply >= o2.moves.length) { info = "Bravo ! Tu connais cette ouverture 🎉"; infoCls = "good"; }
+      else if (!info) info = game.busy ? "L'adversaire joue…" : "À toi : quel est le coup de l'ouverture ?";
+      var last = game.ply > 0 ? "<b>" + frSan(o2.sans[game.ply - 1]) + "</b> — " + o2.notes[game.ply - 1] : o2.intro;
+      noteEl.innerHTML = last + '<div class="moves">' + moveListHTML(o2, game.ply, game.ply - 1) + "</div>";
+      setButtons([["💡 Indice", "thint"], ["🔄 Recommencer", "train"], ["👀 Revoir l'ouverture", "study"], ["♟ Liste des ouvertures", "openings"]]);
+    }
+    turnEl.textContent = turnTxt;
+    infoEl.textContent = info || "";
+    infoEl.className = infoCls || "";
+  }
+
+  function capturesHTML(st) {
+    var start = "RNBQKBNRPPPPPPPP", count = {}, k, out = "";
+    for (k = 0; k < start.length; k++) {
+      count[start.charAt(k)] = (count[start.charAt(k)] || 0) + 1;
+      count[start.charAt(k).toLowerCase()] = (count[start.charAt(k).toLowerCase()] || 0) + 1;
+    }
+    for (k = 0; k < 64; k++) if (st.board[k]) count[st.board[k]]--;
+    ["Q", "R", "B", "N", "P", "q", "r", "b", "n", "p"].forEach(function (pp) {
+      for (var n = 0; n < Math.max(0, count[pp]); n++) out += svgPiece(pp);
+      if (pp === "P" && out) out += "<br>";
+    });
+    return '<span class="label">' + (out ? "Pièces prises" : "Aucune pièce prise") + '</span><div class="mini">' + out + "</div>";
+  }
+
+  /* ================= Écrans ================= */
+  var screens = ["menu", "list", "game"], menuIdx = 0, list = { items: [], idx: 0, back: "menu" };
+
+  function show(id) {
+    for (var i = 0; i < screens.length; i++) document.getElementById(screens[i]).className = "screen" + (screens[i] === id ? " on" : "");
+    if (id === "menu") renderMenu();
+  }
+  function current() { for (var i = 0; i < screens.length; i++) if (document.getElementById(screens[i]).className.indexOf("on") >= 0) return screens[i]; }
+
+  function renderMenu() {
+    var b = document.querySelectorAll("#menu .btn");
+    for (var i = 0; i < b.length; i++) b[i].className = "btn" + (i === menuIdx ? " focus" : "");
+  }
+
+  function showList(title, sub, items, back) {
+    list.items = items; list.idx = 0; list.back = back;
+    document.getElementById("listTitle").textContent = title;
+    document.getElementById("listSub").textContent = sub;
+    renderList(); show("list");
+  }
+  function renderList() {
+    var html = "";
+    for (var i = 0; i < list.items.length; i++) {
+      var it = list.items[i];
+      html += '<div class="btn' + (i === list.idx ? " focus" : "") + '" data-act="' + it.act + '">' + it.label + (it.small ? "<small>" + it.small + "</small>" : "") + "</div>";
+    }
+    document.getElementById("listItems").innerHTML = html;
+  }
+
+  function showSchool() {
+    showList("🎓 École des échecs", "Apprends les règles, puis les grandes ouvertures", [
+      { label: "📖 Les bases", small: "Comment bougent les pièces, le roque, le mat…", act: "bases" },
+      { label: "♟ Les ouvertures", small: "Les 10 ouvertures les plus connues", act: "openings" },
+      { label: "🏠 Menu principal", act: "menu" }
+    ], "menu");
+  }
+  function showBases() {
+    var items = LESSONS.map(function (l, i) { return { label: (i + 1) + ". " + l.name, act: "lesson" + i }; });
+    items.push({ label: "⬅ Retour", act: "ecole" });
+    showList("📖 Les bases", "Choisis une leçon", items, "ecole");
+  }
+  function showOpenings() {
+    var items = OPENINGS.map(function (o, i) {
+      return { label: o.name, small: (o.side === "w" ? "Avec les Blancs" : "Avec les Noirs") + " · " + frSan(o.sans.slice(0, 4).join(" ")) + "…", act: "open" + i };
+    });
+    items.push({ label: "⬅ Retour", act: "ecole" });
+    showList("♟ Les ouvertures", "Choisis une ouverture à apprendre", items, "ecole");
+  }
+
+  /* ================= Modes ================= */
+  function resetUI(area) {
+    game.sel = -1; game.targets = []; game.hint = -1; game.msg = ""; game.msgCls = ""; game.over = false; game.busy = false;
+    cur.area = area || "board"; cur.btn = 0;
+  }
+
+  function startGame(level) {
+    game.mode = "play"; game.level = level; game.st = initialState(); game.history = [];
+    setOrientation(false); resetUI("board"); cur.r = 6; cur.c = 4;
+    show("game"); render();
+  }
+
+  function startLesson(i) {
+    var L = LESSONS[i];
+    game.mode = "lesson"; game.lesson = i;
+    game.st = customState(L.pos.replace("/", ""), { castle: L.castle, ep: L.ep });
+    setOrientation(false); resetUI("board");
+    for (var s = 63; s >= 0; s--) {   // curseur sur la première pièce blanche
+      if (game.st.board[s] && colorOf(game.st.board[s]) === "w" && typeOf(game.st.board[s]) !== "k") { cur.r = s >> 3; cur.c = s & 7; }
+    }
+    if (i === 6 || i === 5) { var ks = kingSq(game.st.board, "w"); cur.r = ks >> 3; cur.c = ks & 7; }
+    show("game"); render();
+  }
+
+  function startStudy(i) {
+    var o = OPENINGS[i];
+    game.mode = "study"; game.opening = i; game.ply = 0; game.st = o.states[0];
+    setOrientation(o.side === "b"); resetUI("panel"); cur.r = 6; cur.c = 4;
+    show("game"); render();
+  }
+
+  function startTrain(i) {
+    var o = OPENINGS[i];
+    game.mode = "train"; game.opening = i; game.ply = 0; game.errors = 0; game.st = o.states[0];
+    setOrientation(o.side === "b"); resetUI("board"); cur.r = 6; cur.c = 4;
+    show("game"); render();
+    if (o.side === "b") opponentReply();
+  }
+
+  function opponentReply() {
+    var o = OPENINGS[game.opening];
+    if (game.ply >= o.moves.length) { render(); return; }
+    game.busy = true; render();
+    setTimeout(function () {
+      game.st = o.states[game.ply + 1]; game.ply++; game.busy = false;
+      game.msg = ""; render();
+    }, 700);
+  }
+
+  /* ================= Actions joueur ================= */
+  function humanCanMove() {
+    if (game.busy || game.over) return false;
+    if (game.mode === "play") return !game.level || game.st.turn === "w";
+    if (game.mode === "lesson") return true;
+    if (game.mode === "train") {
+      var o = OPENINGS[game.opening];
+      return game.ply < o.moves.length && game.st.turn === o.side;
+    }
+    return false;
+  }
+
+  function clickSquare(sq) {
+    if (!humanCanMove()) return;
+    var p = game.st.board[sq];
+    for (var i = 0; i < game.targets.length; i++) {
+      if (game.targets[i].to === sq) { onMove(game.targets[i]); return; }
+    }
+    if (p && colorOf(p) === game.st.turn) {
+      game.sel = sq;
+      game.targets = legalMoves(game.st).filter(function (m) { return m.from === sq && !(m.captured && typeOf(m.captured) === "k"); });
+    } else { game.sel = -1; game.targets = []; }
+    render();
+  }
+
+  function onMove(m) {
+    game.sel = -1; game.targets = [];
+    if (game.mode === "play") return playMove(m);
+    if (game.mode === "lesson") return lessonMove(m);
+    if (game.mode === "train") return trainMove(m);
+  }
+
+  function playMove(m) {
+    game.history.push(game.st);
+    game.st = makeMove(game.st, m);
+    render();
+    if (game.level && !game.over && game.st.turn === "b") {
+      game.busy = true; render();
+      setTimeout(function () {
+        var reply = bestMove(game.st, game.level);
+        game.busy = false;
+        if (reply) { game.history.push(game.st); game.st = makeMove(game.st, reply); }
+        render();
+      }, 80);
+    }
+  }
+
+  function lessonMove(m) {
+    var L = LESSONS[game.lesson];
+    var ok = !L.goal || (L.goal === "castle" ? !!m.castle : sanToMove(game.st, L.goal) === null ? false :
+      (function (g) { return g.from === m.from && g.to === m.to; })(sanToMove(game.st, L.goal)));
+    if (L.goal && !ok) {
+      game.msg = "Pas tout à fait… essaie encore !"; game.msgCls = "bad"; render(); return;
+    }
+    var nx = makeMove(game.st, m);
+    nx.turn = "w"; nx.ep = -1;          // dans les leçons, ce sont toujours les Blancs qui jouent
+    game.st = nx;
+    if (L.goal) {
+      var mate = L.goal === "Ra8";
+      game.msg = mate ? "Échec et mat ! Bravo 🎉" : "Bravo, c'est ça ! 🎉"; game.msgCls = "good";
+    } else { game.msg = "Bien ! Essaie d'autres déplacements."; game.msgCls = "good"; }
+    render();
+  }
+
+  function trainMove(m) {
+    var o = OPENINGS[game.opening], exp = o.moves[game.ply];
+    if (m.from === exp.from && m.to === exp.to) {
+      game.st = o.states[game.ply + 1]; game.ply++; game.errors = 0; game.hint = -1;
+      game.msg = game.ply >= o.moves.length ? "" : "✔ Bien joué !"; game.msgCls = "good";
+      render();
+      if (game.ply < o.moves.length) opponentReply();
+      else render();
+    } else {
+      game.errors++;
+      if (game.errors >= 2) {
+        game.hint = exp.from;
+        game.msg = "Indice : joue " + frSan(o.sans[game.ply]) + " (la pièce est surlignée en jaune)";
+      } else game.msg = "Ce n'est pas le coup de l'ouverture. Essaie encore !";
+      game.msgCls = "bad";
+      render();
+    }
+  }
+
+  function undo() {
+    if (game.busy || !game.history.length) return;
+    var n = game.level && game.st.turn === "w" && game.history.length >= 2 ? 2 : 1;
+    for (var i = 0; i < n && game.history.length; i++) game.st = game.history.pop();
+    resetUI(cur.area); render();
+  }
+
+  function action(act) {
+    if (act === "2j") startGame(0);
+    else if (/^ia\d$/.test(act)) startGame(parseInt(act.slice(2), 10));
+    else if (act === "ecole") showSchool();
+    else if (act === "bases") showBases();
+    else if (act === "openings") showOpenings();
+    else if (/^lesson\d+$/.test(act)) startLesson(parseInt(act.slice(6), 10));
+    else if (/^open\d+$/.test(act)) startStudy(parseInt(act.slice(4), 10));
+    else if (act === "undo") undo();
+    else if (act === "new") startGame(game.level);
+    else if (act === "menu") show("menu");
+    else if (act === "retour") location.href = "../";
+    else if (act === "lreset") startLesson(game.lesson);
+    else if (act === "lnext") { if (game.lesson + 1 < LESSONS.length) startLesson(game.lesson + 1); else showBases(); }
+    else if (act === "snext") {
+      var o = OPENINGS[game.opening];
+      if (game.ply < o.moves.length) { game.ply++; game.st = o.states[game.ply]; render(); }
+      else { cur.btn = 2; render(); }
+    }
+    else if (act === "sprev") { if (game.ply > 0) { game.ply--; game.st = OPENINGS[game.opening].states[game.ply]; render(); } }
+    else if (act === "train") startTrain(game.opening);
+    else if (act === "study") startStudy(game.opening);
+    else if (act === "thint") {
+      var o2 = OPENINGS[game.opening];
+      if (game.ply < o2.moves.length && humanCanMove()) {
+        game.hint = o2.moves[game.ply].from;
+        game.msg = "Indice : joue " + frSan(o2.sans[game.ply]); game.msgCls = "";
+        render();
+      }
+    }
+  }
+
+  function goBack() {
+    var s = current();
+    if (s === "list") action(list.back);
+    else if (s === "game") {
+      if (game.mode === "lesson") showBases();
+      else if (game.mode === "study" || game.mode === "train") showOpenings();
+      else show("menu");
+    }
+  }
+
+  /* ================= Télécommande / clavier / pointeur ================= */
+  document.addEventListener("click", function (e) {
+    var t = e.target;
+    while (t && t !== document.body) {
+      if (t.getAttribute && t.getAttribute("data-act")) { action(t.getAttribute("data-act")); return; }
+      if (t.getAttribute && t.getAttribute("data-d") !== null) {
+        var d = parseInt(t.getAttribute("data-d"), 10);
+        cur.area = "board"; cur.r = d >> 3; cur.c = d & 7;
+        clickSquare(dispToSq(d)); return;
+      }
+      t = t.parentNode;
+    }
+  });
+
+  document.addEventListener("keydown", function (e) {
+    var k = e.keyCode, handled = true, s = current();
+    if (k === 10009 || k === 8 || k === 27) { e.preventDefault(); goBack(); return; }
+
+    if (s === "menu") {
+      var n = document.querySelectorAll("#menu .btn").length;
+      if (k === 38) menuIdx = (menuIdx + n - 1) % n;
+      else if (k === 40) menuIdx = (menuIdx + 1) % n;
+      else if (k === 13) { action(document.querySelectorAll("#menu .btn")[menuIdx].getAttribute("data-act")); e.preventDefault(); return; }
+      else handled = false;
+      if (handled) { e.preventDefault(); renderMenu(); }
+      return;
+    }
+    if (s === "list") {
+      var len = list.items.length;
+      if (k === 38) list.idx = Math.max(0, list.idx - 2);
+      else if (k === 40) list.idx = Math.min(len - 1, list.idx + 2);
+      else if (k === 37) list.idx = Math.max(0, list.idx - 1);
+      else if (k === 39) list.idx = Math.min(len - 1, list.idx + 1);
+      else if (k === 13) { action(list.items[list.idx].act); e.preventDefault(); return; }
+      else handled = false;
+      if (handled) { e.preventDefault(); renderList(); }
+      return;
+    }
+
+    var btns = document.querySelectorAll("#btns .btn");
+    if (k === 403) { if (game.mode === "play") undo(); }
+    else if (cur.area === "board") {
+      if (k === 37) cur.c = Math.max(0, cur.c - 1);
+      else if (k === 39) { if (cur.c === 7) cur.area = "panel"; else cur.c++; }
+      else if (k === 38) cur.r = Math.max(0, cur.r - 1);
+      else if (k === 40) cur.r = Math.min(7, cur.r + 1);
+      else if (k === 13) { clickSquare(dispToSq(cur.r * 8 + cur.c)); e.preventDefault(); return; }
+      else handled = false;
+    } else {
+      if (k === 37) cur.area = "board";
+      else if (k === 38) cur.btn = (cur.btn + btns.length - 1) % btns.length;
+      else if (k === 40) cur.btn = (cur.btn + 1) % btns.length;
+      else if (k === 13) { action(btns[cur.btn].getAttribute("data-act")); e.preventDefault(); return; }
+      else handled = false;
+    }
+    if (handled) { e.preventDefault(); render(); }
+  });
+
+  try { if (window.tizen && tizen.tvinputdevice) tizen.tvinputdevice.registerKey("ColorF0Red"); } catch (err) {}
+
+  window.ChessEngine = { initialState: initialState, legalMoves: legalMoves, makeMove: makeMove, bestMove: bestMove,
+    sanToMove: sanToMove, openings: OPENINGS, lessons: LESSONS, customState: customState };
+  setOrientation(false);
+  renderMenu();
+})();
+</script>
+</body>
+</html>
