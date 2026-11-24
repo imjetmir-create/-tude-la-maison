@@ -8,7 +8,7 @@
   ];
   var SUBJECTS = [
     { id: "maths", name: "Mathématiques", icon: "🔢" },
-    { id: "francais", name: "Français", icon: "📚", soon: true },
+    { id: "francais", name: "Français", icon: "📚" },
     { id: "allemand", name: "Allemand", icon: "💬", soon: true }
   ];
   var QUIZ_LEN = 10, SHEET_LEN = 6;
@@ -56,8 +56,10 @@
     var p = S.pid ? profile(S.pid) : null, crumbs = '<span class="logo">🏫 École TV</span>';
     if (p) crumbs += ' <span class="sep">›</span> <span style="color:' + p.color + '">' + p.icon + " " + p.name + "</span>";
     if (S.tid) crumbs += ' <span class="sep">›</span> ' + theme(S.tid).title;
-    app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? "⭐ " + totalStars(p.id) : "") +
-      '<span class="backhint">↩ Retour</span></div></div><div class="main" id="main">' + html + '</div><div id="toast"></div>';
+    // Boutons toujours visibles en haut : revenir à l'écran précédent ou à l'accueil
+    var nav = S.v === "home" ? "" : '<div class="nav">' + btn("⬅ Retour", "back", { cls: "btn nav", k: "nav-back" }) + btn("🏠 Accueil", "home", { cls: "btn nav", k: "nav-home" }) + "</div>";
+    app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? "⭐ " + totalStars(p.id) : "") + "</div>" + nav +
+      '</div><div class="main" id="main">' + html + '</div><div id="toast"></div>';
     var el = (focusKey && app.querySelector('[data-k="' + focusKey + '"]')) || app.querySelector(".f.def") || app.querySelector(".f");
     if (el) setFocus(el);
   }
@@ -68,7 +70,7 @@
     el.className += " focus";
     focusKey = el.getAttribute("data-k");
     var m = document.getElementById("main");
-    if (m) {
+    if (m && m.contains(el)) {
       var r = el.getBoundingClientRect(), mr = m.getBoundingClientRect();
       if (r.bottom > mr.bottom - 10) m.scrollTop += r.bottom - mr.bottom + 30;
       else if (r.top < mr.top + 10) m.scrollTop -= mr.top - r.top + 30;
@@ -183,7 +185,7 @@
       if (done) { prog(S.pid, S.tid).ex = true; save(); }
       h += '<div class="excol"><div class="qcard">' + q.text + choicesList(q) + (done ? '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div>" : "") + "</div>";
       h += '<div class="expl">' + (S.k ? stepsHTML(q, S.k) : '<div class="sub">Essaie d\'abord de trouver toi-même, puis appuie sur <b>OK</b> pour voir la correction pas à pas.</div>') + "</div></div>";
-      h += '<div class="bar">' + (!done ? btn("▶ Étape suivante", "exnext", { def: true }) : S.n < 3 ? btn("🔄 Autre exemple", "exmore", { def: true }) : "") +
+      h += '<div class="bar">' + (S.k > 0 ? btn("◀ Étape précédente", "exprev") : "") + (!done ? btn("▶ Étape suivante", "exnext", { def: true }) : S.n < 3 ? btn("🔄 Autre exemple", "exmore", { def: true }) : "") +
         btn("✏️ Sur ma feuille", "step|sheet", { def: done && S.n >= 3 }) + "</div>";
       return h;
     },
@@ -203,7 +205,7 @@
       var q = S.qs[S.i];
       h = '<div class="kicker">✏️ Correction · exercice ' + (S.i + 1) + " / " + S.qs.length + '</div><div class="excol"><div class="qcard">' + q.text + choicesList(q) +
         '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div></div>" + '<div class="expl">' + stepsHTML(q) + "</div></div>";
-      return h + '<div class="bar">' + btn('<span class="kb green"></span> J\'avais juste', "smark|1", { def: true, cls: "btn good" }) + btn('<span class="kb red"></span> Je m\'étais trompé·e', "smark|0", { cls: "btn bad" }) + "</div>";
+      return h + '<div class="bar">' + btn(S.i > 0 ? "◀ Exercice précédent" : "◀ Revoir la feuille", "sprev") + btn('<span class="kb green"></span> J\'avais juste', "smark|1", { def: true, cls: "btn good" }) + btn('<span class="kb red"></span> Je m\'étais trompé·e', "smark|0", { cls: "btn bad" }) + "</div>";
     },
     quiz: function () {
       var q = S.qs[S.i], h = '<div class="qhead"><div class="kicker">🎯 Quiz · question ' + (S.i + 1) + " / " + QUIZ_LEN + '</div><div class="pdots">';
@@ -297,6 +299,9 @@
     else if (name === "lnext") { S.i++; focusKey = null; render(); }
     else if (name === "lprev") { S.i--; focusKey = null; render(); }
     else if (name === "exnext") { S.k++; render(); }
+    else if (name === "exprev") { S.k--; focusKey = null; render(); }
+    else if (name === "sprev") { if (S.i > 0) { S.i--; S.marks.pop(); } else S.phase = "do"; focusKey = null; render(); }
+    else if (name === "home") { hist = []; S = null; go({ v: "home" }); }
     else if (name === "exmore") { S.n++; S.k = 0; S.q = newQ(theme(S.tid), S.n); focusKey = null; render(); }
     else if (name === "snew") startStep("sheet");
     else if (name === "scor") { S.phase = "cor"; S.i = 0; focusKey = null; render(); }
