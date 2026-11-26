@@ -4,7 +4,8 @@
   var THEMES = window.THEMES || [];
   var PROFILES = [
     { id: "artiste", name: "L'Artiste", cls: "5H", grade: 5, icon: "🎨", color: "#ff8a5c" },
-    { id: "tempetueux", name: "Le Tempétueux", cls: "7H", grade: 7, icon: "⚡", color: "#8b9bff" }
+    { id: "tempetueux", name: "Le Tempétueux", cls: "7H", grade: 7, icon: "⚡", color: "#8b9bff" },
+    { id: "graine", name: "Graine de star", cls: "1H · 4 ans", grade: 4, icon: "🌟", color: "#ff7fc8" }
   ];
   var SUBJECTS = [
     { id: "maths", name: "Mathématiques", icon: "🔢" },
@@ -47,13 +48,14 @@
   function go(state) { if (S) hist.push({ s: S, f: focusKey }); S = state; focusKey = null; render(); }
   function back() {
     clearTimeout(timer);
+    if (window.KSAY) KSAY.stop();
     if (!hist.length) return;
     var h = hist.pop(); S = h.s; focusKey = h.f; render();
   }
 
   function btn(label, action, o) {
     o = o || {};
-    return '<div class="f ' + (o.cls || "btn") + (o.def ? " def" : "") + '" data-a="' + esc(action) + '" data-k="' + esc(o.k || action) + '">' + label + "</div>";
+    return '<div class="f ' + (o.cls || "btn") + (o.def ? " def" : "") + '" data-a="' + esc(action) + '" data-k="' + esc(o.k || action) + '"' + (o.say ? ' data-say="' + o.say + '"' : "") + ">" + label + "</div>";
   }
 
   function render() {
@@ -66,10 +68,13 @@
     else if (S.exam) crumbs += ' <span class="sep">›</span> ' + S.exam.title;
     else if (/^(defimenu|defi|dresult)$/.test(S.v)) crumbs += ' <span class="sep">›</span> ⚡ Défi éclair';
     else if (S.v === "badges") crumbs += ' <span class="sep">›</span> 🎖️ Mes badges';
+    else if (S.gid) crumbs += ' <span class="sep">›</span> ' + kgame(S.gid)[2];
+    else if (S.kw) crumbs += ' <span class="sep">›</span> ' + kworld(S.kw).name;
+    else if (S.v === "kalbum") crumbs += ' <span class="sep">›</span> 📒 Mon album';
     else if (S.sub) crumbs += ' <span class="sep">›</span> ' + subjectName(S.sub);
     // Boutons toujours visibles en haut : revenir à l'écran précédent ou à l'accueil
     var nav = S.v === "home" ? "" : '<div class="nav">' + btn("⬅ Retour", "back", { cls: "btn nav", k: "nav-back" }) + btn("🏠 Accueil", "home", { cls: "btn nav", k: "nav-home" }) + "</div>";
-    app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? "⭐ " + totalStars(p.id) : "") + "</div>" + nav +
+    app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? (p.grade === 4 ? "🌟 " + kd(p.id).st.length : "⭐ " + totalStars(p.id)) : "") + "</div>" + nav +
       '</div><div class="main" id="main">' + html + '</div><div id="toast"></div>';
     var el = (focusKey && app.querySelector('[data-k="' + focusKey + '"]')) || app.querySelector(".f.def") || app.querySelector(".f");
     if (el) setFocus(el);
@@ -106,7 +111,7 @@
       var dist = main + side * 2.5;
       if (dist < bd) { bd = dist; best = e; }
     }
-    if (best) setFocus(best);
+    if (best) { setFocus(best); var sv = best.getAttribute("data-say"); if (sv && window.KSAY) KSAY.play([sv]); }
   }
 
   function toast(msg) {
@@ -271,12 +276,64 @@
     if (record && S.score > 0) confetti();
   }
 
+  /* ---------- Graine de star (4 ans) : des jeux en images, sans échec ---------- */
+  function kd(pid) { var p = data.p[pid] || (data.p[pid] = { t: {} }); return p.k || (p.k = { w: {}, st: [] }); }
+  function kworld(id) { var w = null; KIDS.worlds.forEach(function (x) { if (x.id === id) w = x; }); return w; }
+  function kgame(gid) { var g = null; KIDS.worlds.forEach(function (w) { w.games.forEach(function (x) { if (x[0] === gid) g = x; }); }); return g; }
+  // le jeu devient un peu plus difficile toutes les 3 parties gagnées
+  function klevel(pid, gid) { return 1 + Math.min(2, Math.floor((kd(pid).w[gid] || 0) / 3)); }
+  function kstart(gid) {
+    var l = klevel(S.pid, gid), next = { pid: S.pid, kw: S.kw, gid: gid, lvl: l };
+    if (gid === "memo") { next.v = "kmemo"; next.cards = KIDS.memo(l); next.first = -1; }
+    else { next.v = "kplay"; next.n = 0; next.len = 5; next.q = KIDS.gen(gid, l); next.tried = []; next.yes = -1; }
+    if (S.v === "kwin") { S = next; focusKey = null; render(); } else go(next);
+    KSAY.play(gid === "memo" ? ["memo"] : S.q.say);
+  }
+  function kpick(i) {
+    var q = S.q, st = S;
+    if (S.lock || S.tried.indexOf(i) >= 0) return;
+    if (i === q.ok) {
+      S.lock = true; S.yes = i; render();
+      KSAY.play((q.after || []).concat([KSAY.praise()]));
+      setTimeout(function () {
+        if (S !== st) return;
+        S.n++;
+        if (S.n >= S.len) { kwin(); return; }
+        S.q = KIDS.gen(S.gid, S.lvl); S.tried = []; S.lock = false; S.yes = -1; focusKey = null; render();
+        KSAY.play(S.q.say);
+      }, 2000);
+    } else { S.tried.push(i); render(); KSAY.play([KSAY.oops()]); }
+  }
+  function kwin() {
+    var k = kd(S.pid), all = KIDS.data.stickers, free = all.filter(function (x) { return k.st.indexOf(x) < 0; }), s = U.pick(free.length ? free : all);
+    k.w[S.gid] = (k.w[S.gid] || 0) + 1;
+    if (k.st.indexOf(s) < 0) k.st.push(s);
+    save();
+    S = { v: "kwin", pid: S.pid, kw: S.kw, gid: S.gid, sticker: s, isNew: free.length > 0 }; focusKey = null; render();
+    KSAY.play(["win"]); confetti();
+  }
+  function kmemo(i) {
+    var c = S.cards[i], st = S;
+    if (S.lock || c.open || c.done) return;
+    c.open = true;
+    if (S.first < 0) { S.first = i; render(); return; }
+    var a = S.cards[S.first]; S.first = -1;
+    if (a.e === c.e) {
+      a.done = c.done = true; render();
+      if (S.cards.every(function (x) { return x.done; })) { S.lock = true; KSAY.play([KSAY.praise()]); setTimeout(function () { if (S === st) kwin(); }, 1500); }
+      else KSAY.play(["memo_ok"]);
+    } else {
+      S.lock = true; render();
+      setTimeout(function () { if (S !== st) return; a.open = c.open = false; S.lock = false; render(); }, 1300);
+    }
+  }
+
   /* ---------- Écrans ---------- */
   var VIEWS = {
     home: function () {
-      var h = '<div class="hero"><h1>🏫 École TV</h1><div class="sub">Qui vient apprendre aujourd\'hui ?</div><div class="cards">';
+      var h = '<div class="hero"><h1>🏫 École TV</h1><div class="sub">Qui vient apprendre aujourd\'hui ?</div><div class="cards home">';
       PROFILES.forEach(function (p, i) {
-        h += btn('<div class="av" style="background:' + p.color + '">' + p.icon + '</div><div class="pn">' + p.name + '</div><div class="pc">' + p.cls + " · ⭐ " + totalStars(p.id) + "</div>",
+        h += btn('<div class="av" style="background:' + p.color + '">' + p.icon + '</div><div class="pn">' + p.name + '</div><div class="pc">' + p.cls + " · " + (p.grade === 4 ? "🌟 " + kd(p.id).st.length : "⭐ " + totalStars(p.id)) + "</div>",
           "profile|" + p.id, { cls: "card prof", def: i === 0 });
       });
       h += btn('<div class="av big"><svg viewBox="0 0 100 100" style="width:11vh;height:11vh" fill="#fbfaf6" stroke="#1a1a1a" stroke-width="4" stroke-linejoin="round">' +
@@ -348,6 +405,46 @@
       var h = '<div class="hero"><h1>' + (S.record && S.score > 0 ? "🎉 Nouveau record !" : "⏱️ Temps écoulé !") + '</h1><div class="score">' + S.score + ' <span class="pts">points</span></div>';
       h += '<div class="sub">' + subjectName(S.sub) + " · " + S.n + " questions en 60 secondes" + (S.old ? " · ancien record : " + S.old : "") + "</div>" + badgeBanner();
       return h + '<div class="bar center">' + btn("🔄 Rejouer", "defi|" + S.sub, { def: true }) + btn("⚡ Choisir un autre défi", "back") + "</div></div>";
+    },
+    kworlds: function () {
+      var k = kd(S.pid), h = '<div class="hero"><h1>🌟 Coucou Graine de star !</h1><div class="sub">À quoi veux-tu jouer ?</div><div class="cards kw">';
+      KIDS.worlds.forEach(function (w, i) {
+        h += btn('<div class="av" style="background:' + w.color + '">' + w.icon + '</div><div class="pn">' + w.name + "</div>", "kworld|" + w.id, { cls: "card kcard", def: i === 0, say: "w_" + w.id });
+      });
+      return h + '</div><div class="subrow">' + btn("📒 Mon album · 🌟 " + k.st.length, "kalbum", { cls: "btn big2" }) + "</div></div>";
+    },
+    kgames: function () {
+      var w = kworld(S.kw), k = kd(S.pid), h = '<div class="hero"><h1>' + w.icon + " " + w.name + '</h1><div class="cards kw">';
+      w.games.forEach(function (g, i) {
+        var n = k.w[g[0]] || 0;
+        h += btn('<div class="av" style="background:' + w.color + '">' + g[1] + '</div><div class="pn">' + g[2] + '</div><div class="pc">' + (n ? "🌟 × " + n : "Nouveau !") + "</div>", "kgame|" + g[0], { cls: "card kcard", def: i === 0 });
+      });
+      return h + "</div></div>";
+    },
+    kplay: function () {
+      var q = S.q, h = '<div class="khead"><div class="kdots">';
+      for (var i = 0; i < S.len; i++) h += '<span class="' + (i < S.n ? "on" : "") + '"></span>';
+      h += '</div><div class="kcap">' + q.cap + "</div>" + btn("🔊", "ksay", { cls: "btn ksay" }) + "</div>";
+      if (q.show) h += '<div class="kshow">' + q.show + "</div>";
+      h += '<div class="kchoices' + (q.ccls ? " " + q.ccls : "") + (q.choices.length > 3 ? " four" : "") + (q.show ? "" : " tall") + '">';
+      q.choices.forEach(function (c, i) {
+        h += btn(c, "kpick|" + i, { cls: "kc" + (S.tried.indexOf(i) >= 0 ? " nope" : "") + (S.yes === i ? " yes" : ""), k: "c" + i, def: i === 0, say: q.says ? q.says[i] : "" });
+      });
+      return h + "</div>" + (q.hint ? '<div class="hint">' + q.hint + "</div>" : "");
+    },
+    kmemo: function () {
+      var n = S.cards.length, h = '<div class="khead"><div class="kcap">🃏 Trouve les paires !</div>' + btn("🔊", "ksay", { cls: "btn ksay" }) + '</div><div class="kmemo c' + (n > 8 ? 6 : n / 2) + '">';
+      S.cards.forEach(function (c, i) { var up = c.open || c.done; h += btn(up ? c.e : "🌟", "kmemo|" + i, { cls: "kc km" + (up ? " up" : "") + (c.done ? " done" : ""), k: "m" + i, def: i === 0 }); });
+      return h + "</div>";
+    },
+    kwin: function () {
+      return '<div class="hero"><h1>🎉 Bravo !</h1><div class="ksticker">' + S.sticker + '</div><div class="sub">' + (S.isNew ? "Un nouvel autocollant pour ton album !" : "Encore un autocollant !") + '</div><div class="bar center">' +
+        btn("🔄 Rejouer", "kgame|" + S.gid, { def: true }) + btn("🎮 Autre jeu", "back") + btn("📒 Mon album", "kalbum") + "</div></div>";
+    },
+    kalbum: function () {
+      var k = kd(S.pid), all = KIDS.data.stickers, h = '<div class="kicker">📒 Mon album : ' + k.st.length + " / " + all.length + ' autocollants</div><div class="kalbum">';
+      all.forEach(function (s) { var got = k.st.indexOf(s) >= 0; h += '<span class="' + (got ? "" : "off") + '">' + (got ? s : "?") + "</span>"; });
+      return h + '</div><div class="bar center">' + btn("⬅ Retour", "back", { def: true }) + "</div>";
     },
     badges: function () {
       var c = stats(S.pid), got = 0, h = '<div class="bgrid">';
@@ -557,7 +654,13 @@
 
   function act(a) {
     var p = a.split("|"), name = p[0], arg = p[1];
-    if (name === "profile") go({ v: "subjects", pid: arg });
+    if (name === "profile") { if (profile(arg).grade === 4) { go({ v: "kworlds", pid: arg }); KSAY.play(["hello"]); } else go({ v: "subjects", pid: arg }); }
+    else if (name === "kworld") { go({ v: "kgames", pid: S.pid, kw: arg }); KSAY.play(["w_" + arg, "choose"]); }
+    else if (name === "kgame") kstart(arg);
+    else if (name === "kpick") kpick(+arg);
+    else if (name === "kmemo") kmemo(+arg);
+    else if (name === "ksay") KSAY.play(S.v === "kmemo" ? ["memo"] : S.q.say);
+    else if (name === "kalbum") { go({ v: "kalbum", pid: S.pid }); KSAY.play(["album"]); }
     else if (name === "subject") {
       var sub = null; SUBJECTS.forEach(function (s) { if (s.id === arg) sub = s; });
       if (sub.soon) toast(sub.icon + " " + sub.name + " arrive bientôt !"); else go({ v: "map", pid: S.pid, sub: arg });

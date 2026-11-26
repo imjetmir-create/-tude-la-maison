@@ -1,0 +1,188 @@
+﻿album	Voici ton album d'autocollants !
+avec	Qu'est-ce qui va avec
+b1	Bravo !
+b2	Super !
+b3	Génial !
+b4	Bien joué !
+b5	Tu es une star !
+b6	Youpi !
+c_blanc	le blanc
+c_bleu	le bleu
+c_jaune	le jaune
+c_marron	le marron
+c_noir	le noir
+c_orange	le orange
+c_rose	le rose
+c_rouge	le rouge
+c_vert	le vert
+c_violet	le violet
+choose	Choisis un jeu !
+combien	Compte ! Combien y en a-t-il ?
+cr_abeille	Qui fabrique le miel ?
+cr_canard	Qui fait : coin, coin ?
+cr_chat	Qui fait : miaou ?
+cr_chien	Qui fait : ouaf, ouaf ?
+cr_chouette	Qui fait : hou, hou, la nuit ?
+cr_cochon	Qui fait : groin, groin ?
+cr_coq	Qui fait : cocorico ?
+cr_grenouille	Qui fait : croa, croa ?
+cr_lion	Qui rugit très fort ?
+cr_mouton	Qui fait : bê, bê ?
+cr_vache	Qui fait : meuh ?
+debut	Qu'est-ce qui commence comme
+e_content	Qui est content ?
+e_fache	Qui est fâché ?
+e_fatigue	Qui est fatigué ?
+e_peur	Qui a peur ?
+e_surpris	Qui est surpris ?
+e_triste	Qui est triste ?
+grand	Montre-moi le plus grand !
+hello	Coucou ma graine de star ! À quoi veux-tu jouer ?
+intrus	Trouve l'intrus ! Lequel n'est pas comme les autres ?
+l_A	A.
+l_B	B.
+l_C	C.
+l_D	D.
+l_E	E.
+l_F	F.
+l_I	I.
+l_L	L.
+l_M	M.
+l_N	N.
+l_O	O.
+l_P	P.
+l_R	R.
+l_S	S.
+l_T	T.
+l_U	U.
+l_V	V.
+m_faim	J'ai faim ! Qu'est-ce que je mange ?
+m_froid	Il neige, il fait très froid ! Qu'est-ce qu'on met ?
+m_noir	Il fait tout noir ! Qu'est-ce qu'on allume ?
+m_nuit	C'est la nuit, il est tard ! Où va-t-on ?
+m_plage	Il fait chaud, on va à la plage ! Qu'est-ce qu'on prend ?
+m_pluie	Il pleut ! Qu'est-ce qu'on prend ?
+memo	Trouve les paires ! Choisis deux cartes.
+memo_ok	Une paire !
+moins	Où y en a-t-il le moins ?
+montre	Montre-moi
+montre_chiffre	Montre-moi le chiffre
+montre_lettre	Montre-moi la lettre
+n_abeille	l'abeille
+n_bouche	la bouche
+n_bras	le bras
+n_chien	le chien
+n_cle	la clé
+n_dent	la dent
+n_gateau	le gâteau
+n_jambe	la jambe
+n_lapin	le lapin
+n_main	la main
+n_nez	le nez
+n_oreille	l'oreille
+n_pied	le pied
+n_pluie	la pluie
+n_poule	la poule
+n_singe	le singe
+n_souris	la souris
+n_vache	la vache
+n_yeux	les yeux
+nb0	zéro
+nb1	un
+nb10	dix
+nb2	deux
+nb3	trois
+nb4	quatre
+nb5	cinq
+nb6	six
+nb7	sept
+nb8	huit
+nb9	neuf
+o1	Essaie encore !
+o2	Presque ! Essaie encore.
+o3	Hum, ce n'est pas ça. Essaie encore !
+ombre	Trouve la bonne ombre !
+petit	Montre-moi le plus petit !
+plus	Où y en a-t-il le plus ?
+rime	Qu'est-ce qui rime avec
+s_carre	le carré
+s_coeur	le cœur
+s_etoile	l'étoile
+s_rectangle	le rectangle
+s_rond	le rond
+s_triangle	le triangle
+suite	Qu'est-ce qui vient après ?
+w_baguette	baguette
+w_ballon	ballon
+w_banane	banane
+w_bateau	bateau
+w_bougie	bougie
+w_bras	bras
+w_bus	bus
+w_camion	camion
+w_chapeau	chapeau
+w_chat	chat
+w_chateau	château
+w_chaussette	chaussette
+w_chaussure	chaussure
+w_cheval	cheval
+w_chevre	chèvre
+w_chien	chien
+w_chocolat	chocolat
+w_cochon	cochon
+w_feu	feu
+w_fleur	fleur
+w_formes	Les formes et les couleurs
+w_fourchette	fourchette
+w_fourmi	fourmi
+w_fraise	fraise
+w_fromage	fromage
+w_fusee	fusée
+w_gateau	gâteau
+w_kiwi	kiwi
+w_lait	lait
+w_lapin	lapin
+w_lettres	Les lettres et les sons
+w_lion	lion
+w_lit	lit
+w_livre	livre
+w_logique	Les jeux de logique
+w_lune	lune
+w_lunettes	lunettes
+w_main	main
+w_maison	maison
+w_miel	miel
+w_monde	Découvrir le monde
+w_montagne	montagne
+w_moto	moto
+w_mouton	mouton
+w_numbers	Les nombres
+w_pain	pain
+w_papillon	papillon
+w_piano	piano
+w_poire	poire
+w_poisson	poisson
+w_pomme	pomme
+w_poule	poule
+w_poussin	poussin
+w_raisin	raisin
+w_renard	renard
+w_requin	requin
+w_riz	riz
+w_robot	robot
+w_sac	sac
+w_sapin	sapin
+w_serpent	serpent
+w_singe	singe
+w_soleil	soleil
+w_souris	souris
+w_telephone	téléphone
+w_tigre	tigre
+w_tomate	tomate
+w_tortue	tortue
+w_train	train
+w_trompette	trompette
+w_vache	vache
+w_velo	vélo
+w_voiture	voiture
+win	Bravo ! Tu as gagné un autocollant !
