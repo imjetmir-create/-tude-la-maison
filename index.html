@@ -253,6 +253,14 @@
   .rq .clist { font-size: 1.9vh; gap: .4vh 2vh; margin-top: .6vh; } .rq .qq { margin: 0; display: inline; }
   .rq .tiles { font-size: 2.1vh; }
 
+  /* Problèmes : tableaux et diagrammes */
+  table.ptab { border-collapse: collapse; margin: 0 0 2vh; font-size: .8em; background: var(--panel2); border-radius: 1.5vh; overflow: hidden; }
+  .ptab th { background: #3a4566; padding: .8vh 2.5vh; text-align: left; }
+  .ptab td { padding: .6vh 2.5vh; border-top: .2vh solid var(--panel); }
+  .pchart { background: var(--panel2); border-radius: 1.5vh; padding: 1vh 2vh; margin-bottom: 2vh; max-width: 92vh; }
+  .pchart .pct { font-size: 2.4vh; font-weight: 700; color: var(--accent); }
+  .pchart svg { width: 100%; height: auto; display: block; }
+
   /* Graine de star */
   .cards.home { gap: 3vh; } .cards.home .card { width: 34vh; padding: 2.5vh; }
   .cards.kw { gap: 3vh; } .card.kcard { width: 30vh; padding: 2.5vh 2vh; } .card.kcard .pn { font-size: 3vh; }
@@ -301,18 +309,19 @@
 </head>
 <body>
 <div id="app"></div>
-<script src="js/outils.js?v=10"></script>
-<script src="js/maths5.js?v=10"></script>
-<script src="js/maths7.js?v=10"></script>
-<script src="js/fr-outils.js?v=10"></script>
-<script src="js/francais5.js?v=10"></script>
-<script src="js/francais7.js?v=10"></script>
-<script src="js/de-outils.js?v=10"></script>
-<script src="js/allemand5.js?v=10"></script>
-<script src="js/allemand7.js?v=10"></script>
-<script src="js/lecture.js?v=10"></script>
-<script src="js/petits-data.js?v=10"></script>
-<script src="js/petits.js?v=10"></script>
-<script src="js/app.js?v=10"></script>
+<script src="js/outils.js?v=11"></script>
+<script src="js/maths5.js?v=11"></script>
+<script src="js/maths7.js?v=11"></script>
+<script src="js/problemes.js?v=11"></script>
+<script src="js/fr-outils.js?v=11"></script>
+<script src="js/francais5.js?v=11"></script>
+<script src="js/francais7.js?v=11"></script>
+<script src="js/de-outils.js?v=11"></script>
+<script src="js/allemand5.js?v=11"></script>
+<script src="js/allemand7.js?v=11"></script>
+<script src="js/lecture.js?v=11"></script>
+<script src="js/petits-data.js?v=11"></script>
+<script src="js/petits.js?v=11"></script>
+<script src="js/app.js?v=11"></script>
 </body>
 </html>
