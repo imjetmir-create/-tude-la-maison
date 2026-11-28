@@ -18,7 +18,7 @@
     gen: function (d) {
       if (d === 3 && R(0, 1)) {
         var f = R(1, 20), r = pick([0, 10, 20, 50, 80, 90, 40]), txt = "Das kostet " + DE.zahl(f) + " Franken" + (r ? " " + DE.zahl(r) : "") + ".";
-        return U.num("Combien ça coûte ? (en francs)" + big(txt), f + r / 100, { unit: "fr.", steps: ["« " + DE.zahl(f) + " Franken » = " + f + " francs.", r ? "« " + DE.zahl(r) + " » = " + r + " centimes." : "Pas de centimes.", "Prix : <b>" + U.fmt(f + r / 100) + " fr.</b>"] });
+        return DE.tag(U.num("Combien ça coûte ? (en francs)" + big(txt), f + r / 100, { unit: "fr.", steps: ["« " + DE.zahl(f) + " Franken » = " + f + " francs.", r ? "« " + DE.zahl(r) + " » = " + r + " centimes." : "Pas de centimes.", "Prix : <b>" + U.fmt(f + r / 100) + " fr.</b>"] }), txt);
       }
       return d === 1 ? DE.zahlQ(13, 99, 2) : DE.zahlQ(100, 999, d);
     }
@@ -153,11 +153,11 @@
       var F = { ein: { m: "einen", f: "eine", n: "ein" }, kein: { m: "keinen", f: "keine", n: "kein" }, der: { m: "den", f: "die", n: "das" } }[kind];
       var good = F[g], opts = [F.m, F.f, F.n, kind === "der" ? "der" : kind === "ein" ? "einer" : "keiner"];
       var hint = kind === "kein" ? " <i>(pas de)</i>" : kind === "der" ? " <i>(le / la)</i>" : " <i>(un / une)</i>";
-      return U.choice("Complète" + hint + " :" + big(DE.pic(n[2]) + " " + v + ' <span class="blank">…</span> ' + n[0] + "."), good, opts, {
+      return DE.tag(U.choice("Complète" + hint + " :" + big(DE.pic(n[2]) + " " + v + ' <span class="blank">…</span> ' + n[0] + "."), good, opts, {
         steps: ["« " + n[0] + " » est " + { m: "masculin (der " + n[0] + ")", f: "féminin (die " + n[0] + ")", n: "neutre (das " + n[0] + ")" }[g] + ".",
           g === "m" ? "Au masculin, après le verbe, l'article change : der → <b>den</b>, ein → <b>einen</b>, kein → <b>keinen</b>." : "Au féminin et au neutre, l'article <b>ne change pas</b>.",
           v + " <b>" + good + "</b> " + n[0] + "."]
-      });
+      }), null, v + " " + good + " " + n[0] + ".");
     }
   });
 
@@ -180,9 +180,9 @@
     ],
     gen: function () {
       var it = pick(ORDER);
-      return U.choice("Quelle phrase est <b>correcte</b> ?", it[0], it[1].split(","), {
+      return DE.tag(U.choice("Quelle phrase est <b>correcte</b> ?", it[0], it[1].split(","), {
         steps: ["Le verbe conjugué est en <b>2e position</b> (ou en 1re dans une question sans mot interrogatif).", "S'il y a deux verbes, l'infinitif va à la <b>fin</b>.", "Réponse : <b>" + it[0] + "</b>"]
-      });
+      }), null, it[0]);
     }
   });
 

@@ -49,6 +49,7 @@
   function back() {
     clearTimeout(timer);
     if (window.KSAY) KSAY.stop();
+    DE.hush();
     if (!hist.length) return;
     var h = hist.pop(); S = h.s; focusKey = h.f; render();
   }
@@ -81,6 +82,18 @@
     if (el) setFocus(el);
     document.getElementById("main").onscroll = scrollBtns;
     scrollBtns();
+    // allemand : la question est lue une fois quand elle apparaît
+    var aq = S.v === "quiz" ? S.qs[S.i] : S.v === "ex" ? S.q : null;
+    if (aq !== saidQ) { saidQ = aq; if (aq && aq.sayQ) DE.speak(aq.sayQ); }
+  }
+
+  // Bouton 🔊 : fait entendre l'allemand de la question (ou de la bonne réponse, une fois qu'on a répondu)
+  var saidQ = null, sayNow = "";
+  function sayBtn(q, after) {
+    var t = after ? (q.sayA || q.sayQ || q.sayT) : (q.sayQ || q.sayT);
+    if (!t) return "";
+    sayNow = t;
+    return btn("🔊", "desay", { cls: "btn dsay" });
   }
 
   // Boutons ▲ ▼ pour faire défiler les longues pages (pratiques avec le pointeur de la télécommande)
@@ -125,7 +138,12 @@
       var dist = main + side * 2.5;
       if (dist < bd) { bd = dist; best = e; }
     }
-    if (best) { setFocus(best); var sv = best.getAttribute("data-say"); if (sv && window.KSAY) KSAY.play([sv]); }
+    if (best) {
+      setFocus(best);
+      var sv = best.getAttribute("data-say"), dv = best.getAttribute("data-a") || "";
+      if (sv && window.KSAY) KSAY.play([sv]);
+      if (dv.indexOf("desay|") === 0) DE.speak(dv.slice(6)); // carte de vocabulaire allemand : on entend le mot
+    }
   }
 
   function toast(msg) {
@@ -507,7 +525,7 @@
     ex: function () {
       var q = S.q, done = S.k >= q.steps.length, h = '<div class="kicker">🤝 On essaie ensemble · exemple ' + S.n + " / 3</div>";
       if (done) { prog(S.pid, S.tid).ex = true; save(); }
-      h += '<div class="excol' + (q.text.indexOf('class="texte"') >= 0 ? " read" : "") + '"><div class="qcard">' + q.text + choicesList(q) + (done ? '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div>" : "") + "</div>";
+      h += '<div class="excol' + (q.text.indexOf('class="texte"') >= 0 ? " read" : "") + '"><div class="qcard">' + sayBtn(q, done) + q.text + choicesList(q) + (done ? '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div>" : "") + "</div>";
       h += '<div class="expl">' + (S.k ? stepsHTML(q, S.k) : '<div class="sub">Essaie d\'abord de trouver toi-même, puis appuie sur <b>OK</b> pour voir la correction pas à pas.</div>') + "</div></div>";
       h += '<div class="bar">' + (S.k > 0 ? btn("◀ Étape précédente", "exprev") : "") + (!done ? btn("▶ Étape suivante", "exnext", { def: true }) : S.n < 3 ? btn("🔄 Autre exemple", "exmore", { def: true }) : "") +
         btn("✏️ Sur ma feuille", "step|sheet", { def: done && S.n >= 3 }) + "</div>";
@@ -516,7 +534,7 @@
     sheet: function () {
       var h;
       if (S.phase === "do" && S.passage) {
-        h = '<div class="kicker">✏️ Lis le texte, puis réponds sur ta feuille : écris le numéro et ta réponse.</div><div class="rcol"><div class="rtext">' + S.passage + '</div><div class="rqs">';
+        h = '<div class="kicker">✏️ Lis le texte, puis réponds sur ta feuille : écris le numéro et ta réponse.</div><div class="rcol"><div class="rtext">' + (/^d/.test(S.tid) ? sayBtn({ sayT: DE.textOf(S.passage) }) : "") + S.passage + '</div><div class="rqs">';
         S.qs.forEach(function (q, i) { h += '<div class="rq"><b>' + (i + 1) + ".</b> " + q.text + choicesList(q) + "</div>"; });
         return h + '</div></div><div class="bar">' + btn("🔄 Un autre texte", "snew") + btn("J'ai fini : voir la correction ▶", "scor", { def: true }) + "</div>";
       }
@@ -532,7 +550,7 @@
           btn("🎯 Passer au quiz", "step|quiz", { def: true }) + btn("🔄 Nouvelle feuille", "step|sheet") + btn("⬅ Retour au thème", "back") + "</div></div>";
       }
       var q = S.qs[S.i];
-      h = '<div class="kicker">✏️ Correction · exercice ' + (S.i + 1) + " / " + S.qs.length + '</div><div class="excol"><div class="qcard">' + q.text + choicesList(q) +
+      h = '<div class="kicker">✏️ Correction · exercice ' + (S.i + 1) + " / " + S.qs.length + '</div><div class="excol"><div class="qcard">' + sayBtn(q, true) + q.text + choicesList(q) +
         '<div class="ans">Réponse : <b>' + answerText(q) + "</b></div></div>" + '<div class="expl">' + stepsHTML(q) + "</div></div>";
       return h + '<div class="bar">' + btn(S.i > 0 ? "◀ Exercice précédent" : "◀ Revoir la feuille", "sprev") + btn('<span class="kb green"></span> J\'avais juste', "smark|1", { def: true, cls: "btn good" }) + btn('<span class="kb red"></span> Je m\'étais trompé·e', "smark|0", { cls: "btn bad" }) + "</div>";
     },
@@ -545,7 +563,7 @@
         h += "</div></div>";
       }
       var qt = S.plan ? theme(S.plan[S.i].tid) : null;
-      h += '<div class="quiz"><div class="qcard">' + (qt ? '<div class="qtag">' + qt.icon + " " + qt.title + "</div>" : "") + q.text;
+      h += '<div class="quiz"><div class="qcard">' + sayBtn(q, !!S.fb) + (qt ? '<div class="qtag">' + qt.icon + " " + qt.title + "</div>" : "") + q.text;
       if (q.type === "num") h += '<div class="input' + (S.fb ? (S.fb === "ok" ? " ok" : " ko") : "") + '">' + (S.input || '<span class="ph">?</span>') + (S.fb ? "" : '<span class="caret"></span>') + "</div>" + (q.unit ? '<span class="unit">' + q.unit + "</span>" : "");
       if (q.type === "order") h += builtHTML(q);
       h += '</div><div class="qside">';
@@ -640,6 +658,7 @@
     bumpStreak(S.pid, S.streak);
     if (q.type === "choice") S.picked = given;
     focusKey = null; render();
+    if (q.sayA || q.sayQ) DE.speak(q.sayA || q.sayQ); // on entend la bonne réponse en allemand
     if (ok) timer = setTimeout(quizNext, 1300);
   }
   function quizNext() {
@@ -673,6 +692,7 @@
     else if (name === "kgame") kstart(arg);
     else if (name === "kpick") kpick(+arg);
     else if (name === "kmemo") kmemo(+arg);
+    else if (name === "desay") DE.speak(arg || sayNow);
     else if (name === "ksay") KSAY.play(S.v === "kmemo" ? ["memo"] : S.q.say);
     else if (name === "kalbum") { go({ v: "kalbum", pid: S.pid }); KSAY.play(["album"]); }
     else if (name === "subject") {

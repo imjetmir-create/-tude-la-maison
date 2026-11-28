@@ -1,0 +1,2581 @@
+11002236	sechshundertneunzehn
+14131446	vierhundertsiebenundzwanzig
+14535695	vierhundertdreiundsechzig
+14985683	siebenhundertsechzehn
+16494718	Anna und Tom schwimmen im See.
+18446968	hundertdreiundvierzig
+22452343	Klavier spielen
+22728097	Wir haben ein Brötchen.
+25505625	Die Kinder essen einen Apfel.
+25839992	achthundertachtundvierzig
+27731892	siebenhundertsechsundneunzig
+28111665	der Winter
+28225919	Anna darf heute fernsehen.
+29075505	Du musst früh aufstehen.
+31670795	hundertfünfundsechzig
+31930770	neunhunderteins
+32176432	hundertvierunddreissig
+33513404	Es ist fünf nach zwei.
+33648928	neunhundertfünfundneunzig
+34925948	Anna und Tom besuchen die Oma.
+36305080	Wie heisst du?
+37872994	zweihundertneunzig
+39002410	dreihundertsechsundachtzig
+40175652	fünfhunderteins
+42433857	Ich möchte eine Pizza.
+43680013	sechshundertdreiundsiebzig
+45280953	Das kostet achtzehn Franken.
+46954238	Es ist zehn vor zehn.
+47052002	Mein Bruder lernt Englisch.
+48066786	Wir haben die Schultasche.
+49712241	neunhundertsiebenundsechzig
+50329163	Meine Eltern laufen schnell.
+51044567	zweihundertzweiundsiebzig
+52581156	vierhundertelf
+54849706	Du bist müde.
+58721225	Ich sehe einen Bleistift.
+62334218	der Sonntag
+63837757	der März
+63855844	der Mund
+65070249	dreihundertzweiundvierzig
+65868310	Meine Schwester muss früh aufstehen.
+66738331	die Brille
+67240976	Das kostet sechzehn Franken fünfzig.
+70910217	Ich brauche keine Pizza.
+72301592	der Bahnhof
+78725741	Ich laufe schnell.
+79072117	neunhundertzwanzig
+81723881	zweihundertvierundfünfzig
+94210776	siebenhundertvierundfünfzig
+95718743	dreihundertachtundsechzig
+97198824	Ihr spielt Tennis.
+98974843	siebenhundertsiebzehn
+0d483e83	Hallo
+f4ce6434	Guten Morgen
+919f187a	Guten Tag
+744bd504	Guten Abend
+2995c616	Gute Nacht
+9cfac435	Tschüss
+3dbf11ca	Auf Wiedersehen
+0c6f7420	Danke
+0c9a308b	Bitte
+005973ae	Ja
+7c82e909	Nein
+1c969a40	Ich heisse …
+1359938b	Wie geht's?
+2dcb636b	Gut, danke!
+d9d15c45	Wie alt bist du?
+f90e9138	Ich bin zehn Jahre alt.
+6c3c906c	Entschuldigung!
+7c7288b5	neun
+0b87a2da	Eis
+0dc14473	Stuhl
+7c7d5bdc	zehn
+7c70a497	fünf
+0dc33aaf	Sport
+c6d1c041	Schule
+0d3ad104	Katze
+7d3836cd	spielen
+7c86144a	Haus
+0b8812ff	Tür
+0dc100bb	Stern
+bdd85c44	Wasser
+0c51e5f2	Fisch
+0cfbb8c2	Liebe
+0b139f60	klein
+0059745d	Wo
+0d766372	Vogel
+7c6dceb5	müde
+be213d60	Wetter
+0a9d6dec	heute
+0d6e8f71	Vater
+0b882a8d	Zug
+9729680b	Freund
+2e5aa228	Mädchen
+7c803f2f	Maus
+0bab7ca5	schön
+7c6b123f	drei
+0aea2d22	hören
+7c864532	Hund
+7c7051ff	blau
+0b87e6ea	Uhr
+7c837c7c	Käse
+7c76fbad	vier
+00596fce	ja
+0b873d23	gut
+7c8509b4	Jahr
+0d2cebb6	Junge
+0b87234a	elf
+8181faf3	sieben
+7c72c9de	null
+7c6b77f4	eins
+0c1b23b4	zwölf
+0ba8202b	sechs
+7c6da13b	acht
+7c7d0024	zwei
+5c453601	sechzehn
+b6b13f02	sechsundzwanzig
+d1e8489c	neunundzwanzig
+38478b7e	fünfundzwanzig
+872e3313	zwanzig
+ab0092da	siebenundzwanzig
+97fefc16	dreiundzwanzig
+d69565ce	fünfzehn
+82283c12	achtundzwanzig
+e9dcea41	siebzehn
+ad39184d	zweiundzwanzig
+d5f62184	vierundzwanzig
+91ac8274	vierzehn
+0440fdb1	dreissig
+50a9c362	achtzehn
+57f38e8e	einundzwanzig
+0f2e8b6c	neunzehn
+043ff466	dreizehn
+462f8074	vierundfünfzig
+fd3a11dd	sechsundsiebzig
+b30dfb40	achtundneunzig
+b1c0e0cc	siebzig
+f1f99fc3	neunundsiebzig
+f9afa307	zweiundvierzig
+3c8dc64e	neunundneunzig
+28fb462f	zweiunddreissig
+0d92ec48	sechsundvierzig
+0d89da83	neunundsechzig
+efa3b1c5	siebenundsechzig
+36b14351	einundsiebzig
+97be1d72	sechsundfünfzig
+1717b4c9	dreiundsiebzig
+07461b66	dreiundfünfzig
+d8ae56de	neununddreissig
+1c0c4192	zweiundsiebzig
+82a1952a	siebenundfünfzig
+39f78250	sechsundneunzig
+74f2c098	vierundachtzig
+6ee998fd	zweiundfünfzig
+e6766885	siebenundsiebzig
+169c96bc	fünfunddreissig
+8e10715c	dreiundvierzig
+ac3d69ac	fünfundneunzig
+b6d1c321	fünfundsiebzig
+1e49f1dc	einundneunzig
+f8568bd8	siebenunddreissig
+2631958c	einunddreissig
+e66286c6	vierunddreissig
+52fccdce	fünfundfünfzig
+5f5760d1	zweiundachtzig
+eacce180	neunundachtzig
+277a90fe	einundfünfzig
+92fc2356	vierundneunzig
+011a74db	vierundsiebzig
+08d30710	siebenundvierzig
+adba7bc4	einundvierzig
+edfa9108	siebenundneunzig
+c0af3123	fünfzig
+2fea44e2	fünfundachtzig
+7823ad4e	vierundvierzig
+59369a62	achtundfünfzig
+f7c9180d	achtundsechzig
+e1ae171d	sechsundsechzig
+239d7158	achtundvierzig
+c75c4c46	siebenundachtzig
+ca283241	neunzig
+19b7920f	achtzig
+4effaf12	einundachtzig
+a326f690	achtunddreissig
+b29e5380	sechsunddreissig
+5bf9f614	dreiunddreissig
+d8a1ffb4	fünfundvierzig
+e38d2b6c	neunundfünfzig
+6bff128a	dreiundachtzig
+f1e3dc9e	sechsundachtzig
+3828bd52	zweiundsechzig
+68f25c56	neunundvierzig
+68c8d18e	achtundachtzig
+9630a50c	sechzig
+d21bce61	fünfundsechzig
+0bf4db44	dreiundneunzig
+0da43b09	dreiundsechzig
+135512cd	achtundsiebzig
+6a3f191f	zweiundneunzig
+f760eb9b	vierundsechzig
+52878d91	einundsechzig
+3ab7a859	vierzig
+0b878bac	rot
+7c6ece62	grün
+7c6ea0e9	gelb
+65c0d635	orange
+7c6f1c0d	lila
+7c79016a	rosa
+0a7de86f	braun
+a4c41183	schwarz
+0b64385e	weiss
+7c6ebe44	grau
+7c715c88	hell
+43f65c78	dunkel
+d2bb7902	der Vater
+51a6aa82	die Mutter
+579a8f60	der Bruder
+d9a9c757	die Schwester
+882d5698	der Grossvater
+34c18d78	die Grossmutter
+d459c035	der Onkel
+329856a7	die Tante
+36762c8b	das Baby
+62338da9	die Eltern
+da2bcd2e	die Familie
+4e41b118	der Freund
+d6373ab2	Das ist mein Grossvater.
+f6b763a3	Das ist meine Schwester.
+41edbae8	Das ist mein Vater.
+be8fd9ec	Das ist meine Grossmutter.
+76c8867f	Das ist mein Onkel.
+c8bf8016	Das ist meine Mutter.
+7ef763c4	Das ist mein Baby.
+98e0f91d	Das ist meine Eltern.
+5b1ba853	Das ist meine Tante.
+f45acb4a	Das ist mein Bruder.
+51d3861f	Das ist deine Mutter.
+ed9058ad	Das ist dein Baby.
+7b0fb8c5	Das ist deine Grossmutter.
+521743db	Das ist dein Grossvater.
+d9fbc414	Das ist deine Eltern.
+1274c60a	Das ist deine Schwester.
+7a562023	Das ist dein Bruder.
+d433c6fa	Das ist deine Tante.
+86fb6bf6	Das ist dein Onkel.
+83a59f61	Das ist dein Vater.
+638805e1	der Hund
+3120eb2c	die Katze
+7d9afd07	die Maus
+03fad916	das Pferd
+a6b7297b	die Kuh
+c605093e	das Schwein
+d2c08c01	der Vogel
+d3e0c781	der Fisch
+a765ebd0	das Kaninchen
+4e42e2b5	der Frosch
+d20cdb74	die Schlange
+7043bd07	der Elefant
+6383c35e	der Löwe
+9e2ae082	der Bär
+042d9a4c	das Schaf
+7d9f4af7	die Ente
+3675fa6f	das Buch
+3679984c	das Heft
+4c4f8d68	der Bleistift
+1cc8fd95	der Kugelschreiber
+fd657204	der Radiergummi
+8cc4e267	die Schere
+c3c0f6f0	das Lineal
+3a89dd24	die Schultasche
+d29da713	der Tisch
+d2f52800	der Stuhl
+32987a97	die Tafel
+5dfb3252	der Lehrer
+ac2994ce	die Lehrerin
+76f395b1	der Computer
+638639db	der Leim
+32e07d1f	die Pause
+6388aa44	der Kopf
+36758d85	das Auge
+7d995834	die Nase
+950b8c86	das Ohr
+7d9c900e	die Hand
+9e2ac2c8	der Arm
+36763eb3	das Bein
+63829dc5	der Fuss
+d4249d0b	der Bauch
+312e86f2	die Haare
+63809c6b	der Zahn
+4fffc087	der Finger
+3d6d83fb	der Rücken
+d3e56b28	der Apfel
+653f328a	die Banane
+3675feb8	das Brot
+638acfaf	der Käse
+30feb9ce	die Milch
+935b0ff2	das Wasser
+676c7288	der Kuchen
+4293bd3f	das Ei
+2ec2dcd2	die Schokolade
+fd7bdfdf	die Karotte
+32dc4875	die Pizza
+637b9c96	der Saft
+950b656c	das Eis
+85ca582b	die Tomate
+71d9020b	die Erdbeere
+3199267f	die Birne
+5af9fca8	der Montag
+b9df4d11	der Dienstag
+0b3e75c1	der Mittwoch
+1af001cb	der Donnerstag
+1675bc5c	der Freitag
+4c16ac68	der Samstag
+48b85b3a	der Frühling
+31880d1d	der Sommer
+66bc0ccc	der Herbst
+576c4c59	morgen
+a65fd579	gestern
+8cc4a129	die Schule
+61f677a4	Ich habe Hunger.
+1cb1d119	Ihr habt einen Hund.
+8f84cad9	Wir haben einen Hund.
+5fbfe617	Ihr seid zehn Jahre alt.
+7ed8a506	Du bist in der Schule.
+e3ba2cf6	Tom ist zu Hause.
+5df88047	Wir sind müde.
+204bf914	Meine Schwester hat ein Velo.
+4a0b2624	Wir haben Hunger.
+8b090b70	Du hast Durst.
+87a3aca2	Die Kinder haben einen Hund.
+1576f344	Meine Eltern sind glücklich.
+24b996a9	Ich bin zu Hause.
+896bdf95	Ihr habt ein Velo.
+fc8f97c1	Die Kinder haben eine Schwester.
+f214fdc2	Er ist in der Schule.
+30aa8fa3	Wir sind zehn Jahre alt.
+e8a93303	Anna und Tom sind glücklich.
+1698fd90	Meine Schwester ist zu Hause.
+f46373e9	Die Kinder sind zu Hause.
+894bc87d	Die Kinder sind glücklich.
+270f023d	Ich bin glücklich.
+b656a506	Ihr seid zu Hause.
+644c2221	Anna und Tom haben Hunger.
+c3f463bf	Anna und Tom haben eine Schwester.
+b72e457a	Wir haben eine Schwester.
+cdc73be4	Ihr habt Hunger.
+8587069c	Anna und Tom haben einen Hund.
+8a3beae3	Wir haben Durst.
+a5957c66	Du hast ein Velo.
+df63bde7	Tom ist zehn Jahre alt.
+57ec4923	Ihr habt Durst.
+b52c3c61	Meine Eltern haben Durst.
+c1430c63	Ich habe Durst.
+de623be6	Er ist zehn Jahre alt.
+657e0de7	Wir sind in der Schule.
+0b701db3	Du bist zu Hause.
+54a7b9dc	Die Kinder sind müde.
+e0a6aad5	Ich habe ein Velo.
+624a4817	Du hast Hunger.
+0cd2f632	Anna hat Durst.
+0f810423	Tom ist in der Schule.
+7118d12c	Mein Bruder ist in der Schule.
+20a0f955	Wir haben ein Velo.
+6b4da5e7	Du bist glücklich.
+f1c79525	Meine Eltern sind in der Schule.
+b82199ba	Ihr habt eine Schwester.
+b71c1117	Meine Eltern haben ein Velo.
+e66cacf8	Die Kinder sind zehn Jahre alt.
+a139a113	Ihr seid in der Schule.
+8af77722	Du bist zehn Jahre alt.
+80ae0f32	Wir sind zu Hause.
+e1a939e0	Anna ist zu Hause.
+4be675fe	Tom hat einen Hund.
+1f453dbf	Er hat einen Hund.
+a468fb73	Ihr seid müde.
+1d519b95	Anna hat Hunger.
+50b87446	Anna und Tom sind zehn Jahre alt.
+c70efa06	Anna und Tom haben Durst.
+cfe73d21	Meine Eltern sind zehn Jahre alt.
+0ca83e1c	Ich bin müde.
+0f2c01a3	Er ist glücklich.
+2b516e86	Wir sind glücklich.
+f1231109	Du hast eine Schwester.
+67bcdc59	Ich habe einen Hund.
+f150d4b0	Meine Eltern sind zu Hause.
+72eff31c	Die Kinder sind in der Schule.
+aeac79ea	Du hast einen Hund.
+96f1d103	Tom hat Hunger.
+486d4448	Mein Bruder ist zehn Jahre alt.
+05e638c5	Meine Schwester ist in der Schule.
+281316fa	Ich habe eine Schwester.
+f5f0c132	Mein Bruder hat eine Schwester.
+40bd2982	Meine Schwester hat Durst.
+41159e83	Tom ist müde.
+c9174910	Anna und Tom haben ein Velo.
+d0b44125	Meine Schwester hat Hunger.
+1cdda58b	Anna hat eine Schwester.
+c3418c1b	Meine Eltern haben einen Hund.
+d305a766	Meine Eltern haben Hunger.
+4489f8d9	Mein Bruder ist zu Hause.
+8e8d9ce8	Anna hat einen Hund.
+3e1f53f1	Anna ist zehn Jahre alt.
+454f8cdc	Ich bin in der Schule.
+d9956138	Die Kinder haben Durst.
+6e0c27bb	Meine Schwester hat eine Schwester.
+2133a698	Meine Schwester hat einen Hund.
+bb9f04c2	Tom ist glücklich.
+0dc43691	Mein Bruder hat einen Hund.
+91b82675	Anna ist in der Schule.
+dbb91772	Ihr seid glücklich.
+20fc092e	Die Kinder haben ein Velo.
+f220695c	Er hat eine Schwester.
+08d36762	Anna und Tom sind müde.
+d0b32338	Meine Eltern haben eine Schwester.
+fe2ff6cd	Mein Bruder ist glücklich.
+1d245f6c	Mein Bruder hat Hunger.
+c70579a4	Meine Schwester ist glücklich.
+8c829433	Er hat ein Velo.
+b5b99b6c	Mein Bruder ist müde.
+50bf26d7	Anna und Tom sind zu Hause.
+bf9e8ef7	Er ist zu Hause.
+f34b4581	Meine Schwester ist zehn Jahre alt.
+50e3a95f	Die Kinder haben Hunger.
+c0ad19ab	Mein Bruder hat Durst.
+a0f6411d	Mein Bruder hat ein Velo.
+d1d110c5	Er hat Durst.
+9a0c3de4	Tom hat Durst.
+e702e91d	Tom hat eine Schwester.
+221aa5c5	Meine Eltern sind müde.
+472e89c2	Er ist müde.
+763f5995	Anna ist müde.
+5f7de6e4	Anna hat ein Velo.
+fce6cee2	Anna und Tom sind in der Schule.
+ec143072	Tom hat ein Velo.
+f4763294	Anna ist glücklich.
+c7510802	Er hat Hunger.
+1a7029e5	Meine Schwester ist müde.
+758044ad	Wir malen ein Bild.
+a99b1c02	Ihr kocht Spaghetti.
+9bd58551	Ihr macht die Hausaufgaben.
+7f58a8a4	Tom lernt Deutsch.
+de01993e	Du wohnst in Freiburg.
+4956c42c	Du schwimmst im See.
+07fefff1	Ich mache die Hausaufgaben.
+6cd10bed	Wir gehen in die Schule.
+6f5915f9	Wir singen ein Lied.
+942addb0	Du lernst Deutsch.
+0dd85081	Wir lernen Deutsch.
+1c14f59d	Wir schwimmen im See.
+4f0517ac	Meine Schwester wohnt in Freiburg.
+da1406cf	Wir wohnen in Freiburg.
+a1d4bf3a	Die Kinder lernen Deutsch.
+c2b7f78b	Meine Eltern hören Musik.
+d8c6bfe2	Die Kinder singen ein Lied.
+88bb0853	Du kochst Spaghetti.
+e62dc989	Wir hören Musik.
+cccda265	Ihr kommt aus der Schweiz.
+24b47be1	Ihr lernt Deutsch.
+26fa7171	Wir machen die Hausaufgaben.
+f3f6c6e9	Ihr hört Musik.
+1095572d	Mein Bruder trinkt Wasser.
+6f08fb58	Du hörst Musik.
+bc766629	Ich höre Musik.
+0c98a11e	Die Kinder kommen aus der Schweiz.
+97869f36	Du trinkst Wasser.
+9b6c8b9f	Wir spielen Fussball.
+21d8813c	Die Kinder trinken Wasser.
+91e0a512	Die Kinder hören Musik.
+a82e3a5d	Meine Eltern spielen Fussball.
+da16d6a5	Wir kommen aus der Schweiz.
+d94864df	Meine Eltern schwimmen im See.
+c84ad4b9	Ich singe ein Lied.
+76bfc127	Ihr trinkt Wasser.
+e59f3f67	Meine Eltern kommen aus der Schweiz.
+5fc452d9	Ihr singt ein Lied.
+542778e2	Ich koche Spaghetti.
+84e9f1da	Anna und Tom spielen Fussball.
+cd175fde	Meine Schwester schwimmt im See.
+ac06eaa0	Du machst die Hausaufgaben.
+217c44e9	Er malt ein Bild.
+cb0b4647	Wir trinken Wasser.
+e7fb5285	Er lernt Deutsch.
+5c9fc47b	Er spielt Fussball.
+b2238047	Mein Bruder geht in die Schule.
+20c60027	Anna und Tom kochen Spaghetti.
+bb785802	Anna und Tom trinken Wasser.
+aa6c93f6	Die Kinder gehen in die Schule.
+e74dda9a	Meine Schwester singt ein Lied.
+10fc6162	Wir kochen Spaghetti.
+52a3fe3c	Du gehst in die Schule.
+83bfd05f	Ihr spielt Fussball.
+59126fbd	Er singt ein Lied.
+3730c9cd	Er hört Musik.
+a860e6b4	Die Kinder wohnen in Freiburg.
+69aad2af	Ich wohne in Freiburg.
+77292f87	Tom kocht Spaghetti.
+2a6fdc0d	Meine Eltern wohnen in Freiburg.
+e5a0f62a	Meine Schwester hört Musik.
+c0eaa985	Ich komme aus der Schweiz.
+197f67e4	Die Kinder spielen Fussball.
+0d65c047	Mein Bruder malt ein Bild.
+df5b304d	Ihr malt ein Bild.
+cfb40813	Mein Bruder singt ein Lied.
+a1e15d7d	Ich schwimme im See.
+cffc375c	Anna und Tom singen ein Lied.
+56c2acfd	Ihr schwimmt im See.
+c346f1dc	Du malst ein Bild.
+6129f654	Anna und Tom machen die Hausaufgaben.
+5558f34d	Ich male ein Bild.
+200aef1f	Ich spiele Fussball.
+cf1d1ba6	Die Kinder schwimmen im See.
+c28db081	Er kommt aus der Schweiz.
+61cb2028	Du singst ein Lied.
+92ec568d	Ich gehe in die Schule.
+a46e7b8c	Tom hört Musik.
+044baf69	Er geht in die Schule.
+54f9f40a	Tom wohnt in Freiburg.
+e8ed5f6e	Du spielst Fussball.
+9bde661a	Anna hört Musik.
+f8dcb38d	Ihr geht in die Schule.
+0a3472cc	Anna spielt Fussball.
+c99c2938	Tom schwimmt im See.
+60a549a8	Anna und Tom malen ein Bild.
+95f7cbbc	Meine Schwester spielt Fussball.
+fe91736b	Er wohnt in Freiburg.
+e7b836e0	Anna und Tom kommen aus der Schweiz.
+12ff915c	Anna wohnt in Freiburg.
+84b89045	Mein Bruder wohnt in Freiburg.
+4a3d4e72	Anna lernt Deutsch.
+9b7bbaee	Anna schwimmt im See.
+4003bb85	Meine Eltern trinken Wasser.
+fd95a448	Anna und Tom gehen in die Schule.
+3df1d714	Du kommst aus der Schweiz.
+31b9b34f	Ihr wohnt in Freiburg.
+6955c8c1	Ich lerne Deutsch.
+31702a1b	Mein Bruder macht die Hausaufgaben.
+2db837e7	Ich trinke Wasser.
+e8eec159	Die Kinder kochen Spaghetti.
+6ca5d56f	Meine Eltern gehen in die Schule.
+c154b1fb	Meine Eltern singen ein Lied.
+be3e31c6	Meine Schwester kommt aus der Schweiz.
+2d38a5a0	Tom kommt aus der Schweiz.
+dc6e7228	Tom geht in die Schule.
+0c5999ea	Die Kinder machen die Hausaufgaben.
+586bbc74	Tom macht die Hausaufgaben.
+486bca8a	Anna und Tom wohnen in Freiburg.
+d7646426	Er kocht Spaghetti.
+db4103b5	Er macht die Hausaufgaben.
+c5196ef3	Meine Eltern machen die Hausaufgaben.
+ec910e92	Meine Schwester macht die Hausaufgaben.
+4e214519	Er schwimmt im See.
+de78056c	Anna und Tom hören Musik.
+abb4f088	Mein Bruder kocht Spaghetti.
+1ad673a0	Meine Eltern kochen Spaghetti.
+6fb2f0d5	Mein Bruder spielt Fussball.
+7bc16cbe	Anna geht in die Schule.
+0d5b9aeb	Mein Bruder lernt Deutsch.
+00e6db77	Mein Bruder schwimmt im See.
+e9afddea	Anna singt ein Lied.
+dca16544	Meine Schwester trinkt Wasser.
+37f9e7ef	Mein Bruder kommt aus der Schweiz.
+59dd4984	Anna und Tom lernen Deutsch.
+416695a1	Meine Schwester kocht Spaghetti.
+3971a1d6	Die Kinder malen ein Bild.
+a691d343	Er trinkt Wasser.
+ca78555e	Anna malt ein Bild.
+7af402ae	Meine Schwester malt ein Bild.
+4938b408	Tom malt ein Bild.
+c599724e	Meine Schwester geht in die Schule.
+45e4fb62	Anna macht die Hausaufgaben.
+a7c18274	Anna trinkt Wasser.
+29ee60a3	Mein Bruder hört Musik.
+695ceaf6	Anna kommt aus der Schweiz.
+3ea539ef	Meine Eltern malen ein Bild.
+57a9b5c3	Meine Eltern lernen Deutsch.
+1e48fc9a	Tom spielt Fussball.
+484f797c	Tom singt ein Lied.
+2cc925d1	Anna kocht Spaghetti.
+c83dc4c2	Meine Schwester lernt Deutsch.
+423c4ea2	Tom trinkt Wasser.
+d8bc8709	Wo ist die Katze? – Unter dem Tisch.
+67c7a117	Was machst du? – Ich spiele.
+e87a5cf9	Was spielst du gern? – Fussball.
+d9c0b7d6	Wie geht's? – Gut, danke!
+3741a198	Wie heisst du? – Ich heisse Lena.
+afd6f4be	Wer ist das? – Das ist mein Bruder.
+4852566f	Wie alt bist du? – Ich bin neun.
+893f497e	Was ist das? – Das ist ein Apfel.
+e9df9d0a	Wo wohnst du? – In Freiburg.
+2e219a0b	Wer kommt? – Oma kommt!
+4015f271	fünfhundertfünf
+5d2b57a8	achthundertachtzehn
+c9c73279	hundertzweiundzwanzig
+0c1cba7b	dreihundertneun
+841edbe2	neunhundertdreiundfünfzig
+9d4ddf40	vierhundertzehn
+a5265d02	dreihundertsechzig
+23705a16	vierhundertdreiundachtzig
+4e26819d	vierhundertsechzehn
+40227d82	fünfhundertzwei
+d3381128	achthundertfünfundachtzig
+c6856417	sechshundertachtundsiebzig
+f96cd308	hundertfünfunddreissig
+f5cf0095	sechshundertachtzig
+0c2321ea	dreihundertzwei
+4e3cff30	neunhundertfünfundvierzig
+c659554c	siebenhundertvierundvierzig
+47b8d608	zweihundertsechsundsiebzig
+f255160c	sechshundertneunundvierzig
+dd731129	zweihundertfünfunddreissig
+f36eb6e6	achthundertfünfundneunzig
+a06f9e27	neunhundertfünfzig
+8f7ceef4	fünfhundertachtundzwanzig
+91ec9fdc	vierhundertachtundneunzig
+04b8e42b	fünfhundertachtundsiebzig
+55d938db	sechshundertneunzig
+4b720b2e	sechshundertvierzehn
+612c1d28	dreihundertdreiundfünfzig
+1c3fe19a	dreihundertdreiunddreissig
+df03f3c8	sechshundertachtundzwanzig
+f292bc38	hundertsiebzig
+fb0e828a	siebenhundertsechsundvierzig
+be1f1507	siebenhundert
+8ad3be8c	neunhundertsiebenundneunzig
+ddcb6a4c	achthundertvierunddreissig
+9d5a8d0b	vierhundertfünf
+13505f4c	siebenhunderteinundzwanzig
+ef0e9254	vierhundertsechsundvierzig
+b7385494	neunhundertsiebenundvierzig
+9993fe8d	zweihundertsiebenunddreissig
+9b68f7c0	siebenhundertsechsundzwanzig
+54de18bd	fünfhundertvierundsiebzig
+9d599da3	vierhundertdrei
+41a5d06b	achthundertfünfundsiebzig
+bd575ddf	siebenhundertsechsundsechzig
+b7015fba	hundertachtundachtzig
+ec0805d5	achthundertzweiundneunzig
+3c420f12	dreihundertdreiundvierzig
+34c2e9c6	sechshundertneunundzwanzig
+4442ae56	achthunderteinundneunzig
+1ab39da0	vierhundertfünfunddreissig
+36d76b8a	hundertfünfundzwanzig
+efe78900	hunderteins
+5cbf09ac	achthundertdreiundfünfzig
+5ece3045	zweihundertachtunddreissig
+215d29c4	vierhundertachtundvierzig
+ca5c91df	dreihunderteinundsiebzig
+e91b0278	hundertsechzig
+eb4ac79f	hundertsechs
+839a05d0	siebenhundertzweiundsechzig
+51c23bbe	hundertdreiundachtzig
+9cb61974	fünfhundertzweiundsiebzig
+064e027c	siebenhundertfünfundzwanzig
+3dbfcb4a	dreihundertvierundzwanzig
+9ff8bd13	zweihundertdreizehn
+d1a5408c	vierhundertsiebenundvierzig
+b6f154f0	fünfhundertdreiundzwanzig
+697f5b2e	fünfhundertsechsundvierzig
+b53d6dca	vierhundertvierundneunzig
+c03d2b62	dreihundertfünfundneunzig
+b48e13d8	zweihundertvier
+2ef3c13c	siebenhunderteinundfünfzig
+758a4cfe	achthundertfünfundvierzig
+4548acd8	fünfhunderteinundfünfzig
+4f7e0861	siebenhundertfünfzig
+c62a3b91	vierhundertachtundsechzig
+3193d313	neunhundertfünf
+99f55728	vierhundertfünfundvierzig
+402f47c1	siebenhundertneunundsiebzig
+599c037f	dreihundertdreissig
+a6c791f0	neunhundertvierzehn
+6b81ace7	achthundertvier
+88cd9bc0	neunhundertdreiundneunzig
+bab49aeb	zweihunderteinundfünfzig
+8d29b3f6	zweihundertneunundsechzig
+93ec2001	vierhundertsechsundsechzig
+6535602f	neunhundertsechs
+953851f9	fünfhundertzweiundneunzig
+5947f65c	dreihundertachtundzwanzig
+2c1b8ba8	hundertneunundzwanzig
+54329a37	fünfhunderteinundsiebzig
+fa226ba6	fünfhundertachtundneunzig
+4e5b997b	hundertachtzig
+06b91888	sechshundertzweiundsechzig
+736588dc	neunhundertsiebenunddreissig
+2aa246da	siebenhundertachtundvierzig
+04c9a05e	neunhundertsiebenundzwanzig
+2fd5cd33	siebenhundertdreissig
+e0f3a124	hundertsiebenundvierzig
+ed54aaf4	fünfhunderteinundachtzig
+5daeac17	achthundertsechsundsechzig
+0aab238a	achthundertachtundneunzig
+b112e95c	sechshundertvierunddreissig
+7459d766	hunderteinundachtzig
+1c354e70	zweihundertsiebenundsiebzig
+19e57087	dreihundertdreiundsiebzig
+ea6ddfeb	sechshundertdreissig
+bafbe73b	sechshundertfünfundsechzig
+bf7aef4d	dreihundertneunundsechzig
+2f1c6f40	dreihundertachtundachtzig
+fe87de0f	siebenhundertachtundsechzig
+f61bf04a	fünfhundertneunundfünfzig
+ebcaa076	siebenhundertvierzehn
+d60fa5df	zweihundertsiebenundfünfzig
+0fec73bc	zweihundertdreiundsiebzig
+03e67ee5	hunderteinundsechzig
+0c29cf63	dreihundertvier
+b49b08c0	zweihundertneun
+a3e654da	vierhundertsiebenundachtzig
+4f5c8c28	fünfhundertneunundneunzig
+0cc20366	neunhundertfünfundachtzig
+49611b96	achthundertdreiundvierzig
+96c32731	sechshundertsechs
+794188d7	dreihundertvierzig
+79e0b167	hundertzwanzig
+bc871113	dreihundertsechsundsechzig
+0326fb07	achthundertachtundsiebzig
+dfcab654	achthundertneununddreissig
+f12e3582	vierhundertsechsundachtzig
+446cde24	sechshundertfünfundzwanzig
+da5cf3f1	hundertsiebenundsechzig
+82da5896	neunhundertachtundzwanzig
+46e47b4c	neunhundertsechsundvierzig
+f94c4ee5	zweihundertsiebenundvierzig
+0adf0e64	sechshunderteinundfünfzig
+3d39cccb	dreihundertsiebenundsiebzig
+477c201c	neunhundertvierundachtzig
+56da6f0a	neunhundertachtundachtzig
+4313aae2	vierhundertfünfundzwanzig
+efe6bd4b	hundertdrei
+2442ceda	vierhundertvierunddreissig
+669eb98b	zweihundertfünfundzwanzig
+d46263c5	hundertdreissig
+931d20a5	neunhundertfünfundsiebzig
+dab56c4a	dreihunderteinundvierzig
+1db9e046	achthundertsiebzig
+d12f8fcd	achthundertzweiundvierzig
+e2101147	siebenhundertsiebenundsechzig
+ccf38402	siebenhundertsechsunddreissig
+3e41682f	fünfhundertdreiundsiebzig
+373d72ba	zweihundertzweiunddreissig
+880df608	neunhundertsechzig
+3c730930	fünfhundertvierundneunzig
+4f8495ac	fünfhundertelf
+40840b16	hundertfünfundachtzig
+f5b724ac	dreihundertfünfundachtzig
+1a59e84f	siebenhundertachtundsiebzig
+c9bdcbe8	neunhundertneunundfünfzig
+04d5ec53	siebenhunderteinundsechzig
+2e45c3f6	fünfhundertsiebenundvierzig
+0ecf1b0e	vierhundertzweiundsiebzig
+c6a803fa	vierhundertdreizehn
+4022c93a	fünfhundertzehn
+272e1f26	hundertachtundzwanzig
+e1397ae8	neunhundertneunzehn
+40150d1d	fünfhundertacht
+873cac84	achthunderteinundzwanzig
+47c237af	dreihundertfünfundsechzig
+aa637208	zweihundertzweiundfünfzig
+807786cf	achthundert
+6dec3809	zweihunderteinundneunzig
+fc111503	dreihundertzweiundzwanzig
+139d6287	achthundertzweiundzwanzig
+a0070bc4	fünfhundertachtundfünfzig
+6b7f406e	achthundertzwei
+79a7887a	hundertvierundvierzig
+86938db0	dreihundertfünfundzwanzig
+b2851481	zweihundertvierzehn
+524b53b5	hundertneunzig
+efe3a1e8	hundertzehn
+319e8b29	neunhundertvier
+962c1c2e	sechshundertzwölf
+52a492fa	neunhunderteinundfünfzig
+b4905f51	zweihundertzwei
+d10186d8	achthundertachtundzwanzig
+e7bffc58	dreihundertdreiundzwanzig
+b69813bd	dreihundertsieben
+1caeb38c	zweihundertvierzig
+0c22b675	dreihundertacht
+53192ea4	hundertsechsundneunzig
+286c8d99	zweihundertneunzehn
+d154db80	dreihundertfünfzehn
+bf12e8b1	hundertsiebenundsiebzig
+a5e7a2b4	fünfhundertzweiundsechzig
+5f803ad3	sechshundertdreiundsechzig
+3e83ce59	vierhundertsiebenundsechzig
+7815d5c1	vierhundertsechsundsiebzig
+1e3863f2	zweihundertzweiundvierzig
+0a958d55	vierhundertdreiundsiebzig
+b79735b8	sechshundertachtundfünfzig
+9bb5fb98	hundertneunzehn
+d8105787	siebenhundertsiebenundsiebzig
+5b1672f9	hundertachtundsiebzig
+c667c919	neunhundertsechsundsechzig
+55b38944	dreihundertelf
+31f1ba2f	siebenhundertvier
+b7e58d1f	zweihundertelf
+39b5d2aa	fünfhundertsiebzig
+37030e54	fünfhundertsechsundfünfzig
+cead3a1c	achthundertvierundneunzig
+f87f9789	neunhundertachtundsechzig
+ae704be2	vierhunderteinundfünfzig
+5e1bb0e6	fünfhundertsechsunddreissig
+ceee5a5f	vierhundertneunundsiebzig
+246ffb3f	vierhundertfünfzig
+2e2b5801	neunhundertsiebenundsiebzig
+d63179d3	siebenhundertzweiundachtzig
+1b0fe481	neunhundert
+69379d99	sechshundertneunundsiebzig
+9d5a4968	vierhunderteins
+024291e9	zweihundertneunundzwanzig
+2178f1a2	dreihundertneunundfünfzig
+ea71efbc	sechshundertdreizehn
+93913b19	zweihundertsiebzig
+2db2bc1a	achthundertachtunddreissig
+70f37f2e	siebenhundertfünfundneunzig
+6036edc1	zweihundertdreiunddreissig
+9089af3a	dreihundertzwölf
+d3bda2c3	sechshundertvierzig
+68c57cf7	hundertneunundsiebzig
+6c41b1ff	zweihundertdreiundachtzig
+b6c4ac61	vierhundertzweiundfünfzig
+707f00e9	siebenhundertsechs
+470cb7a8	vierhundertzwölf
+85264ae3	zweihundertdreiundzwanzig
+1bbdc00f	achthundertsiebenundsechzig
+f8f0010b	neunhundertachtzig
+a6369509	hundertzweiundfünfzig
+41ef7363	siebenhundertfünfundsechzig
+0c236e92	dreihundertzehn
+41e2e7da	neunhundertneununddreissig
+1cfc858e	achthundertdreiundneunzig
+31f6fec2	vierhundertneununddreissig
+3db91d48	zweihundertsechsundsechzig
+78d53726	sechshundertfünfunddreissig
+18ae3889	achthundertneunundsiebzig
+45f1ca3e	zweihundertsechs
+05571a2d	zweihundertachtundvierzig
+c89235b0	siebenhundertsechsundfünfzig
+fb290918	neunhundertneunundzwanzig
+9903b9d6	neunhundertzweiundsechzig
+a38561af	zweihundertsiebenundzwanzig
+c4962a5a	sechshundertneunundachtzig
+e32c7c1f	dreihundertzweiundachtzig
+acd8f818	sechshundertsechsundzwanzig
+4b489f31	hundert
+6a169efa	hunderteinundzwanzig
+34756ebc	sechshundertdreiundfünfzig
+0074b097	hundertfünfzig
+df4734ca	vierhundertneunundvierzig
+378fca4f	achthundertsiebenundsiebzig
+a784052e	sechshunderteins
+8872a7de	siebenhundertdreiundvierzig
+e681991f	sechshundertsiebenundsechzig
+ba1daed8	hundertfünfundneunzig
+b745691f	neunhundertvierundsechzig
+b4988862	zweihundertfünf
+a775a57e	sechshundertzwei
+0eaa3ec9	achthundertneunundsechzig
+6dfaadcc	sechshundertdreiundzwanzig
+e1dca576	fünfhundertachtunddreissig
+c9cf1709	sechshundertzwanzig
+13871ff6	sechshundertfünfundneunzig
+3c1d276f	vierhundertsieben
+065711c6	siebenhundertdreiundneunzig
+b31c501f	vierhundertneunundsechzig
+ab8ddcee	zweihundertvierundsechzig
+d317735f	neunhundertvierundsiebzig
+0c24beba	dreihunderteins
+19be4f56	siebenhundertdreiunddreissig
+70f413f6	siebenhundertzwölf
+b846ade5	fünfhundertneunundsechzig
+79304c17	zweihundertachtundfünfzig
+8cb8d879	neunhundertzweiundfünfzig
+48f6d23e	fünfhundertsiebenunddreissig
+45f35c05	siebenhundertzweiundvierzig
+1876eefa	hundertfünfundfünfzig
+0f49ad46	sechshunderteinundneunzig
+1c342297	zweihundertfünfundachtzig
+1e603612	fünfhundertfünfundvierzig
+bb353b74	zweihundertsechzehn
+e6ab62da	achthundertsechsundneunzig
+2ef90567	fünfhundertsechzehn
+c9453f07	vierhundertvierundsechzig
+5183173c	hundertsiebenundneunzig
+da23ed4a	neunhundertfünfundfünfzig
+27a93e55	hundertfünfundsiebzig
+548fda52	achthundertvierundachtzig
+a7756906	sechshundertzehn
+a1e77992	hundertdreiundfünfzig
+0c7b2035	hundertsechzehn
+31f81a5e	siebenhundertzehn
+afb6694b	dreihundert
+1621c204	neunhundertsechsunddreissig
+2dac5464	dreihundertsiebenundfünfzig
+522e9419	achthundertzwanzig
+ef0ec688	sechshunderteinundachtzig
+767dac1c	siebenhundertneununddreissig
+b0248a20	fünfhundertsiebenundachtzig
+94f09781	dreihundertachtzig
+9f525866	hundertzweiundsechzig
+b6ff3ef8	zweihundertachtundsechzig
+700418e4	hundertachtunddreissig
+a964cf69	hundertsechsundsechzig
+4c7ba514	sechshundertvierundvierzig
+f7760b74	achthunderteinundfünfzig
+0370cf2b	hundertzweiundneunzig
+5dfde239	achthundertsieben
+8878a313	zweihundertvierunddreissig
+b92d2804	vierhundertvierundachtzig
+4a6a9452	dreihundertneunundzwanzig
+202f9035	zweihundertachtundneunzig
+dec4fcbd	vierhundertfünfundsiebzig
+d2d73f55	neunhundertzweiundachtzig
+36c63807	neunhundertneunundsechzig
+1c1383e3	fünfhundert
+0478c186	zweihundertsieben
+5960b96d	zweihundertvierundachtzig
+5c059201	siebenhundertneunundsechzig
+a77789f7	sechshundertvier
+e61c2b08	siebenhundertdreiundachtzig
+2ff8096a	fünfhundertsechzig
+37bee655	dreihundertvierundsechzig
+027ecafa	neunhundertfünfundzwanzig
+8e4cb2bb	zweihundertneunundneunzig
+9c4eaae5	neunhundertfünfundsechzig
+1e76cdfa	fünfhundertneunundzwanzig
+1179eb4b	siebenhundertdreiundsiebzig
+3303982c	dreihundertachtzehn
+22be66ca	neunhundertneunundneunzig
+d8e4b4a9	achthundertfünfzig
+d45dc292	hundertdreizehn
+d85e1004	sechshundertsechsundachtzig
+65ec9428	fünfhundertfünfzehn
+d7617672	hundertsiebenundachtzig
+23ae81d8	vierhunderteinundvierzig
+3d14ee9e	sechshundertdreiundneunzig
+761741c0	achthundertdreiundachtzig
+01e12dee	fünfhundertsiebenundneunzig
+acc3d1e4	siebenhundertdreiundfünfzig
+6edebb29	sechshundertsieben
+d023351d	dreihundertzwanzig
+a6eb5b1e	dreihundertachtunddreissig
+927d7310	siebenhundertachtundzwanzig
+7cc5b23e	achthundertvierzehn
+0e2a038c	vierhundertachtunddreissig
+694ca96e	siebenhundertneunzehn
+299c7585	achthundertachtzig
+45dca319	siebenhundertvierundsechzig
+18000ec6	dreihundertsechsundvierzig
+c3b03055	fünfhundertsieben
+e177ee58	achthundertzweiundsiebzig
+c076f8b8	zweihundertachtundsiebzig
+1030d348	sechshundertzweiundsiebzig
+0753e924	zweihundertzweiundachtzig
+15ed4123	fünfhundertsiebenundsechzig
+898d4159	zweihundertsechzig
+53bc110c	fünfhundertsiebenundfünfzig
+79dda6c1	zweihundertfünfundvierzig
+a1bb351c	achthundertneunundvierzig
+916b9851	dreihundertzweiundneunzig
+fa6cf612	siebenhundertsiebenundvierzig
+ea93e413	vierhundertachtzig
+b49777ca	zweihundertdrei
+cb89830c	dreihundertsechsundzwanzig
+b432895e	dreihundertsiebenundvierzig
+fa614763	fünfhundertsiebenundsiebzig
+9034dbf5	zweihundertsechsunddreissig
+cb2603e9	fünfhundertachtzig
+01f31149	neunhundertachtundsiebzig
+da8fe9b8	fünfhundertneununddreissig
+3ec13e9c	dreihunderteinundachtzig
+8d58b2b6	vierhundertsiebenundfünfzig
+f44b52d8	neunhunderteinundneunzig
+cf6e74b0	hundertvierundzwanzig
+ae8a879f	dreihunderteinundsechzig
+1a6c86cb	sechshunderteinundsiebzig
+e914b34d	neunhundertdreiundsiebzig
+30cca17a	dreihundertfünfundvierzig
+37e8062b	achthundertfünfundsechzig
+f64297ce	achthundertvierundzwanzig
+efe5514f	hundertacht
+a7865ee1	sechshundertacht
+9d58b229	vierhundertneun
+ff98c274	hundertachtundneunzig
+3f1113d2	sechshundertsiebenundneunzig
+9185b0c8	neunhundertsiebzig
+83b63a36	zweihundertneunundsiebzig
+0ff4ea2c	hundertsiebenunddreissig
+f1fcb24e	neunhundertelf
+8431dc04	siebenhundertvierunddreissig
+f95d11d8	neunhundertdreiundvierzig
+7195fb14	sechshundertfünfundfünfzig
+c751d064	fünfhundertsechsundzwanzig
+afb35510	achthundertsiebenundzwanzig
+95dedea6	hundertzweiundsiebzig
+31ea8039	siebenhundertacht
+f04615d1	achthundertvierundsechzig
+5e1dc404	achthundertvierundvierzig
+8527703c	fünfhundertsiebenundzwanzig
+11f20eab	fünfhundertzweiundzwanzig
+c30840f0	neunhundertvierundfünfzig
+e4c04c6c	hundertachtundvierzig
+9f9648a8	achthundertachtundfünfzig
+469e3b21	zweihundertzwölf
+28d0973f	fünfhundertvierzig
+86462bd1	siebenhundertzwanzig
+d8a1681f	siebenhundertsechsundsiebzig
+4548c3f8	achthundertsechsundfünfzig
+39e30208	vierhundertdreiunddreissig
+d36ee97e	vierhundertfünfundachtzig
+8f3f8d4d	vierhundertzweiundachtzig
+47c4ede7	zweihundertachtundzwanzig
+296a384e	achthunderteinundvierzig
+dc6c59c3	achthundertdreiundsechzig
+d919da75	zweihundertneunundachtzig
+d748b2c2	achthundertsiebenundneunzig
+b3648829	hundertsechsundsiebzig
+8e5fdb44	siebenhundertsiebenundachtzig
+254bbb9d	zweihundertsechsundvierzig
+0f0af4fa	hundertfünfzehn
+4c0c72e5	hundertzweiundachtzig
+bfc285d0	vierhundertsiebzig
+5f4e19a1	dreihundertzweiunddreissig
+99df9604	achthundertfünfundfünfzig
+c69fa12d	vierhundertdreissig
+b1ffdd96	hundertachtundfünfzig
+6b94ab95	neunhunderteinundsechzig
+508856a5	achthundertzweiunddreissig
+d8003398	achthundertzweiundsechzig
+cd88b88d	neunhundertdreiundsechzig
+ae63944a	neunhundertfünfzehn
+53f039a0	fünfhundertvierunddreissig
+31e8123d	siebenhundertdrei
+45d0c30a	sechshundertachtunddreissig
+8d242080	dreihunderteinundzwanzig
+3216f346	dreihundertsiebenundneunzig
+f6d037c4	neunhundertachtundneunzig
+81b6c4c0	fünfhundertdreizehn
+6517d5a2	fünfhunderteinundvierzig
+999580d6	achthundertneunundzwanzig
+4cdcf2cf	dreihundertneunzig
+213d38f0	vierhundertneunzehn
+9afc5d28	hunderteinundneunzig
+1f570428	siebenhundertsiebenundfünfzig
+071a0252	dreihunderteinundneunzig
+519eb839	hundertachtundsechzig
+50feb780	dreihundertvierundvierzig
+ed720c09	fünfhundertzweiunddreissig
+e8762707	sechshundertsechsundsechzig
+a3c82b42	sechshundertvierundachtzig
+8c42adce	siebenhundertsechzig
+8679570b	zweihundertneununddreissig
+ebcede0e	siebenhunderteinunddreissig
+27f8e94d	siebenhundertachtzig
+084c07ea	hundertsechsundachtzig
+3192a1bb	neunhundertdrei
+e26aa01e	siebenhunderteinundneunzig
+a8a7769b	achthunderteinundsechzig
+6cb58108	achthundertsechsundzwanzig
+794ef708	neunhunderteinunddreissig
+4887c819	vierhundertsiebenundsiebzig
+7238f5b7	hundertneunundsechzig
+377f58b0	zweihundertsiebenundsechzig
+706ff627	fünfhundertsiebzehn
+71db2a06	siebenhunderteinundvierzig
+317eb26e	siebenhundertneunundfünfzig
+f4c40d9b	hundertzweiunddreissig
+42e36e52	fünfhundertvierzehn
+34ef02fb	achthundertdreissig
+b2531b44	fünfhundertfünfundachtzig
+1aee67c0	vierhundertdreiundvierzig
+41bbc14a	hunderteinundfünfzig
+e8bc797b	fünfhundertsechsundsechzig
+434a4428	fünfhundertfünfundfünfzig
+880e589b	neunhundertzweiundneunzig
+9cf8d6e6	neunhundertachtundfünfzig
+0babcad2	vierhundertneunundneunzig
+c31dfa50	dreihundertneununddreissig
+68d9e20e	vierhunderteinundachtzig
+436d869a	siebenhundertvierundachtzig
+a240e294	neunhundertachtunddreissig
+4222e89a	fünfhundertfünfunddreissig
+5a77be27	zweihundertzweiundsechzig
+1c3fd5fb	zweihundertachtundachtzig
+a00086c4	zweihundertdreissig
+d31a4d98	dreihundertvierundneunzig
+9bb19414	siebenhundertdreiundzwanzig
+bb4337c2	neunhundertvierunddreissig
+4988057e	fünfhundertvierundachtzig
+b31f0bc0	vierhunderteinundneunzig
+9b1d3efe	vierhundertachtundfünfzig
+a042c8dc	achthundertdreiundzwanzig
+a4a42f94	sechshunderteinundzwanzig
+9a29dab8	hunderteinunddreissig
+ac7369ef	hundertvierundsiebzig
+b81350dd	vierhundertsiebzehn
+1f329b60	siebenhundertfünfundachtzig
+15222c83	vierhundertzweiundneunzig
+9131df25	dreihundertsechs
+b825ad7a	hundertneunundneunzig
+c36ea881	sechshundertvierundsiebzig
+888f84de	dreihundertsechsundneunzig
+47d828da	achthundertsiebenundvierzig
+efe181d9	hundertvier
+9ebf41e8	vierhundertvierzehn
+3e88720e	neunhundertdreiundachtzig
+722fbcc0	neunhunderteinundvierzig
+a1827b1b	sechshundertsiebzehn
+e8bdb193	siebenhunderteinundsiebzig
+9a2d00b7	achthundertzweiundfünfzig
+3d96dcd2	neunhundertneunundvierzig
+0387c00a	fünfhundertfünfundneunzig
+195b03e2	neunhundertdreizehn
+b49033a9	zweihundertzehn
+6965406e	vierhundertsechsundfünfzig
+fdf40898	dreihundertneunundvierzig
+20099d5d	vierhundertneunzig
+d9bab23d	hundertdreiundsechzig
+909d1eaf	hundertvierundsechzig
+cb963c8e	vierhundertachtundzwanzig
+0253a35f	sechshundertsiebenundsiebzig
+6b7f8c16	achthundertzehn
+744361a7	sechshundertzweiundfünfzig
+44705d92	fünfhundertzwölf
+9165435e	sechshunderteinundvierzig
+ffb111f0	zweihundert
+0c2ad977	neunhundertsieben
+1366234d	vierhunderteinundsiebzig
+d601b30e	dreihundertachtundneunzig
+a77c1cef	sechshundertneun
+81bbdc17	fünfhundertdreissig
+a6b50127	fünfhundertneunzig
+df235076	hundertsechsundzwanzig
+db948f10	vierhundertsechzig
+ca36acba	dreihundertvierundfünfzig
+e7336bba	fünfhunderteinundneunzig
+06de3926	achthundertneunzehn
+6b7ef5f1	achthundertacht
+48e82205	fünfhundertfünfzig
+9d09fdd8	vierhundertdreiundneunzig
+1c0af3d4	sechshundertachtundachtzig
+4fce8dbb	zweihundertvierundvierzig
+c4b9b17b	sechshundertfünfundsiebzig
+78ebcddc	neunhundertachtundvierzig
+9994e7df	sechshundert
+b7280454	siebenhundertneunundvierzig
+ba12d0c2	siebenhundertachtundneunzig
+e87b3ba2	dreihundertneunzehn
+06035147	fünfhundertfünfundsechzig
+4f1627ba	fünfhundertdreiundvierzig
+c2a9fc4c	vierhundertsechsundneunzig
+2169990a	dreihundertdreiundneunzig
+3772ddad	hundertvierzig
+3e920bac	hundertvierundachtzig
+3461cab3	zweihundertsiebenundachtzig
+47aa5537	vierhundertsechs
+3db6e050	siebenhunderteinundachtzig
+30daa710	neunhundertdreiunddreissig
+9b668e06	neunhundertsechsundzwanzig
+efec0ea3	hundertfünf
+a03a4e50	sechshundertelf
+fa8feb94	zweihundertfünfundsechzig
+28ba0666	fünfhundertneunundachtzig
+54ed2a07	hundertsieben
+4020a90b	fünfhundertvier
+ee1c3729	zweihundertdreiundvierzig
+26ae2104	neunhundertneunundachtzig
+b4974381	zweihunderteins
+3145e1f9	zweihunderteinunddreissig
+c07a71c6	achthunderteinunddreissig
+e8f27e82	sechshundertachtundvierzig
+b5d4d330	hunderteinundvierzig
+31a04ea0	neunhundertzwei
+d20567c2	sechshundertsiebenunddreissig
+f57b1804	achthundertfünfzehn
+a172d4ba	dreihundertvierzehn
+d4f61a0b	achthundertsiebzehn
+639882ef	dreihundertfünfundsiebzig
+d534c4bc	hundertsechsundvierzig
+2990b6da	sechshundertsechsunddreissig
+1a80cd31	zweihundertdreiundneunzig
+e4a70dbb	zweihundertfünfzehn
+9d4e08b8	vierhundertzwei
+6aecd82c	dreihundertachtundfünfzig
+8b2cb4ee	hundertsiebenundzwanzig
+31f7f0a6	siebenhundertzwei
+7ff0f133	vierhundertzweiunddreissig
+b5a831e0	siebenhundertachtundfünfzig
+31e72295	siebenhundertfünf
+1011d1ff	siebenhundertzweiundfünfzig
+0c235ad9	dreihundertfünf
+ed8ccfd1	vierhundertzweiundzwanzig
+b3b3fe26	achthundertneunundfünfzig
+0cd8ab4b	achthundertsechzehn
+794d4952	vierhundertfünfundfünfzig
+76b8501c	sechshundertsiebenundachtzig
+19c3ba8a	vierhundertdreiundzwanzig
+b92cc6e2	fünfhundertvierundzwanzig
+5ab7d65e	hundertsiebenundfünfzig
+bda2562b	neunhundertzweiunddreissig
+6b7c68f5	achthundertdrei
+c659ed30	vierhundertfünfundneunzig
+9fc7a89a	siebenhundertsiebenunddreissig
+c2acc2fd	vierhundertfünfundsechzig
+df94800a	siebenhundertsiebenundneunzig
+71050f8a	neunhunderteinundzwanzig
+fab4f4a5	hunderteinundsiebzig
+9387d399	zweihundertneunundfünfzig
+d4d6b94a	achthundertneunundachtzig
+fc039787	fünfhundertfünfundsiebzig
+5436f257	achthundertsechsundsiebzig
+20170f0c	sechshundertvierundneunzig
+176ac44c	siebenhundertfünfundfünfzig
+3d92a6be	hundertelf
+6b0e149a	sechshundertachtundneunzig
+c23b98c5	neunhundertsiebzehn
+a6b0a7d3	achthundertvierzig
+4353071c	vierhundertneunundachtzig
+360a1762	hundertneunundvierzig
+be4b2cb4	hundertneunundachtzig
+85b1a29b	vierhundertzweiundvierzig
+cce89117	zweihundertachtzehn
+91b5e900	vierhundertneunundzwanzig
+1e6afe9b	siebenhundertvierzig
+1b13b0c4	zweihunderteinundsechzig
+dbffbedc	dreihundertzweiundsiebzig
+684ffa90	siebenhundertzweiundsiebzig
+f24470f0	sechshundertsiebenundfünfzig
+3d0679db	zweihunderteinundzwanzig
+0b03c740	achthundertelf
+4f501cd9	siebenhundertvierundsiebzig
+13fc6aec	fünfhundertdreiundachtzig
+db699d3e	achthundertzwölf
+9d5850a7	vierhundertacht
+ec5f5000	hundertzwölf
+1b491c99	vierhundert
+380218c0	hundertfünfundvierzig
+c3f8ac9a	neunhundertsechsundachtzig
+09181262	hundertvierundneunzig
+1e494533	hundertzweiundvierzig
+11dc0c88	dreihundertsiebenundachtzig
+d015e3d2	vierhundertvierundvierzig
+f4b2ebfe	siebenhundertfünfunddreissig
+b9767ec4	achthundertachtundachtzig
+d70e38b4	hundertsechsunddreissig
+43fb4a8d	fünfhundertsechs
+f7b24397	sechshundertzweiundzwanzig
+2ecc59ca	achthundertsechsunddreissig
+899a6342	dreihundertsiebzig
+401b4219	fünfhundertdrei
+aead8cd6	dreihundertvierundachtzig
+9d543f31	vierhundertvier
+09451b08	siebenhundertelf
+ef46cbd2	sechshundertsechsundvierzig
+eeefc7da	zweihundertachtzig
+6d3d8ae8	fünfhunderteinundzwanzig
+401c1613	fünfhundertneun
+09f5f5dc	siebenhundertsechsundachtzig
+2e919d15	dreihundertvierundsiebzig
+d5004b91	achthundertvierundsiebzig
+2f3a4757	zweihundertsechsundzwanzig
+c9de2358	fünfhundertfünfundzwanzig
+984c4bce	dreihundertneunundachtzig
+a77df84d	sechshundertfünf
+0fb98bf2	fünfhundertdreiunddreissig
+2d4e7e47	neunhundertneunundsiebzig
+f38951ce	vierhundertzweiundsechzig
+140bd660	hundertdreiunddreissig
+d034f444	dreihundertdreiundachtzig
+bedf27f0	vierhundertneunundfünfzig
+efe3cd50	hundertzwei
+dc11ac21	achthundertsechs
+c8aa2a13	zweihundertdreiundfünfzig
+bd7a60d6	dreihundertsiebenunddreissig
+c5c9993e	achthundertvierundfünfzig
+ff114045	neunhundertneunzig
+3380438b	dreihundertsiebenundsechzig
+29fb4475	fünfhundertzwanzig
+f0d66354	zweihundertfünfundsiebzig
+3199f831	neunhundertneun
+af88f180	hundertvierundfünfzig
+14ac2d76	neunhundertsechsundfünfzig
+2fd4d4e4	siebenhundertdreizehn
+8bd831cb	achthundertneunzig
+aa52b836	achthundertfünfunddreissig
+3f3f254c	siebenhundertfünfzehn
+b4950bce	zweihundertacht
+4ab65f56	sechshundertsiebzig
+e3704dca	neunhundertvierundvierzig
+448e8467	zweihundertsechsundfünfzig
+f1e9c1bb	fünfhundertsechsundsiebzig
+31a0ab58	neunhundertzehn
+7d55574a	fünfhundertneunzehn
+ffd7f8dd	sechshundertzweiundvierzig
+69dbc4fd	zweihundertsiebenundneunzig
+16cd8f1e	siebenhundertneunundzwanzig
+a5957af1	zweihundertvierundzwanzig
+6d6b5db5	sechshundertzweiunddreissig
+6b7c9c3e	achthunderteins
+3f909333	dreihundertzweiundfünfzig
+af4e7c22	hundertdreiundzwanzig
+23e52a47	dreihundertdreiundsechzig
+05b86cb4	zweihundertsiebzehn
+af7a2745	vierhundertvierzig
+efee76c1	hundertneun
+a55a1710	vierhunderteinunddreissig
+c06f831c	dreihundertzweiundsechzig
+fb8b9beb	fünfhundertachtundsechzig
+d46e55ca	sechshundertsechsundneunzig
+d86225b6	zweihundertfünfzig
+1f9f9f04	achthundertneunundneunzig
+5f33a3d9	sechshundertneunundsechzig
+6524be70	dreihunderteinundfünfzig
+df3f17a3	zweihundertvierundneunzig
+aafa7d14	sechshundertfünfzehn
+31ed4737	siebenhundertneun
+61d6e255	neunhunderteinundsiebzig
+6b74b7ff	achthundertneun
+7c3e01be	fünfhundertachtundvierzig
+fb633dfa	vierhundertdreiundfünfzig
+5e3694f7	fünfhunderteinundsechzig
+9bc2fc8e	sechshundertdreiunddreissig
+2fe64fc4	fünfhundertachtzehn
+5f1c8746	zweihundertzwanzig
+0c311ca3	zweihundertneunundvierzig
+01e1ced2	siebenhundertachtunddreissig
+f233474b	zweihundertsechsundachtzig
+d993f2c0	fünfhundertdreiundfünfzig
+58dfe736	sechshundertneunundfünfzig
+ef1216ad	dreihundertfünfzig
+b260ffdb	achthunderteinundsiebzig
+599fad28	dreihundertdreizehn
+88c4ae11	zweihunderteinundvierzig
+0d26b4c7	achthundertachtundsechzig
+ef666552	fünfhundertvierundfünfzig
+cd407d9e	achthundertdreiunddreissig
+95df0200	neunhundertvierundzwanzig
+7ab1af16	neunhunderteinundachtzig
+cc857886	sechshundertdreiundvierzig
+07c0620b	siebenhundertdreiundsechzig
+3018182a	hundertneununddreissig
+ab35fa1c	vierhundertsechsunddreissig
+c2a25d12	vierhundertachtundachtzig
+fbf93cd9	zweihundertfünfundneunzig
+8132b271	siebenhundertsieben
+11e22684	zweihunderteinundsiebzig
+d9e785e8	fünfhundertachtundachtzig
+0e84dac2	neunhundertsiebenundachtzig
+272d5906	achthundertsechzig
+89cc8585	neunhundertsechzehn
+c5d3f0d2	achthundertsiebenunddreissig
+10b2fd8b	sechshunderteinundsechzig
+8ac36e4c	siebenhundertneunundneunzig
+afaf44b8	sechshundertachtzehn
+25ce8280	hundertvierzehn
+b947a782	siebenhundertneunundachtzig
+9d581536	siebenhundertfünfundvierzig
+8da81018	vierhundertvierundzwanzig
+44a8ff70	hundertdreiundneunzig
+c764272e	zweihundertvierundsiebzig
+82394c92	vierhunderteinundzwanzig
+c0541f03	achthundertdreiundsiebzig
+5f95722e	sechshundertvierundfünfzig
+479efa0f	vierhundertzwanzig
+664e6f78	fünfhundertsechsundachtzig
+4eb41d1e	vierhundertsechsundzwanzig
+f45c38fc	zweihundertdreiundsechzig
+12ac7dca	sechshundertsiebenundvierzig
+648fccc2	achthundertsechsundvierzig
+ec7db694	vierhundertsiebenundneunzig
+a5eae358	siebenhundertsiebenundzwanzig
+a3302585	zweihundertsechsundneunzig
+de86b1a2	fünfhundertdreiundneunzig
+98612ed0	sechshundertdreiundachtzig
+d2de13e0	achthundertsiebenundfünfzig
+f02c6fcf	siebenhundertzweiundzwanzig
+76b4f934	achthundertfünfundzwanzig
+779b238b	sechshundertzweiundachtzig
+0cbe6b0c	achthundertsiebenundachtzig
+defe6d47	sechshundertsechsundsiebzig
+100e7328	fünfhundertvierundvierzig
+b26f5252	vierhundertfünfzehn
+5044db4e	dreihundertsechsunddreissig
+3190cebf	neunhundertacht
+035fedea	zweihundertzweiundneunzig
+9a0cf0de	sechshundertvierundzwanzig
+f8aea9ee	sechshundertfünfundvierzig
+c7717594	dreihundertsiebenundzwanzig
+7dbc62c5	sechshundertzweiundneunzig
+0c248b71	dreihundertdrei
+812cd65d	neunhundertvierzig
+a788770e	siebenhundertsiebzig
+a0f6d653	dreihundertsechsundsiebzig
+c9b65038	zweihundertzweiundzwanzig
+1adb6806	siebenhundertvierundzwanzig
+57e7dc92	neunhundertdreiundzwanzig
+5a83b7b9	sechshundertfünfzig
+0d2d8c14	sechshundertneunundneunzig
+44ea1275	hundertsiebzehn
+6a350230	fünfhundertneunundvierzig
+26394b98	achthunderteinundachtzig
+65a842b0	neunhundertzwölf
+7b6dbae8	sechshundertsechsundfünfzig
+79594c83	dreihundertachtundsiebzig
+eccca114	achthundertsechsundachtzig
+0e1877c9	neunhundertzweiundzwanzig
+f54aedfd	hundertdreiundsiebzig
+19ce9696	hundertachtzehn
+db976a0d	dreihundertneunundsiebzig
+f581fe38	sechshundertfünfundachtzig
+61bcf154	neunhundertsechsundneunzig
+8457d136	fünfhundertsechsundneunzig
+a78349e5	sechshundertdrei
+fd0d34cf	Das kostet zwölf Franken achtzig.
+470501a4	Das kostet neun Franken.
+884dc0ba	Das kostet sechs Franken.
+f61ed075	Das kostet achtzehn Franken fünfzig.
+3a1c5f77	Das kostet drei Franken zehn.
+49b2ec5b	Das kostet zwanzig Franken zehn.
+9b3d3eea	fünfhunderteinunddreissig
+474b6b02	Das kostet zwanzig Franken.
+a9fe066e	Das kostet neun Franken achtzig.
+587b91d4	Das kostet zehn Franken zehn.
+167fa527	Das kostet elf Franken vierzig.
+1ab93fbc	Das kostet vier Franken.
+e6831af8	Das kostet neun Franken vierzig.
+78de0905	Das kostet achtzehn Franken zwanzig.
+c612ec9c	Das kostet sechs Franken fünfzig.
+028feeea	Das kostet vier Franken zwanzig.
+4e73181f	Das kostet zwei Franken achtzig.
+6be27ac1	Das kostet eins Franken neunzig.
+5addbeea	Das kostet acht Franken.
+dc0c5076	Das kostet vier Franken achtzig.
+2e253e3c	Das kostet acht Franken zwanzig.
+b682d21d	siebenhundertzweiundneunzig
+c36a406c	Das kostet sechs Franken zwanzig.
+bb88d911	Das kostet zwei Franken neunzig.
+15d48db2	Das kostet drei Franken vierzig.
+504634aa	Das kostet drei Franken neunzig.
+0aec8bda	Das kostet sechzehn Franken achtzig.
+cac7f1c8	Das kostet zwanzig Franken achtzig.
+2d8bc3e0	Das kostet neun Franken neunzig.
+d0851dd7	sechshundertachtundsechzig
+4db7267d	Das kostet neun Franken zehn.
+52dd3b36	Das kostet acht Franken vierzig.
+0feab805	Das kostet zwölf Franken.
+da62b523	Das kostet vierzehn Franken fünfzig.
+7b150c4c	Das kostet sechzehn Franken vierzig.
+230feb20	Das kostet fünf Franken fünfzig.
+ddb20075	Das kostet fünfzehn Franken achtzig.
+78fadb81	Das kostet dreizehn Franken zwanzig.
+8e6cd2d0	Das kostet siebzehn Franken.
+31c67764	Das kostet zwanzig Franken fünfzig.
+958c83f1	Das kostet dreizehn Franken fünfzig.
+664551d9	Das kostet zwölf Franken vierzig.
+9fe8356d	Das kostet zehn Franken.
+c52eefc6	Das kostet zwanzig Franken neunzig.
+8cad754b	Das kostet neunzehn Franken zwanzig.
+b1122409	Das kostet sechzehn Franken zehn.
+d05f022e	Das kostet acht Franken neunzig.
+66e677c8	Das kostet drei Franken fünfzig.
+af78ed7e	Das kostet sechs Franken neunzig.
+772e3a10	Das kostet sechzehn Franken.
+cfdb42d9	neunhundertsechsundsiebzig
+abef1f90	Das kostet fünf Franken zwanzig.
+3802fee6	Das kostet sieben Franken neunzig.
+9beafaa3	Das kostet zwölf Franken fünfzig.
+42d2dee8	Das kostet sieben Franken achtzig.
+79da15e9	Das kostet fünfzehn Franken zwanzig.
+64f09170	Das kostet sechs Franken achtzig.
+9ea0c382	Das kostet fünf Franken neunzig.
+bb5ede94	Das kostet siebzehn Franken neunzig.
+199a70f2	Das kostet neun Franken zwanzig.
+eff83c73	Das kostet acht Franken zehn.
+64ec9517	Das kostet achtzehn Franken neunzig.
+572a9a22	Das kostet sieben Franken.
+a92c56bf	Das kostet fünfzehn Franken.
+ae108286	Das kostet siebzehn Franken zwanzig.
+79f50a9a	Das kostet vier Franken fünfzig.
+748c5941	Das kostet neunzehn Franken vierzig.
+5f9901fb	Das kostet fünfzehn Franken neunzig.
+bce6db8f	dreihundertsiebzehn
+57d654c9	Das kostet siebzehn Franken zehn.
+18be113c	Das kostet vierzehn Franken zehn.
+1814b682	Das kostet elf Franken zehn.
+0a1d8793	Das kostet dreizehn Franken neunzig.
+b626c704	Das kostet sieben Franken fünfzig.
+5a7f7aa3	Das kostet eins Franken fünfzig.
+e13c064c	Das kostet acht Franken fünfzig.
+41482e4f	Das kostet vierzehn Franken achtzig.
+879f4e8b	Das kostet dreizehn Franken vierzig.
+f3f3a1b6	Das kostet siebzehn Franken fünfzig.
+8da127bc	Das kostet eins Franken zehn.
+6106859d	Das kostet neunzehn Franken.
+8634451a	Das kostet siebzehn Franken achtzig.
+bba1b4cf	Das kostet eins Franken achtzig.
+aa804b59	Das kostet vierzehn Franken vierzig.
+c1ff3805	Das kostet eins Franken.
+e9a50f6c	Das kostet zwei Franken zehn.
+5fdb8c82	Das kostet neun Franken fünfzig.
+24d9d1d9	Das kostet eins Franken vierzig.
+9179fcd7	Das kostet dreizehn Franken.
+7aba4646	Das kostet fünfzehn Franken zehn.
+2abc2dae	Das kostet dreizehn Franken zehn.
+9014b2a7	Das kostet zehn Franken achtzig.
+ac6097a4	Das kostet drei Franken achtzig.
+40a36554	Das kostet sechzehn Franken neunzig.
+adea35fe	Das kostet sieben Franken vierzig.
+ac8d67d3	Das kostet eins Franken zwanzig.
+f188f441	Das kostet vierzehn Franken neunzig.
+bb843185	Das kostet vierzehn Franken.
+c99204bb	Das kostet zehn Franken zwanzig.
+383de520	Das kostet acht Franken achtzig.
+825c6024	Das kostet neunzehn Franken zehn.
+c057550b	Das kostet zehn Franken fünfzig.
+271602e0	siebenhundertachtzehn
+08f850b8	Das kostet drei Franken zwanzig.
+25d2f7a3	siebenhundertfünfundsiebzig
+ad4dfac1	Das kostet zwölf Franken neunzig.
+ea6559f4	Das kostet sieben Franken zwanzig.
+87f16a46	Das kostet sechzehn Franken zwanzig.
+57981a9a	Das kostet fünf Franken vierzig.
+3d1076fe	vierhundertachtzehn
+f3c8b3c4	vierhundertsiebenunddreissig
+e8184a9b	achthundertzweiundachtzig
+4fa5f26e	Das kostet drei Franken.
+cf76fc3f	Das kostet elf Franken neunzig.
+8634b399	Das kostet achtzehn Franken achtzig.
+9f5e3c0f	Das kostet achtzehn Franken vierzig.
+2bc8a146	Das kostet fünf Franken.
+3b1626de	Das kostet zwanzig Franken vierzig.
+6600493b	Das kostet neunzehn Franken fünfzig.
+1fa1261d	Das kostet dreizehn Franken achtzig.
+a311b0b1	Das kostet zehn Franken vierzig.
+b4f249f8	Das kostet vier Franken neunzig.
+44cf3123	Das kostet sechs Franken zehn.
+1013edd5	Das kostet zwei Franken.
+390aa009	Das kostet zwei Franken vierzig.
+d8b139d9	Das kostet fünfzehn Franken fünfzig.
+e9b1cae3	Das kostet fünfzehn Franken vierzig.
+195beb35	neunhundertdreissig
+f6819666	Das kostet sechs Franken vierzig.
+558333f3	Das kostet zwei Franken fünfzig.
+3233e153	Das kostet vierzehn Franken zwanzig.
+05a87fbb	Das kostet sieben Franken zehn.
+e4da8e57	Das kostet neunzehn Franken achtzig.
+c19e8c98	hundertneunundfünfzig
+af3fb41d	Das kostet elf Franken fünfzig.
+31e88876	siebenhunderteins
+dabca7bc	Das kostet zwölf Franken zehn.
+dd8357a9	Das kostet zehn Franken neunzig.
+97e9058c	Das kostet fünf Franken achtzig.
+8cf64aaa	Das kostet achtzehn Franken zehn.
+005f9abb	zweihundertfünfundfünfzig
+43499f65	Das kostet vier Franken zehn.
+58c7f8b1	Das kostet elf Franken achtzig.
+8d649280	dreihundertneunundneunzig
+22f50ad4	Das kostet zwanzig Franken zwanzig.
+49f20dcf	dreihundertsechzehn
+e3684f2d	Das kostet elf Franken zwanzig.
+3f0b12e0	Das kostet vier Franken vierzig.
+f5d0858c	Das kostet siebzehn Franken vierzig.
+ea739059	Das kostet neunzehn Franken neunzig.
+aa53f151	vierhundertachtundsiebzig
+09265d03	Das kostet zwei Franken zwanzig.
+664d2f7b	Das kostet elf Franken.
+e119fac7	zweihunderteinundachtzig
+d9650c5b	sechshundertsechzehn
+ac4391db	fünfhundertzweiundfünfzig
+e131cb54	siebenhundertvierundneunzig
+fd87281f	Das kostet fünf Franken zehn.
+c51b3200	sechshundertsiebenundzwanzig
+addb8883	siebenhundertneunzig
+ef88890c	siebenhundertachtundachtzig
+9b2c2642	dreihunderteinunddreissig
+b56ef6b7	fünfhundertzweiundachtzig
+7b1cd16d	siebenhundertzweiunddreissig
+f7da288d	vierhunderteinundsechzig
+22fb9eef	fünfhundertdreiundsechzig
+0fd4e3d2	neunhundertvierundneunzig
+1f7ac2ae	neunhundertsiebenundfünfzig
+66ae0a80	dreihundertfünfundfünfzig
+edf8e7d3	Das kostet zwölf Franken zwanzig.
+5c3cd2e8	vierhundertvierundfünfzig
+4e6e8ec6	hundertsechsundfünfzig
+2ccace48	dreihundertvierunddreissig
+05f2c283	neunhundertzweiundvierzig
+16eff0e6	neunhundertachtzehn
+e37f8f66	Es ist halb fünf.
+a3cbd34a	Es ist sieben Uhr.
+b4c954cc	Es ist neun Uhr.
+e1dbef4d	Es ist halb zehn.
+804b7ebd	Es ist zwei Uhr.
+e1e38135	Es ist halb zwei.
+13a27242	Es ist halb sieben.
+3f7d88ba	Es ist halb sechs.
+0eabdebb	Es ist halb elf.
+e4263065	Es ist halb eins.
+323da552	Es ist sechs Uhr.
+4df0686d	Es ist zwölf Uhr.
+1e0531c5	Es ist halb zwölf.
+e4332b8e	Es ist halb drei.
+52d14086	Es ist drei Uhr.
+e3e2fe0a	Es ist halb acht.
+71d62f53	Es ist elf Uhr.
+1aea235e	Es ist ein Uhr.
+c57c7502	Es ist acht Uhr.
+3e88e2d4	Es ist vier Uhr.
+e3412744	Es ist halb neun.
+b7d396ee	Es ist fünf Uhr.
+6b42bcc5	Es ist zehn Uhr.
+e2ae555c	Es ist halb vier.
+1be1f693	Es ist Viertel vor acht.
+9c33556a	Es ist Viertel nach vier.
+0acb00db	Es ist Viertel vor sieben.
+17cb7873	Es ist Viertel nach zwölf.
+1caecb17	Es ist Viertel vor drei.
+1da73654	Es ist Viertel vor zehn.
+9bed337b	Es ist Viertel nach zehn.
+04b36dcd	Es ist Viertel nach elf.
+1bff86bf	Es ist Viertel vor fünf.
+9b5f3f10	Es ist Viertel nach fünf.
+1d611045	Es ist Viertel vor vier.
+1d9d73ec	Es ist Viertel vor zwei.
+9b6f673c	Es ist Viertel nach acht.
+9b1fb613	Es ist Viertel nach eins.
+9a87c372	Es ist Viertel nach neun.
+d11015fc	Es ist Viertel vor zwölf.
+540110f4	Es ist Viertel nach sieben.
+1c2d66bc	Es ist Viertel vor eins.
+5df1d102	Es ist Viertel vor elf.
+299c8bcc	Es ist Viertel nach sechs.
+c1f8a203	Es ist Viertel vor sechs.
+1cca1e5d	Es ist Viertel vor neun.
+9be128c3	Es ist Viertel nach zwei.
+9b407bb8	Es ist Viertel nach drei.
+375b4973	Es ist fünf vor zehn.
+062da073	Es ist fünf nach sieben.
+a0ffafdc	Es ist zwanzig vor fünf.
+35bc7b34	Es ist fünf vor acht.
+327ddef5	Es ist fünf nach neun.
+35b49118	Es ist fünf vor fünf.
+342d90ed	Es ist fünf nach vier.
+55a88921	Es ist zehn nach elf.
+452fca31	Es ist zehn vor neun.
+0c0a1f6f	Es ist zehn nach zwei.
+b37238eb	Es ist fünf nach sechs.
+42ea5981	Es ist zwanzig vor elf.
+0a6e9a50	Es ist zehn nach acht.
+374f7ecb	Es ist fünf vor zwei.
+d0aae880	Es ist zwanzig vor sechs.
+f4423cb7	Es ist zehn vor sieben.
+9d43392e	Es ist zehn vor elf.
+9dc40b54	Es ist fünf nach zwölf.
+1aad78b1	Es ist zwanzig nach neun.
+2e7e3d2f	Es ist zehn vor sechs.
+33588ad7	Es ist fünf nach fünf.
+1b7313ff	Es ist zwanzig nach acht.
+0ad44ed4	Es ist zehn nach drei.
+35f6197a	Es ist fünf vor neun.
+1b29e590	Es ist zwanzig nach eins.
+46db5c29	Es ist zehn vor vier.
+45f5657f	Es ist zehn vor acht.
+45ac3710	Es ist zehn vor eins.
+a04bea74	Es ist zwanzig vor drei.
+9fea76f0	Es ist zwanzig vor acht.
+1fe58b37	Es ist zwanzig nach sieben.
+335b15fc	Es ist fünf nach zehn.
+1c0d4fc0	Es ist zwanzig nach zwei.
+1c590aa9	Es ist zwanzig nach vier.
+a1d3e926	Es ist zwanzig vor vier.
+0af772bc	Es ist zehn nach fünf.
+a03806df	Es ist zwanzig vor eins.
+da1446fc	Es ist fünf vor sieben.
+a2125c8f	Es ist zwanzig vor zwei.
+21048d7b	Es ist fünf vor zwölf.
+a13cf73e	Es ist zwanzig vor neun.
+0b34b99e	Es ist zehn nach neun.
+1b23287b	Es ist zwanzig nach drei.
+3688eb62	Es ist fünf vor vier.
+0abc2abf	Es ist zehn nach eins.
+468fa140	Es ist zehn vor zwei.
+0d839ec4	Es ist fünf vor sechs.
+0c11c997	Es ist zehn nach zehn.
+33866ad4	Es ist fünf nach eins.
+33435a3b	Es ist fünf nach acht.
+45a579fb	Es ist zehn vor drei.
+1843af90	Es ist zehn vor zwölf.
+1b882493	Es ist zwanzig nach fünf.
+ca8517ae	Es ist zwanzig nach elf.
+0b961918	Es ist zehn nach sieben.
+3575081b	Es ist fünf vor eins.
+337fcebf	Es ist fünf nach drei.
+358d4db0	Es ist fünf vor drei.
+8baf3720	Es ist zehn nach sechs.
+1c12f0b8	Es ist zwanzig nach zehn.
+e287e6ea	Es ist fünf nach elf.
+a21a2837	Es ist zwanzig vor zehn.
+0bcbab86	Es ist zehn nach vier.
+302a62c5	Es ist fünf vor elf.
+ef7b95b8	Es ist zwanzig vor sieben.
+e423543f	Es ist zwanzig vor zwölf.
+457e1513	Es ist zehn vor fünf.
+b3b1bbaf	Es ist zwanzig nach sechs.
+9e038f10	Es ist zwanzig nach zwölf.
+8d9fc35f	Es ist zehn nach zwölf.
+6b685695	der Januar
+46e4a403	der Februar
+d3e5c0b0	der April
+9e2ad5b3	der Mai
+63890dae	der Juni
+63890dec	der Juli
+505f7557	der August
+a0fed7b9	der September
+4998b5bc	der Oktober
+56b3f5bc	der November
+6cad55f0	der Dezember
+a6af8384	der Geburtstag
+367a8ec2	das Jahr
+d436204f	der Monat
+328535bb	die Woche
+d51d5af4	Die Sonne scheint.
+f5deb972	Es regnet.
+17dfed13	Es schneit.
+4b0deb69	Es ist windig.
+47ee4546	Es ist bewölkt.
+d9d99dac	Es gibt ein Gewitter.
+30608e77	Es ist heiss.
+d2dbbc41	Es ist kalt.
+d202d27a	Es ist warm.
+df229278	Es ist neblig.
+87941ee3	der Regenschirm
+21ebae0c	der Regenbogen
+9b523e5d	Fussball spielen
+0a595714	lesen
+e57f7088	schwimmen
+8e407903	Velo fahren
+7ea26e44	reiten
+67e31e2f	tanzen
+809ee3f3	Gitarre spielen
+0a66bc4e	malen
+410c8482	Ski fahren
+1f762e8b	Musik hören
+23c17faf	fernsehen
+6d966021	kochen
+817e1f1d	singen
+2cfc3270	Games spielen
+4e4f46e6	Freunde treffen
+367986fc	das Haus
+e9436faf	die Wohnung
+30e1c614	die Küche
+196de3d5	das Badezimmer
+ed360904	das Schlafzimmer
+a6b82ee9	das Wohnzimmer
+88e5e0c8	das Kinderzimmer
+4ccc68fd	der Garten
+36763b54	das Bett
+5a2640f8	der Schrank
+30e65738	die Lampe
+6e8b8eee	das Fenster
+84e192eb	die Treppe
+2ac0fd53	die Toilette
+7d9cbbfc	die Hose
+bd1b819e	das T-Shirt
+eb9d33fd	der Pullover
+310c7d0b	die Jacke
+05dac93c	das Kleid
+637c42c3	der Rock
+8cc4a0ad	die Schuhe
+8befd032	die Socken
+314be1d7	die Mütze
+d2f2a143	der Schal
+1065652e	die Handschuhe
+9e2ae8ff	der Hut
+7bf81b83	der Rucksack
+367997f7	das Hemd
+f47b7789	die Stiefel
+367b0c30	das Kino
+7da99cf5	die Post
+8aa846e0	das Spital
+d65e7778	die Bäckerei
+337bbdd6	der Supermarkt
+3f55769c	die Bibliothek
+c0712652	das Schwimmbad
+637b347e	der Park
+55d283f3	die Kirche
+47610b1e	das Restaurant
+f661a59c	die Strasse
+0a52b516	links
+7e9f677e	rechts
+a5872712	geradeaus
+b874ca60	das Frühstück
+d93c619f	das Mittagessen
+d5ce6611	das Abendessen
+b861da36	das Gemüse
+367d5799	das Obst
+7eac400d	das Fleisch
+637c299b	der Reis
+4aaea015	die Nudeln
+17bed087	die Kartoffel
+32c8506e	die Suppe
+d2ef569d	der Salat
+a3240041	das Brötchen
+46f61ce6	der Zucker
+9e2a74e2	der Tee
+68d0a8fc	der Kaffee
+3284595a	die Wurst
+8b806b2e	Mein Bruder spielt Tennis.
+3d2b54c7	Wir finden den Schlüssel.
+4649d53f	Du wohnst in Bern.
+e3f2da53	Du findest den Schlüssel.
+96851acf	Anna und Tom arbeiten im Garten.
+c81775ea	Er wohnt in Bern.
+7ad65fe8	Ich lerne Englisch.
+497b8bf9	Du lernst Englisch.
+95d269b3	Er reist nach Italien.
+34db88cd	Ihr besucht die Oma.
+5996b04e	Wir heissen Müller.
+8728e84e	Wir wohnen in Bern.
+60204b1e	Du arbeitest im Garten.
+01e60762	Ihr findet den Schlüssel.
+f5010287	Ich finde den Schlüssel.
+5f22e3d7	Ihr reist nach Italien.
+63f61a3d	Anna heisst Müller.
+06b0aaed	Ich besuche die Oma.
+ab335fdf	Du kochst Reis.
+84628c32	Tom reist nach Italien.
+eb4c3f0c	Meine Eltern wohnen in Bern.
+88343a1e	Ich kaufe Brot.
+812d6337	Wir reisen nach Italien.
+4185ff5e	Wir kaufen Brot.
+ee84d86c	Die Kinder reisen nach Italien.
+9241fd55	Du reist nach Italien.
+c8afe16c	Meine Schwester arbeitet im Garten.
+95a20c4a	Ich arbeite im Garten.
+f136bc6d	Tom lernt Englisch.
+29c6d32e	Ich wohne in Bern.
+e4eb12cf	Du kaufst Brot.
+89ec54ce	Ihr wohnt in Bern.
+cb8ebf37	Ich reise nach Italien.
+3ab03ec6	Er findet den Schlüssel.
+5fc7a5ce	Ich koche Reis.
+6b419e1f	Die Kinder spielen Tennis.
+422b20db	Tom kauft Brot.
+bcd77f2a	Meine Eltern lernen Englisch.
+70e4a21d	Mein Bruder reist nach Italien.
+9f007536	Anna und Tom tanzen gern.
+f6c0c011	Anna findet den Schlüssel.
+59e1db2d	Meine Schwester wohnt in Bern.
+7f00ba6e	Ihr heisst Müller.
+42d25aae	Ich heisse Müller.
+1f978f2c	Du heisst Müller.
+6bcbe39d	Anna kocht Reis.
+39cccd05	Die Kinder kaufen Brot.
+d35b328a	Wir arbeiten im Garten.
+6f8f3015	Die Kinder kochen Reis.
+f51e2093	Wir tanzen gern.
+f5881f0d	Meine Schwester heisst Müller.
+bcd5cac2	Anna und Tom finden den Schlüssel.
+6c8796c8	Ihr lernt Englisch.
+f6b08976	Die Kinder besuchen die Oma.
+ded8bd0b	Tom kocht Reis.
+c781236f	Ihr arbeitet im Garten.
+4e741e4b	Er arbeitet im Garten.
+b7ef8f9e	Anna besucht die Oma.
+e0dab415	Du spielst Tennis.
+f6f6f156	Tom tanzt gern.
+f52dd9f1	Die Kinder arbeiten im Garten.
+910aebdd	Anna wohnt in Bern.
+5e95a173	Ihr tanzt gern.
+e92f49c0	Er spielt Tennis.
+8b529e8b	Meine Schwester lernt Englisch.
+2ed69835	Die Kinder heissen Müller.
+5fafeb8b	Anna und Tom wohnen in Bern.
+5e913bae	Ihr kocht Reis.
+88122ed3	Ich tanze gern.
+0b0d145c	Anna arbeitet im Garten.
+463ca364	Wir spielen Tennis.
+c5119ac8	Meine Eltern arbeiten im Garten.
+b89f1d7b	Anna und Tom kaufen Brot.
+e95427b3	Die Kinder lernen Englisch.
+60ec26e4	Ich spiele Tennis.
+d15388fe	Ihr kauft Brot.
+2cbddf97	Er tanzt gern.
+8348bbee	Meine Schwester besucht die Oma.
+bbff3228	Wir lernen Englisch.
+49493e4e	Wir kochen Reis.
+5eee5648	Tom besucht die Oma.
+50337f54	Meine Schwester reist nach Italien.
+e82e3b0a	Er kocht Reis.
+067b24c7	Mein Bruder besucht die Oma.
+4da3868c	Meine Eltern heissen Müller.
+84a5550b	Tom wohnt in Bern.
+35bb7439	Mein Bruder tanzt gern.
+36281ffc	Du besuchst die Oma.
+d2d5aef1	Du tanzt gern.
+e103540f	Meine Eltern besuchen die Oma.
+3eb6547b	Anna lernt Englisch.
+01731c4d	Anna kauft Brot.
+035fde35	Die Kinder wohnen in Bern.
+c92637c0	Anna tanzt gern.
+85ebd6a8	Mein Bruder findet den Schlüssel.
+fc9840b5	Meine Eltern reisen nach Italien.
+518845cd	Wir besuchen die Oma.
+c802607c	Die Kinder finden den Schlüssel.
+730e7d4c	Meine Eltern kochen Reis.
+4b56830b	Anna und Tom heissen Müller.
+da040387	Tom findet den Schlüssel.
+f9ef6c88	Die Kinder tanzen gern.
+ae920d2d	Meine Schwester kocht Reis.
+fb8a67c7	Meine Schwester spielt Tennis.
+c6200ddc	Meine Eltern kaufen Brot.
+3be037a5	Mein Bruder arbeitet im Garten.
+858e90b4	Mein Bruder kauft Brot.
+f0e5e2fd	Meine Schwester kauft Brot.
+e17f70b0	Meine Schwester tanzt gern.
+f58d7011	Meine Eltern tanzen gern.
+0befdbe4	Mein Bruder heisst Müller.
+113c3aa6	Meine Eltern spielen Tennis.
+2dc6f0ca	Tom arbeitet im Garten.
+6a799c0d	Anna und Tom lernen Englisch.
+96da0e44	Mein Bruder wohnt in Bern.
+10fbc1eb	Anna und Tom kochen Reis.
+48171a52	Anna und Tom reisen nach Italien.
+d63acbeb	Tom heisst Müller.
+455df705	Meine Eltern finden den Schlüssel.
+116074a1	Meine Schwester findet den Schlüssel.
+9f514e77	Anna spielt Tennis.
+8d54675a	Er kauft Brot.
+2428b3e1	Anna und Tom spielen Tennis.
+da8273ac	Er lernt Englisch.
+5174b2e9	Er besucht die Oma.
+7e093864	Mein Bruder kocht Reis.
+ac2bbfa4	Anna reist nach Italien.
+53574b8a	Er heisst Müller.
+7d287fa1	Tom spielt Tennis.
+3840e5d9	Du trägst eine Jacke.
+aae92eb4	Anna spricht Deutsch.
+1a1ae8b4	Ich gebe ein Geschenk.
+8c305af5	Wir sehen einen Film.
+57c740e8	Wir lesen ein Buch.
+0e718530	Die Kinder sprechen Deutsch.
+e08397cd	Du siehst einen Film.
+ca0f634b	Wir helfen Mama.
+4d49430b	Ich spreche Deutsch.
+4bc3618b	Wir sprechen Deutsch.
+5b280acb	Mein Bruder liest ein Buch.
+0e02492a	Meine Eltern lesen ein Buch.
+9f81068c	Anna und Tom nehmen den Bus.
+a63ccd36	Du sprichst Deutsch.
+3be0d03e	Ich esse einen Apfel.
+6f133932	Anna liest ein Buch.
+5f045b1b	Anna und Tom schlafen lange.
+6e851ffe	Ihr esst einen Apfel.
+24f3a5b4	Ihr gebt ein Geschenk.
+fcf3c909	Wir nehmen den Bus.
+9b7bca21	Wir laufen schnell.
+0ace00ab	Ihr helft Mama.
+b03e9f8e	Die Kinder sehen einen Film.
+148651ab	Ihr sprecht Deutsch.
+9ff76c69	Du gibst ein Geschenk.
+a4a41d55	Ich sehe einen Film.
+d9c4ab4d	Ich trage eine Jacke.
+671678db	Anna trägt eine Jacke.
+1f487689	Ihr nehmt den Bus.
+6c82b343	Er spricht Deutsch.
+209194a9	Ich nehme den Bus.
+b01be14b	Meine Eltern nehmen den Bus.
+9b9eac7c	Er fährt mit dem Velo.
+298c2765	Die Kinder schlafen lange.
+8b078b56	Du hilfst Mama.
+bbcf97fe	Wir essen einen Apfel.
+f8254593	Die Kinder lesen ein Buch.
+853d95a4	Tom liest ein Buch.
+59c0113d	Ihr fahrt mit dem Velo.
+91b6bead	Ihr tragt eine Jacke.
+063269fe	Ihr schlaft lange.
+5d2512b6	Die Kinder tragen eine Jacke.
+076b255d	Ich fahre mit dem Velo.
+aa3516f0	Du isst einen Apfel.
+ac47c014	Anna hilft Mama.
+4a7f5c94	Wir geben ein Geschenk.
+6b2b8248	Ihr lest ein Buch.
+3af2bb5b	Meine Schwester fährt mit dem Velo.
+659c202b	Anna fährt mit dem Velo.
+83089c98	Er sieht einen Film.
+4e7894c6	Die Kinder fahren mit dem Velo.
+911ff221	Tom läuft schnell.
+b0c97b8f	Anna sieht einen Film.
+fe1a09a1	Ihr lauft schnell.
+15e40c52	Mein Bruder fährt mit dem Velo.
+4cba04ee	Mein Bruder läuft schnell.
+a58ebc04	Er nimmt den Bus.
+c6dbb1ea	Mein Bruder nimmt den Bus.
+8f2ce008	Anna und Tom tragen eine Jacke.
+ebfe05f6	Mein Bruder sieht einen Film.
+f17fc381	Anna isst einen Apfel.
+d911a22a	Du schläfst lange.
+5fb7619e	Ich schlafe lange.
+4c72c99d	Wir fahren mit dem Velo.
+8a93b8c3	Meine Schwester nimmt den Bus.
+a6d6aceb	Meine Schwester trägt eine Jacke.
+acc27465	Er liest ein Buch.
+dfebcfda	Die Kinder laufen schnell.
+3323ce9e	Wir schlafen lange.
+61ae8f7c	Meine Eltern essen einen Apfel.
+7bde2973	Anna nimmt den Bus.
+90f0276d	Anna und Tom lesen ein Buch.
+91cb72c8	Ich lese ein Buch.
+c4a0ea64	Anna und Tom laufen schnell.
+b33c973d	Tom gibt ein Geschenk.
+daadb0b8	Meine Schwester schläft lange.
+7057a849	Du fährst mit dem Velo.
+98ec2a0c	Er trägt eine Jacke.
+3e37a4e2	Tom spricht Deutsch.
+3d77f737	Meine Eltern sehen einen Film.
+67fd4b5b	Meine Schwester gibt ein Geschenk.
+e4e38c51	Anna und Tom geben ein Geschenk.
+4e85834b	Ich helfe Mama.
+6e8fbb6d	Wir tragen eine Jacke.
+9edb43c9	Meine Eltern helfen Mama.
+623b4388	Anna schläft lange.
+20e35332	Die Kinder nehmen den Bus.
+a7679503	Du liest ein Buch.
+0306149b	Anna und Tom essen einen Apfel.
+d92001bf	Er schläft lange.
+1151f1d6	Meine Eltern geben ein Geschenk.
+f6a7351f	Meine Eltern fahren mit dem Velo.
+95658f71	Du nimmst den Bus.
+ee3ccc10	Die Kinder helfen Mama.
+e099fd75	Du läufst schnell.
+27242f6e	Anna und Tom helfen Mama.
+2e8f5c04	Meine Schwester spricht Deutsch.
+6580eff0	Anna und Tom sehen einen Film.
+5ec56283	Er hilft Mama.
+3fcad3b8	Anna und Tom fahren mit dem Velo.
+1d660e55	Ihr seht einen Film.
+961e76d6	Er isst einen Apfel.
+9df05cbf	Meine Schwester sieht einen Film.
+8abf36c2	Meine Schwester liest ein Buch.
+ef4b49bd	Tom fährt mit dem Velo.
+7020ffef	Meine Eltern tragen eine Jacke.
+32c935b1	Meine Schwester isst einen Apfel.
+2713be6d	Mein Bruder hilft Mama.
+41309fdc	Er gibt ein Geschenk.
+90c40eef	Die Kinder geben ein Geschenk.
+ed573ea4	Meine Schwester hilft Mama.
+c5b1d9ad	Mein Bruder spricht Deutsch.
+7ee568d1	Mein Bruder schläft lange.
+58c933b2	Mein Bruder gibt ein Geschenk.
+a8ecc75c	Meine Eltern schlafen lange.
+c7560b25	Tom nimmt den Bus.
+7dc484b8	Mein Bruder isst einen Apfel.
+473a45c0	Er läuft schnell.
+cc6ac049	Meine Eltern sprechen Deutsch.
+f5a93607	Meine Schwester läuft schnell.
+a4342d4d	Tom trägt eine Jacke.
+c5622ce2	Mein Bruder trägt eine Jacke.
+b0d15bde	Tom schläft lange.
+fa7c0d6b	Anna gibt ein Geschenk.
+e7254a02	Tom hilft Mama.
+2fa85177	Anna läuft schnell.
+c7519d0e	Anna und Tom sprechen Deutsch.
+a27aa399	Tom sieht einen Film.
+ad13e397	Tom isst einen Apfel.
+8a308563	Ihr dürft heute fernsehen.
+f0d9fe6f	Du darfst heute fernsehen.
+7f963aa1	Du kannst Gitarre spielen.
+a07957a0	Du musst die Hausaufgaben machen.
+4fbe5697	Anna kann Gitarre spielen.
+6dbd9110	Du willst ein Eis essen.
+54e94cf8	Wir möchten ein Brötchen.
+5fa50c55	Ich kann Gitarre spielen.
+f09dcedd	Ihr möchtet ein Brötchen.
+1b02020e	Anna und Tom müssen die Hausaufgaben machen.
+065a1f3d	Er kann gut schwimmen.
+1589fec9	Meine Eltern müssen die Hausaufgaben machen.
+da4b4f94	Die Kinder mögen Schokolade.
+37b3cb6e	Ihr müsst früh aufstehen.
+49aff53d	Ich mag Schokolade.
+927869ba	Meine Eltern möchten ein Brötchen.
+febd8da9	Du magst Schokolade.
+fea75d71	Er will ein Eis essen.
+95ca9a7d	Anna und Tom möchten ein Brötchen.
+ebe8046c	Du möchtest ein Brötchen.
+b428d05e	Anna und Tom wollen nach Hause gehen.
+20e94bf9	Mein Bruder muss früh aufstehen.
+eb413cbb	Wir wollen nach Hause gehen.
+df7dc06b	Ihr müsst die Hausaufgaben machen.
+a4d81cac	Du willst nach Hause gehen.
+bf2317da	Wir können gut schwimmen.
+9c0b69ed	Er möchte ein Brötchen.
+7efabd0c	Meine Eltern müssen früh aufstehen.
+7bec721c	Du kannst gut schwimmen.
+c2ca4d60	Mein Bruder darf heute fernsehen.
+ab5cf8a7	Ihr wollt ein Eis essen.
+f7e7221a	Anna will nach Hause gehen.
+0975288b	Wir müssen die Hausaufgaben machen.
+73a182e8	Ich kann gut schwimmen.
+90b98de2	Ich muss früh aufstehen.
+da00798f	Meine Schwester mag Schokolade.
+b588dfd8	Ich möchte ein Brötchen.
+f29a69ce	Er darf heute fernsehen.
+a05026c7	Ihr könnt Gitarre spielen.
+737588a5	Anna muss die Hausaufgaben machen.
+f55f358f	Ihr mögt Schokolade.
+fe308d55	Meine Schwester muss die Hausaufgaben machen.
+32184cef	Wir mögen Schokolade.
+f79ee230	Die Kinder müssen die Hausaufgaben machen.
+a693aa67	Wir wollen ein Eis essen.
+f1ab3683	Die Kinder möchten ein Brötchen.
+2ee13e18	Ich will nach Hause gehen.
+26a4fab3	Tom muss die Hausaufgaben machen.
+a324c78e	Wir müssen früh aufstehen.
+8a3f1da7	Meine Schwester kann Gitarre spielen.
+0d7ebb69	Tom mag Schokolade.
+6e6b23d8	Die Kinder dürfen heute fernsehen.
+697958e7	Wir können Gitarre spielen.
+43fc72dc	Die Kinder können Gitarre spielen.
+731987a4	Ich will ein Eis essen.
+e8c979ab	Anna und Tom müssen früh aufstehen.
+b2daeaed	Er will nach Hause gehen.
+14747a5a	Anna möchte ein Brötchen.
+f1163921	Die Kinder können gut schwimmen.
+e9d5c653	Mein Bruder kann gut schwimmen.
+d51ac222	Anna und Tom wollen ein Eis essen.
+c60d01f0	Tom will ein Eis essen.
+448ba37b	Ihr wollt nach Hause gehen.
+17b0b067	Ich muss die Hausaufgaben machen.
+ec1da423	Wir dürfen heute fernsehen.
+4fd2f718	Meine Eltern können gut schwimmen.
+806fd05f	Anna und Tom können gut schwimmen.
+c26612db	Ich darf heute fernsehen.
+d7346afa	Ihr könnt gut schwimmen.
+9c7ea1a8	Er mag Schokolade.
+44d4c67f	Anna mag Schokolade.
+6d9d9522	Anna und Tom können Gitarre spielen.
+18f33edc	Die Kinder wollen ein Eis essen.
+94e18a16	Meine Schwester will ein Eis essen.
+1303afa5	Meine Eltern können Gitarre spielen.
+693a29c3	Mein Bruder will nach Hause gehen.
+de22c6e9	Meine Schwester darf heute fernsehen.
+320d8c2d	Meine Eltern mögen Schokolade.
+6fdf9bea	Anna und Tom mögen Schokolade.
+241c488c	Tom möchte ein Brötchen.
+5f18c695	Die Kinder müssen früh aufstehen.
+ce7463b6	Tom muss früh aufstehen.
+bc68dc01	Tom kann Gitarre spielen.
+48aabde6	Anna will ein Eis essen.
+0b88436a	Meine Schwester will nach Hause gehen.
+43e6c7aa	Anna kann gut schwimmen.
+4421a5e6	Anna und Tom dürfen heute fernsehen.
+0475772a	Meine Schwester möchte ein Brötchen.
+03e57a9a	Meine Schwester kann gut schwimmen.
+81bcfb25	Meine Eltern wollen ein Eis essen.
+80c4ed06	Mein Bruder mag Schokolade.
+293de4c0	Er kann Gitarre spielen.
+53162c60	Die Kinder wollen nach Hause gehen.
+50343bb9	Meine Eltern wollen nach Hause gehen.
+5792c360	Anna muss früh aufstehen.
+72a2c61c	Mein Bruder muss die Hausaufgaben machen.
+40fb424c	Tom will nach Hause gehen.
+080dc6b2	Er muss die Hausaufgaben machen.
+4fe52961	Meine Eltern dürfen heute fernsehen.
+dc72272e	Mein Bruder kann Gitarre spielen.
+9ddb7abc	Tom kann gut schwimmen.
+4c5bc3d7	Er muss früh aufstehen.
+7a3ae643	Mein Bruder möchte ein Brötchen.
+28238d8f	Tom darf heute fernsehen.
+46ef88df	Mein Bruder will ein Eis essen.
+474e4065	Ich sehe einen Apfel.
+9561e412	Er sucht einen Bleistift.
+e4fb5245	Er sucht eine Banane.
+e96f97e7	Ich kaufe ein Velo.
+87b33544	Er sucht eine Jacke.
+a55d6a16	Ich möchte einen Hund.
+384fbd69	Ich habe eine Schultasche.
+ea446e4b	Ich kaufe ein Buch.
+ab3de16f	Er sucht einen Ball.
+a57cdc82	Ich möchte einen Ball.
+2134ea9b	Ich kaufe eine Schultasche.
+bf71cfa5	Ich kaufe ein Brötchen.
+4dfc780c	Ich sehe ein Buch.
+aede61e9	Ich habe ein Ei.
+5fff962d	Ich sehe eine Pizza.
+e3f0b51c	Ich sehe eine Schultasche.
+7bfd7c03	Ich brauche eine Banane.
+2f8a7777	Er sucht ein Velo.
+eeb83117	Ich habe ein Brötchen.
+728559a6	Ich habe eine Jacke.
+a58fefec	Ich sehe einen Hund.
+ca51bd42	Ich brauche eine Jacke.
+6331e142	Ich kaufe einen Apfel.
+97c49783	Er sucht eine Katze.
+0dbf3e0b	Er sucht eine Schultasche.
+2ab361e9	Ich möchte eine Jacke.
+24efa9ce	Ich sehe einen Rucksack.
+1a3bf9c8	Ich möchte eine Banane.
+4296151f	Ich brauche einen Rucksack.
+a4e83d78	Ich sehe einen Ball.
+97b7d9e1	Wir haben eine Katze.
+8b81920d	Ich brauche eine Schultasche.
+74e94f0d	Ich brauche ein Ei.
+53fc319f	Ich möchte einen Apfel.
+6fefeb61	Ich habe eine Katze.
+54db4b5d	Ich brauche ein Buch.
+1cceebc2	Er sucht ein Pferd.
+1358a252	Ich kaufe ein Pferd.
+f9f5ac20	Ich habe ein Pferd.
+c4272972	Er sucht einen Kuchen.
+df4a0e39	Ich habe ein Buch.
+1f445cb9	Wir haben ein Buch.
+bbc2001a	Ich möchte ein Velo.
+9a4d4826	Wir haben eine Jacke.
+7c582732	Ich sehe eine Banane.
+cd518158	Wir haben eine Pizza.
+4118358f	Ich möchte ein Pferd.
+657a2dd3	Ich sehe eine Jacke.
+051aead0	Wir haben einen Kuchen.
+c37b4d7a	Er sucht eine Pizza.
+1fabcad2	Er sucht einen Apfel.
+55afea71	Ich brauche ein Velo.
+ee58b035	Er sucht ein Brötchen.
+78700de2	Ich kaufe einen Kuchen.
+96f31069	Wir haben ein Ei.
+ac4391fb	Er sucht einen Hund.
+feaa2813	Ich kaufe eine Katze.
+a4b4c9f0	Wir haben einen Bleistift.
+d73a0709	Ich kaufe einen Rucksack.
+dfddd1ea	Ich kaufe eine Pizza.
+f6b835f5	Ich sehe ein Pferd.
+00f8ab7d	Ich brauche einen Hund.
+baed1936	Ich möchte ein Buch.
+6b186130	Wir haben einen Apfel.
+66ff7ccd	Ich habe einen Ball.
+a58992d8	Ich habe eine Pizza.
+8ec76b4d	Wir haben einen Ball.
+123475ff	Ich kaufe einen Ball.
+00cbcde9	Ich brauche einen Ball.
+dca35fd4	Ich brauche einen Bleistift.
+3233cb70	Ich habe einen Bleistift.
+20e454b3	Ich brauche ein Brötchen.
+13289a6b	Ich kaufe einen Hund.
+0919ca82	Ich kaufe einen Bleistift.
+0b8c5514	Ich brauche einen Apfel.
+cb9d5c50	Ich habe einen Kuchen.
+0f6a14fc	Ich brauche eine Pizza.
+d9d91005	Ich brauche eine Katze.
+5fcb7b22	Ich sehe ein Brötchen.
+949cfedf	Ich möchte einen Bleistift.
+6e823e99	Er sucht einen Rucksack.
+50ec2474	Ich möchte einen Rucksack.
+faf08be9	Wir haben eine Schultasche.
+d186b75c	Ich sehe ein Ei.
+3939caa0	Wir haben ein Pferd.
+697a7226	Ich möchte eine Schultasche.
+48ae897b	Ich habe einen Rucksack.
+4c9f69e0	Ich sehe ein Velo.
+2d59d42e	Ich möchte eine Katze.
+0e9eff65	Ich sehe einen Kuchen.
+67814c94	Ich sehe eine Katze.
+2e2dc9db	Er sucht ein Buch.
+2a1433a7	Ich habe eine Banane.
+4a52a2b0	Ich habe einen Apfel.
+d7c9b7fb	Wir haben einen Rucksack.
+f7793a66	Ich möchte ein Ei.
+f128311f	Ich möchte einen Kuchen.
+4ad9f227	Wir haben eine Banane.
+eea9c9d4	Ich kaufe eine Jacke.
+63a7311b	Ich kaufe ein Ei.
+2ac478d5	Ich kaufe eine Banane.
+1026df04	Ich brauche ein Pferd.
+c364648b	Er sucht ein Ei.
+a27d1a74	Ich brauche einen Kuchen.
+ab512189	Ich möchte keinen Ball.
+f773a4fb	Ich habe keinen Kuchen.
+4bd419c2	Wir haben kein Ei.
+6dbe146f	Er sucht keine Jacke.
+da7ef973	Ich sehe keinen Ball.
+f8738109	Ich kaufe keinen Kuchen.
+da4dfae7	Ich sehe keinen Hund.
+b3873aff	Ich kaufe keine Jacke.
+e13cb9a0	Ich kaufe kein Buch.
+b4d6049f	Ich sehe keine Katze.
+70fc0b60	Er sucht kein Ei.
+da078872	Wir haben keinen Hund.
+5b589ada	Ich brauche kein Velo.
+2f7a6d3b	Wir haben keinen Apfel.
+0637dc6c	Wir haben keine Banane.
+64d4aabc	Wir haben kein Brötchen.
+ab7dff1d	Ich möchte keinen Hund.
+026efe34	Ich brauche keinen Rucksack.
+cde84c63	Ich möchte keine Banane.
+b589f8b8	Ich kaufe keine Katze.
+c57d4fab	Wir haben kein Pferd.
+473f8a82	Ich habe keine Schultasche.
+7e0dc550	Wir haben keinen Rucksack.
+daaf3ae6	Wir haben keinen Ball.
+f5fcdebb	Ich habe keinen Apfel.
+f18b4d14	Ich möchte keinen Kuchen.
+0f12bce6	Ich brauche keine Schultasche.
+e23ed9c7	Ich sehe kein Buch.
+5dfa2902	Wir haben keine Schultasche.
+c6c55414	Ich kaufe keinen Ball.
+cb508e97	Ich sehe kein Ei.
+c3915c49	Er sucht kein Pferd.
+292b819c	Ich möchte keine Pizza.
+5b171cee	Ich brauche keine Katze.
+92b9d9c9	Ich kaufe keinen Apfel.
+f58f0fa0	Er sucht keine Schultasche.
+0aa49c5e	Ich sehe kein Pferd.
+bcfc939e	Ich kaufe keine Banane.
+2c247d91	Ich möchte kein Velo.
+9e251a8e	Ich sehe keinen Bleistift.
+92a923d6	Ich brauche keinen Hund.
+e40ec862	Ich möchte keine Jacke.
+6c423b7b	Wir haben keinen Bleistift.
+1a226772	Er sucht keinen Rucksack.
+18d48d74	Ich möchte keinen Apfel.
+a0200330	Er sucht kein Buch.
+b9e97c66	Ich habe keinen Ball.
+9354f742	Ich brauche keinen Ball.
+89d363c1	Ich kaufe keine Pizza.
+790c2485	Ich sehe keinen Rucksack.
+19b77417	Ich sehe keine Schultasche.
+5a83b3f6	Ich brauche kein Buch.
+a9482889	Ich kaufe keinen Bleistift.
+34d5554e	Ich sehe keinen Apfel.
+be0e9b0e	Er sucht keine Banane.
+61299b42	Ich habe kein Ei.
+b2527019	Er sucht keinen Bleistift.
+e28d0b4d	Ich habe keine Jacke.
+6fd1d628	Er sucht keine Katze.
+f5e20d3c	Ich habe kein Brötchen.
+f3fcce30	Ich kaufe keine Schultasche.
+86e747d3	Ich möchte kein Brötchen.
+caf4c31f	Ich brauche keinen Bleistift.
+5c0625de	Er sucht kein Brötchen.
+924e0efe	Wir haben kein Velo.
+a17cf89c	Er sucht kein Velo.
+05f4fc0a	Wir haben keine Katze.
+90f10892	Wir haben kein Buch.
+a4d14558	Ich sehe keine Jacke.
+666b8a99	Er sucht keinen Kuchen.
+960ef159	Er sucht keinen Apfel.
+2b4ffffd	Ich möchte kein Buch.
+199869f0	Ich kaufe kein Ei.
+c16576cf	Ich brauche kein Pferd.
+c8415898	Ich brauche kein Brötchen.
+51acea12	Ich habe kein Buch.
+cca5c1e2	Ich kaufe keinen Rucksack.
+b52dc5e4	Ich möchte kein Pferd.
+9db5612b	Ich habe kein Pferd.
+ccba4dec	Ich habe keine Banane.
+1ae2c2b3	Wir haben keine Pizza.
+ff57d94e	Ich kaufe kein Brötchen.
+c42d7734	Ich möchte keinen Bleistift.
+dfe364d9	Ich kaufe kein Pferd.
+800c2a10	Er sucht keinen Hund.
+6b156ba9	Ich brauche keine Jacke.
+99c68a3f	Ich möchte keinen Rucksack.
+fd5fd4df	Ich brauche keinen Apfel.
+104282ad	Ich möchte kein Ei.
+fa1d0433	Ich habe keine Pizza.
+71cc0c66	Ich sehe keine Pizza.
+9fd73d29	Ich sehe kein Brötchen.
+df681426	Ich brauche kein Ei.
+5309f07e	Ich habe kein Velo.
+e0e2246b	Ich sehe kein Velo.
+9cca9b6e	Ich sehe keinen Kuchen.
+0352c9cd	Wir haben keine Jacke.
+b7061a2d	Ich möchte keine Schultasche.
+d7f222d9	Ich sehe keine Banane.
+72640cdf	Ich brauche keinen Kuchen.
+8e9e4d51	Er sucht keine Pizza.
+a9a16cfb	Ich habe keinen Bleistift.
+c5c3c480	Ich kaufe keinen Hund.
+e209fb25	Ich möchte keine Katze.
+66df4c08	Ich brauche keine Banane.
+b941c9f2	Ich habe keinen Hund.
+80fc2d84	Er sucht keinen Ball.
+e52f3d8a	Ich habe keine Katze.
+0b8cc6d0	Ich habe keinen Rucksack.
+e0682b0c	Ich kaufe kein Velo.
+60a3037b	Wir haben keinen Kuchen.
+9e626fb7	Ich habe die Pizza.
+10c2dbbc	Ich kaufe die Katze.
+784672f2	Ich brauche den Apfel.
+cea3cbf4	Er sucht den Bleistift.
+9fa5dd6a	Ich brauche die Katze.
+c6169649	Wir haben die Jacke.
+f88dfee8	Ich sehe den Rucksack.
+1b828ae7	Ich brauche das Brötchen.
+c5330d4f	Ich brauche den Ball.
+91c6dc9b	Ich sehe die Katze.
+e8315adf	Er sucht das Ei.
+cfa59d2c	Er sucht die Katze.
+5570eda1	Ich möchte die Katze.
+0bfe7612	Ich möchte den Rucksack.
+aa56f9dd	Ich habe den Rucksack.
+e3d4885d	Wir haben den Rucksack.
+12b399b9	Ich möchte den Kuchen.
+5d4d6436	Wir haben den Kuchen.
+9efd3383	Ich sehe den Apfel.
+3c2d818a	Ich sehe den Hund.
+0eae4334	Er sucht den Apfel.
+afa88d2d	Ich brauche die Jacke.
+10123ce2	Ich möchte das Buch.
+939fb03f	Ich habe den Hund.
+6b8bb4c3	Ich sehe den Bleistift.
+f200fba9	Ich möchte die Schultasche.
+0f3dbece	Ich möchte das Velo.
+ba8e680f	Er sucht das Buch.
+e632b8d6	Wir haben den Bleistift.
+669744bd	Wir haben das Ei.
+3711a889	Ich brauche das Buch.
+3d461c0c	Ich brauche die Banane.
+2a17f532	Ich möchte das Ei.
+7e82963d	Ich habe das Ei.
+d5856906	Ich habe die Schultasche.
+dda68e37	Wir haben die Pizza.
+577a1be6	Ich möchte die Jacke.
+3b836374	Ich habe das Pferd.
+97833ea1	Ich sehe das Pferd.
+e45407a4	Er sucht die Schultasche.
+a02291b4	Ich sehe das Velo.
+29d1ab6d	Ich habe das Buch.
+3b395d1e	Ich sehe den Ball.
+8acfda8c	Ich möchte das Brötchen.
+c8bd298e	Wir haben die Katze.
+69cbf9ed	Wir haben das Buch.
+89790b0e	Ich habe die Katze.
+bed4e67f	Er sucht den Rucksack.
+b93193a3	Er sucht das Velo.
+ee0c64b9	Ich möchte den Apfel.
+d324d02b	Wir haben den Ball.
+ee6db255	Er sucht die Pizza.
+748be234	Ich kaufe die Schultasche.
+e05f405b	Ich möchte das Pferd.
+2205ba68	Wir haben die Banane.
+4ea43c5d	Er sucht den Hund.
+dfb06379	Ich möchte den Bleistift.
+7e00d783	Ich sehe den Kuchen.
+0a132e59	Ich kaufe den Ball.
+9c96d618	Ich möchte die Pizza.
+43fd0359	Ich brauche das Ei.
+c5ac5cdb	Ich brauche den Hund.
+358575b6	Ich habe den Kuchen.
+31cb9e96	Wir haben den Apfel.
+8a513dc3	Wir haben das Brötchen.
+e2ff2408	Ich sehe das Ei.
+9d0741f6	Ich sehe das Brötchen.
+b42c4aef	Ich kaufe den Rucksack.
+363cc1a5	Ich brauche das Velo.
+fa3dcbe8	Ich habe die Banane.
+7d035a56	Ich habe den Bleistift.
+ae2d8e67	Ich möchte die Banane.
+0ebbbcfb	Ich kaufe die Jacke.
+4d9975a4	Ich kaufe den Apfel.
+cd8d7a6b	Er sucht die Jacke.
+02d73450	Ich brauche das Pferd.
+932a81ab	Ich habe den Ball.
+81c67e5c	Ich sehe die Jacke.
+b5242493	Ich brauche die Pizza.
+7f51d71a	Ich kaufe die Banane.
+07879ba4	Ich möchte den Ball.
+06979830	Ich möchte den Hund.
+49086d61	Er sucht das Brötchen.
+86d277c9	Ich habe die Jacke.
+d399febf	Wir haben den Hund.
+0abae0cd	Ich kaufe den Hund.
+de6a1786	Ich kaufe das Pferd.
+25a1ebc4	Ich kaufe den Kuchen.
+e507e4c5	Ich kaufe die Pizza.
+8631174f	Ich kaufe das Ei.
+4deafdc9	Er sucht den Ball.
+3016d552	Ich brauche den Kuchen.
+dad1e516	Er sucht das Pferd.
+d7808c9f	Ich kaufe das Buch.
+948009f9	Ich brauche den Rucksack.
+8d318c32	Ich brauche den Bleistift.
+185b428a	Er sucht die Banane.
+9ec5dbd8	Ich sehe das Buch.
+4ec14662	Ich sehe die Pizza.
+2874a501	Ich habe das Velo.
+4b107043	Ich habe das Brötchen.
+09506b54	Er sucht den Kuchen.
+7957ec62	Ich brauche die Schultasche.
+ca3496f1	Ich kaufe das Brötchen.
+52fdfa5d	Ich sehe die Banane.
+d8553c33	Ich kaufe das Velo.
+62eece64	Ich kaufe den Bleistift.
+56725b13	Ich sehe die Schultasche.
+7ac781f4	Wir haben das Pferd.
+f2878016	Ich habe den Apfel.
+686ef381	Wir haben das Velo.
+ef17f667	Was machst du heute?
+9ffd6561	Am Montag gehe ich ins Schwimmbad.
+8962a134	Dann essen wir Pizza.
+c1910b5a	Spielst du gern Tennis?
+ec305a92	Morgen fahren wir nach Bern.
+5ac8d267	Wir müssen jetzt nach Hause gehen.
+99d9ecbb	Ich möchte ein Eis essen.
+238bcb40	Nach der Schule mache ich meine Hausaufgaben.
+d77030f7	Im Winter fahre ich Ski.
+16c5e75c	Er will einen Hund haben.
+154be131	Am Wochenende besuche ich meine Oma.
+6297bc6a	Wo wohnst du?
+add744d6	Heute spiele ich Fussball.
+a14a1d1c	Kannst du mir helfen?
+34c79db5	Was machst du am Samstag? – Ich spiele Fussball.
+63e4d14f	Wohin fährst du in den Ferien? – Nach Spanien.
+e4263918	Warum weinst du? – Weil ich müde bin.
+0648e5ee	Wer ist das? – Das ist meine Lehrerin.
+508146ea	Wie alt ist dein Bruder? – Vierzehn.
+32036c27	Woher kommst du? – Aus Italien.
+d9e77699	Wann hast du Geburtstag? – Im März.
+873242e7	Wie viel kostet das? – Fünf Franken.
+65e65fa5	Wie viele Geschwister hast du? – Zwei.
+3089eb89	Wann beginnt die Schule? – Um acht Uhr.
+99527cbb	Wohin gehst du? – Ins Kino.
+6118420c	Montag. Heute ist Montag. Es ist kalt und es schneit. Lisa geht in die Schule. In der Schule hat sie Deutsch und Mathe. Am Mittag isst Lisa Pizza. Lecker! Am Nachmittag spielt sie mit Emma im Schnee.
+3cc5baf5	Hallo!. Hallo! Ich heisse Tom. Ich bin neun Jahre alt. Ich wohne in Freiburg. Ich habe einen Hund. Er heisst Rex. Rex ist braun und sehr lustig. Ich spiele gern mit Rex im Park.
+7850f76e	Meine Familie. Das ist Mia. Ihr Vater heisst Marco und ihre Mutter heisst Sara. Mia hat einen Bruder. Er heisst Luca und er ist sechs Jahre alt. Mia hat keine Schwester. Die Familie hat eine Katze. Mias Lieblingsfarbe ist Blau.
+ff739d85	Im Zoo. Heute sind Leo und Papa im Zoo. Sie sehen einen Elefanten. Er ist sehr gross und grau. Die Affen sind lustig. Leo mag die Pinguine am liebsten. Die Pinguine sind schwarz und weiss. Sie schwimmen schnell. Am Ende kauft Papa ein Eis für Leo.
+7f5f622b	Das ist mein Hund.
+9d076dc1	Der Apfel ist rot.
+a02808ee	Ich heisse Lena.
+c66e14f1	Ich bin neun Jahre alt.
+5446b83a	Hast du einen Bruder?
+b5a06ec3	Wir spielen im Park.
+c58b8fc8	Meine Katze ist schwarz.
+44ec8a98	Kommst du heute zu mir?
+1ad69229	Ich habe zwei Katzen.
+fb714c0f	Wie alt ist deine Schwester?
+47f8726f	Ich esse gern Pizza.
+9a114e37	Im Restaurant. Kellner: Guten Tag! Was möchtet ihr? Mama: Ich nehme einen Salat und ein Mineralwasser, bitte. Jan: Ich möchte eine Pizza mit Schinken. Kellner: Und zu trinken? Jan: Einen Apfelsaft, bitte. … Mama: Die Rechnung, bitte! Kellner: Das macht zweiundvierzig Franken. Mama: Hier sind fünfzig Franken. Stimmt so!
+e0400fba	Mein Tag. Ich heisse Elias und ich bin zwölf Jahre alt. Ich stehe um halb sieben auf. Zum Frühstück esse ich Müesli und ich trinke Orangensaft. Um Viertel nach sieben fahre ich mit dem Velo zur Schule. Mein Lieblingsfach ist Sport, aber Französisch finde ich schwierig. Nach der Schule mache ich meine Hausaufgaben. Am Abend spiele ich Gitarre. Um neun Uhr gehe ich ins Bett.
+4d862acb	Am Wochenende. Am Samstag fahren Lara und ihr Bruder Jonas mit dem Velo zum See. Es ist warm und die Sonne scheint. Am See essen sie Sandwiches und Jonas spielt Frisbee. Lara möchte nicht schwimmen, denn das Wasser ist sehr kalt. Am Sonntag regnet es. Die Familie bleibt zu Hause und spielt Karten. Lara gewinnt dreimal!
+dadb86e5	Wo ist die Post?. Tourist: Entschuldigung, wo ist die Post? Sofia: Die Post? Das ist nicht weit. Gehen Sie hier geradeaus bis zur Kirche. Dann gehen Sie links. Die Post ist neben der Bäckerei. Tourist: Ist es weit? Sofia: Nein, nur fünf Minuten zu Fuss. Tourist: Vielen Dank! Sofia: Bitte, gern geschehen!
+129ddcba	Ein Brief aus dem Skilager. Zermatt, den 3. Februar Liebe Oma, ich bin jetzt im Skilager in Zermatt. Das Wetter ist super: Die Sonne scheint, aber es ist sehr kalt, minus zehn Grad! Am Morgen fahren wir Ski, am Nachmittag spielen wir im Schnee oder wir gehen ins Hallenbad. Das Essen ist gut, aber ich vermisse deine Rösti. Mein Zimmer teile ich mit Ben und Samuel. Am Freitag fahre ich nach Hause. Viele liebe Grüsse dein Noah
+38c5defd	fünfhundertvierundsechzig
+deb472c1	sechshundertvierundsechzig
+af1523a5	fünfhundertneunundsiebzig
+02664916	dreihundertachtundvierzig
+bfcd8547	vierhundertvierundsiebzig
+2a733944	sechshundertneununddreissig
+8effbf16	neunhundertzweiundsiebzig
+34f28aac	achthundertdreizehn
+5429d816	sechshundertsechzig
+cddf9d32	dreihundertfünfunddreissig
+41045ad6	sechshunderteinunddreissig
+6b77175d	achthundertfünf
+920444fc	dreihundertsechsundfünfzig
+3f9786b8	neunhundertfünfunddreissig
+131cbbe1	fünfhundertzweiundvierzig
+011d34dd	Es ist fünfundzwanzig nach eins.
+7087e6e2	Es ist fünfundzwanzig vor zwei.
+02252a8d	Es ist fünfundzwanzig nach zwei.
+6f5e0119	Es ist fünfundzwanzig vor drei.
+012f1876	Es ist fünfundzwanzig nach drei.
+70da134b	Es ist fünfundzwanzig vor vier.
+01e48624	Es ist fünfundzwanzig nach vier.
+70091db1	Es ist fünfundzwanzig vor fünf.
+01105cde	Es ist fünfundzwanzig nach fünf.
+85acc54d	Es ist fünfundzwanzig vor sechs.
+32cd04c2	Es ist fünfundzwanzig nach sechs.
+318c1955	Es ist fünfundzwanzig vor sieben.
+96276a3a	Es ist fünfundzwanzig nach sieben.
+6fadec9d	Es ist fünfundzwanzig vor acht.
+00cda4f2	Es ist fünfundzwanzig nach acht.
+6f2e8153	Es ist fünfundzwanzig vor neun.
+014d943c	Es ist fünfundzwanzig nach neun.
+7093f95a	Es ist fünfundzwanzig vor zehn.
+022aa435	Es ist fünfundzwanzig nach zehn.
+60774b4c	Es ist fünfundzwanzig vor elf.
+e100cfc3	Es ist fünfundzwanzig nach elf.
+8146b932	Es ist fünfundzwanzig vor zwölf.
+468db17d	Es ist fünfundzwanzig nach zwölf.
+6f5e3bb2	Es ist fünfundzwanzig vor eins.

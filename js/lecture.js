@@ -7,6 +7,8 @@
   function add(grade, subject, chapter, o) { o.grade = grade; o.subject = subject; o.chapter = chapter; T.push(o); }
   function find(id) { for (var i = 0; i < T.length; i++) if (T[i].id === id) return T[i]; }
   function p(s) { return "<p>" + s + "</p>"; }
+  // texte allemand : on peut l'écouter (bouton 🔊), sans lecture automatique car il est long
+  function deRead(g) { return function (d) { var q = g(d); q.sayT = DE.textOf(q.text); return q; }; }
   // banque « niveau|phrase » : on prend une phrase du niveau demandé
   function lv(bank, d) {
     var rows = bank.filter(function (r) { return +r.charAt(0) === d; });
@@ -195,13 +197,13 @@
   add(5, "allemand", "Lire en allemand", { id: "d5-lesen", icon: "📖", title: "Lire un petit texte", desc: "Comprendre une courte histoire en allemand.", long: true, learn: [
     { t: "Lire en allemand", h: "Tu n'as pas besoin de comprendre <b>tous</b> les mots !<br>1. Cherche les mots que tu <b>connais</b> : Hund, Katze, Schule…<br>2. Cherche les <b>noms</b> : ils ont une majuscule.<br>3. Lis la question en français, puis retrouve l'endroit du texte qui en parle." },
     { t: "Petits mots utiles", h: "<b>ist</b> = est · <b>hat</b> = a · <b>und</b> = et<br><b>heisst</b> = s'appelle · <b>wohnt</b> = habite<br><b>gern</b> = volontiers (j'aime bien) · <b>sehr</b> = très" }
-  ], gen: U.reading(D5).gen, sheet: U.reading(D5).sheet });
+  ], gen: deRead(U.reading(D5).gen), sheet: U.reading(D5).sheet });
   add(5, "allemand", "Lire en allemand", { id: "d5-saetze", icon: "🧩", title: "Construire une phrase", desc: "Remettre les mots allemands dans l'ordre.", learn: [
     { t: "Une phrase allemande", h: "Comme en français, on commence par <b>qui</b>, puis le <b>verbe</b> :" + big("Ich · heisse · Lena.") + "Attention : en allemand, tous les <b>noms</b> ont une majuscule (Hund, Katze, Apfel) ! Le premier mot n'est donc pas toujours le seul avec une majuscule." },
     { t: "Les questions", h: "Le mot interrogatif vient en premier, puis le verbe :" + big("Wo · wohnst · du?") + "Sans mot interrogatif, on commence par le verbe :" + big("Hast · du · einen Bruder?") }
   ], gen: function (d) {
     var r = lv(D5_ORDER, d).split("|");
-    return U.order("Remets les mots dans l'ordre.<br><small>(" + r[1] + ")</small>", r[0], { steps: ["Commence par qui (Ich, Mein Bruder…) ou par le mot interrogatif (Wie, Wo…).", "Le verbe vient juste après.", "La phrase : <b>" + r[0] + "</b> = " + r[1]] });
+    return DE.tag(U.order("Remets les mots dans l'ordre.<br><small>(" + r[1] + ")</small>", r[0], { steps: ["Commence par qui (Ich, Mein Bruder…) ou par le mot interrogatif (Wie, Wo…).", "Le verbe vient juste après.", "La phrase : <b>" + r[0] + "</b> = " + r[1]] }), null, r[0]);
   } });
 
   /* ===================== Allemand 7H ===================== */
@@ -247,7 +249,7 @@
   add(7, "allemand", "Lire en allemand", { id: "d7-lesen", icon: "📖", title: "Lire un texte", desc: "Lettres, dialogues et récits en allemand.", long: true, learn: [
     { t: "Lire en allemand", h: "Tu n'as pas besoin de comprendre <b>tous</b> les mots !<br>1. Regarde le <b>type</b> de texte : une lettre, un dialogue, un récit ?<br>2. Repère les mots que tu <b>connais</b> et les <b>noms</b> (majuscules).<br>3. Lis la question, puis cherche l'endroit du texte qui en parle." },
     { t: "Attention aux pièges", h: "<b>halb sieben</b> = 6 h 30 (et pas 7 h 30 !)<br><b>zweiundvierzig</b> = 42 (on lit les unités d'abord)<br><b>denn</b> = car · <b>aber</b> = mais · <b>dann</b> = ensuite" }
-  ], gen: U.reading(D7).gen, sheet: U.reading(D7).sheet });
+  ], gen: deRead(U.reading(D7).gen), sheet: U.reading(D7).sheet });
 
   // « L'ordre des mots » : une question sur deux, on construit soi-même la phrase
   var D7_ORDER = [
@@ -261,7 +263,7 @@
     satz.gen = function (d) {
       if (d === 1 || R(0, 1)) return g0(d);
       var s = pick(D7_ORDER);
-      return U.order("Construis la phrase : le verbe conjugué en <b>2e position</b> !", s, { steps: ["Trouve le verbe conjugué : il va en 2e position (en 1re dans une question sans mot interrogatif).", "S'il y a un 2e verbe (infinitif), il va tout à la fin.", "La phrase : <b>" + s.split("||")[0].replace(/_/g, " ") + "</b>"] });
+      return DE.tag(U.order("Construis la phrase : le verbe conjugué en <b>2e position</b> !", s, { steps: ["Trouve le verbe conjugué : il va en 2e position (en 1re dans une question sans mot interrogatif).", "S'il y a un 2e verbe (infinitif), il va tout à la fin.", "La phrase : <b>" + s.split("||")[0].replace(/_/g, " ") + "</b>"] }), null, s.split("||")[0].replace(/_/g, " "));
     };
   }
 

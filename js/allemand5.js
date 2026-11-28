@@ -38,11 +38,11 @@
         // des mots qui ne contiennent pas du tout cette lettre
         var all = []; SONS.forEach(function (x) { if (x !== s) all = all.concat(x[2].split(", ")); });
         var other = U.shuffle(all.filter(function (w) { return !re.test(w); })).slice(0, 3);
-        return U.choice("Dans quel mot entends-tu le son <b>« " + s[1].split(" (")[0] + " »</b>, écrit <b>" + g + "</b> ?", ex, other, { steps: ["« " + s[0] + " » se prononce <b>" + s[1] + "</b>.", "Exemples : " + s[2]] });
+        return DE.tag(U.choice("Dans quel mot entends-tu le son <b>« " + s[1].split(" (")[0] + " »</b>, écrit <b>" + g + "</b> ?", ex, other, { steps: ["« " + s[0] + " » se prononce <b>" + s[1] + "</b>.", "Exemples : " + s[2]] }), null, ex);
       }
-      return U.choice("Dans le mot <b>« " + ex + " »</b>, comment se prononce <b>" + g + "</b> ?" + big(ex.replace(re, function (m) { return "<u>" + m + "</u>"; })), s[1], s[3].split(","), {
+      return DE.tag(U.choice("Dans le mot <b>« " + ex + " »</b>, comment se prononce <b>" + g + "</b> ?" + big(ex.replace(re, function (m) { return "<u>" + m + "</u>"; })), s[1], s[3].split(","), {
         steps: ["En allemand, <b>" + s[0] + "</b> se prononce <b>« " + s[1] + " »</b>.", "D'autres mots : " + s[2]]
-      });
+      }), ex);
     }
   });
 
@@ -79,9 +79,9 @@
     words: "der Vater|le père|👨\ndie Mutter|la mère|👩\nder Bruder|le frère|👦\ndie Schwester|la sœur|👧\nder Grossvater|le grand-père|👴\ndie Grossmutter|la grand-mère|👵\nder Onkel|l'oncle|🧔\ndie Tante|la tante|👩\ndas Baby|le bébé|👶\ndie Eltern|les parents|👫\ndie Familie|la famille|🏡\nder Freund|l'ami|🤝",
     extra: function (d) {
       var n = pick(FAM_N), dein = d === 3 && R(0, 1), base = dein ? "dein" : "mein", good = base + (n[1] === "f" || n[1] === "p" ? "e" : "");
-      return U.choice("Complète (" + (dein ? "ton / ta / tes" : "mon / ma / mes") + ") :" + big("Das ist " + '<span class="blank">…</span> ' + n[0] + "."), good, [base, base + "e", dein ? "mein" : "dein"], {
+      return DE.tag(U.choice("Complète (" + (dein ? "ton / ta / tes" : "mon / ma / mes") + ") :" + big("Das ist " + '<span class="blank">…</span> ' + n[0] + "."), good, [base, base + "e", dein ? "mein" : "dein"], {
         steps: ["« " + n[0] + " » est " + { m: "masculin", f: "féminin", n: "neutre", p: "au pluriel" }[n[1]] + ".", "<b>" + base + "</b> pour masculin et neutre, <b>" + base + "e</b> pour féminin et pluriel.", "Das ist <b>" + good + "</b> " + n[0] + "."]
-      });
+      }), null, "Das ist " + good + " " + n[0] + ".");
     }
   }));
 
@@ -138,7 +138,7 @@
     ],
     gen: function () {
       var n = pick(NOUNS).split("|"), a = DE.article(n[0]);
-      return U.choice("Quel est le bon article ?" + big(DE.pic(n[1]) + ' <span class="blank">…</span> ' + DE.noun(n[0])), a, ["der", "die", "das"], { steps: ["On dit <b>" + DE.art(n[0]) + "</b>.", DE.ART_TIP] });
+      return DE.tag(U.choice("Quel est le bon article ?" + big(DE.pic(n[1]) + ' <span class="blank">…</span> ' + DE.noun(n[0])), a, ["der", "die", "das"], { steps: ["On dit <b>" + DE.art(n[0]) + "</b>.", DE.ART_TIP] }), null, n[0]);
     }
   });
 

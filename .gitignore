@@ -2,3 +2,4 @@
 *.py
 tv-token*.txt
 __pycache__/
+outils/voix-de-wav/
