@@ -75,9 +75,23 @@
     // Boutons toujours visibles en haut : revenir à l'écran précédent ou à l'accueil
     var nav = S.v === "home" ? "" : '<div class="nav">' + btn("⬅ Retour", "back", { cls: "btn nav", k: "nav-back" }) + btn("🏠 Accueil", "home", { cls: "btn nav", k: "nav-home" }) + "</div>";
     app.innerHTML = '<div class="top"><div class="crumbs">' + crumbs + '</div><div class="total">' + (p ? (p.grade === 4 ? "🌟 " + kd(p.id).st.length : "⭐ " + totalStars(p.id)) : "") + "</div>" + nav +
-      '</div><div class="main" id="main">' + html + '</div><div id="toast"></div>';
+      '</div><div class="main" id="main">' + html + '</div><div id="toast"></div>' +
+      '<div id="sbtns"><div class="sbtn" data-a="scroll|up">▲</div><div class="sbtn" data-a="scroll|down">▼</div></div>';
     var el = (focusKey && app.querySelector('[data-k="' + focusKey + '"]')) || app.querySelector(".f.def") || app.querySelector(".f");
     if (el) setFocus(el);
+    document.getElementById("main").onscroll = scrollBtns;
+    scrollBtns();
+  }
+
+  // Boutons ▲ ▼ pour faire défiler les longues pages (pratiques avec le pointeur de la télécommande)
+  function scrollBtns() {
+    var m = document.getElementById("main"), b = document.getElementById("sbtns");
+    if (!m || !b) return;
+    var more = m.scrollHeight > m.clientHeight + 5;
+    b.style.display = more ? "" : "none";
+    if ((m.className.indexOf(" sc") >= 0) !== more) m.className = "main" + (more ? " sc" : "");
+    b.children[0].className = "sbtn" + (m.scrollTop > 5 ? "" : " off");
+    b.children[1].className = "sbtn" + (m.scrollTop + m.clientHeight < m.scrollHeight - 5 ? "" : " off");
   }
 
   function setFocus(el) {
@@ -691,6 +705,7 @@
     else if (name === "tback") { if (S.built && S.built.length) S.built.pop(); render(); }
     else if (name === "qnext") quizNext();
     else if (name === "back") back();
+    else if (name === "scroll") { var mn = document.getElementById("main"); mn.scrollTop += (arg === "up" ? -1 : 1) * Math.round(mn.clientHeight * 0.6); scrollBtns(); }
     else if (name === "link") location.href = arg;
     else if (name === "themes") { while (hist.length && !/^(themes|map)$/.test(hist[hist.length - 1].s.v)) hist.pop(); back(); }
   }
@@ -699,7 +714,7 @@
   app.addEventListener("click", function (e) {
     var t = e.target;
     while (t && t !== app) {
-      if (t.getAttribute && t.getAttribute("data-a")) { setFocus(t); act(t.getAttribute("data-a")); return; }
+      if (t.getAttribute && t.getAttribute("data-a")) { if (t.className.indexOf("sbtn") < 0) setFocus(t); act(t.getAttribute("data-a")); return; }
       t = t.parentNode;
     }
   });

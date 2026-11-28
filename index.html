@@ -20,7 +20,12 @@
   .total { font-weight: 700; color: var(--accent); white-space: nowrap; }
   .nav { display: flex; gap: 1.2vh; flex: none; }
   .btn.nav { min-height: 6vh; padding: .8vh 2.4vh; font-size: 2.5vh; margin: 0; background: var(--panel); }
-  .main { flex: 1; overflow: hidden; padding: 0 5vh 3vh; position: relative; }
+  .main { flex: 1; overflow-x: hidden; overflow-y: auto; padding: 0 5vh 3vh; position: relative; }
+  .main::-webkit-scrollbar { width: 1.2vh; } .main::-webkit-scrollbar-thumb { background: #3a4566; border-radius: 1vh; }
+  #sbtns { position: fixed; right: 2.5vh; bottom: 4vh; display: flex; flex-direction: column; gap: 2vh; z-index: 20; }
+  .sbtn { width: 10vh; height: 10vh; border-radius: 50%; background: var(--panel2); border: .5vh solid var(--accent); color: var(--accent); font-size: 4.5vh; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 1vh 3vh rgba(0, 0, 0, .5); }
+  .sbtn.off { opacity: .25; }
+  .main.sc { padding-right: 14vh; }
 
   h1 { font-size: 5.4vh; margin: 0 0 1vh; }
   .sub { font-size: 2.8vh; color: var(--muted); margin-bottom: 2vh; line-height: 1.4; }
@@ -309,19 +314,19 @@
 </head>
 <body>
 <div id="app"></div>
-<script src="js/outils.js?v=11"></script>
-<script src="js/maths5.js?v=11"></script>
-<script src="js/maths7.js?v=11"></script>
-<script src="js/problemes.js?v=11"></script>
-<script src="js/fr-outils.js?v=11"></script>
-<script src="js/francais5.js?v=11"></script>
-<script src="js/francais7.js?v=11"></script>
-<script src="js/de-outils.js?v=11"></script>
-<script src="js/allemand5.js?v=11"></script>
-<script src="js/allemand7.js?v=11"></script>
-<script src="js/lecture.js?v=11"></script>
-<script src="js/petits-data.js?v=11"></script>
-<script src="js/petits.js?v=11"></script>
-<script src="js/app.js?v=11"></script>
+<script src="js/outils.js?v=12"></script>
+<script src="js/maths5.js?v=12"></script>
+<script src="js/maths7.js?v=12"></script>
+<script src="js/problemes.js?v=12"></script>
+<script src="js/fr-outils.js?v=12"></script>
+<script src="js/francais5.js?v=12"></script>
+<script src="js/francais7.js?v=12"></script>
+<script src="js/de-outils.js?v=12"></script>
+<script src="js/allemand5.js?v=12"></script>
+<script src="js/allemand7.js?v=12"></script>
+<script src="js/lecture.js?v=12"></script>
+<script src="js/petits-data.js?v=12"></script>
+<script src="js/petits.js?v=12"></script>
+<script src="js/app.js?v=12"></script>
 </body>
 </html>
